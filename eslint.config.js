@@ -398,6 +398,7 @@ const eslintConfig = [
   // site cheatsheet/sidebars — module, no-unresolved off
   {
     files: [
+      'site/src/assets/examples/application/application.js',
       'site/src/assets/examples/cheatsheet/cheatsheet.js',
       'site/src/assets/examples/sidebars/sidebars.js'
     ],
@@ -430,10 +431,12 @@ const eslintConfig = [
 
   // Agent skill code blocks are illustrative docs (mirroring the docs guides),
   // so allow side-effect imports like `import './styles.scss'` in bundler setups.
+  // The guides load the CSS before the JS on purpose, so do not enforce import order.
   {
     files: ['skills/**/*.md/*.js', 'skills/**/*.md/*.mjs'],
     rules: {
-      'import/no-unassigned-import': 'off'
+      'import/no-unassigned-import': 'off',
+      'import-x/order': 'off'
     }
   }
 ]

@@ -1,4 +1,4 @@
-import { Tooltip } from '@bootstrap'
+import { Dialog, Tooltip } from '@bootstrap'
 
 function hideTooltipOnClick(tooltipElement, clickElement = tooltipElement) {
   if (!tooltipElement || !clickElement) {
@@ -30,7 +30,7 @@ function initSidebarTooltips() {
     'Application Settings',
     'Account Settings',
     'Vehicle Routing Profiles',
-    'QuickBatch',
+    'QuickBatch'
   ]
 
   for (const [index, element] of document.querySelectorAll('.app-sidebar .nav-link').entries()) {
@@ -42,7 +42,7 @@ function initSidebarTooltips() {
     const tooltip = new Tooltip(element, {
       trigger: 'hover',
       placement: 'end',
-      title,
+      title
     })
 
     element.addEventListener('click', () => tooltip.hide())
@@ -56,8 +56,8 @@ function initNavbarTooltips() {
       element: document.getElementById('userMenuToggle'),
       title: '<strong>Christian Oliff</strong><br>christian.oliff@trimble.com',
       html: true,
-      placement: 'bottom-end',
-    },
+      placement: 'bottom-end'
+    }
   ]
 
   for (const { element, title, html = false, placement = 'bottom' } of tooltipConfig) {
@@ -69,7 +69,7 @@ function initNavbarTooltips() {
       trigger: 'hover',
       placement,
       title,
-      html,
+      html
     })
 
     element.addEventListener('click', () => tooltip.hide())
@@ -102,18 +102,13 @@ function detectOS() {
 }
 
 function initKeyboardShortcut() {
-  if (typeof bootstrap === 'undefined') {
-    setTimeout(initKeyboardShortcut, 50)
-    return
-  }
-
   const isMac = detectOS()
   const modalElement = document.getElementById('shortcutModal')
   if (!modalElement) {
     return
   }
 
-  const modal = new bootstrap.Modal(modalElement)
+  const modal = new Dialog(modalElement)
 
   function updateShortcutDisplay() {
     const modifierKey = isMac ? 'Cmd' : 'Ctrl'
@@ -222,7 +217,7 @@ function initMap() {
     center: [-98.5795, 39.8283],
     container: 'map',
     style: 'https://demotiles.maplibre.org/style.json',
-    zoom: 3,
+    zoom: 3
   })
 
   map.addControl(new maplibregl.NavigationControl(), 'top-right')
