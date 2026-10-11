@@ -61,6 +61,18 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 {/* bundler (which would defer it and cause a flash of the wrong theme). */}
 <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
 
+<script is:inline type="speculationrules" set:html={speculationRules} />
+<script is:inline>
+  // Fallback to instant.page for browsers that don't support speculation rules
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules'))) {
+    const script = document.createElement('script')
+    script.type = 'module'
+    script.src = 'https://instant.page/5.2.0'
+    script.defer = true
+    document.head.appendChild(script)
+  }
+</script>
+
 {
   import.meta.env.PROD && ScssProd && (
     <>
