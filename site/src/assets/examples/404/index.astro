@@ -1,0 +1,48 @@
+---
+import { getVersionedDocsPath } from '@libs/path'
+
+export const title = '404 Template'
+export const html_class = 'h-100'
+export const body_class = 'd-flex flex-column h-100'
+---
+
+<header>
+  <nav class="navbar md:navbar-expand navbar-dark bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href={getVersionedDocsPath('/')}>404 example</a>
+      <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 md:mb-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={getVersionedDocsPath('/examples/')}>Examples</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={getVersionedDocsPath('/getting-started/install/')}>Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-grow-1 d-flex align-items-center justify-content-center p-3">
+  <img
+    src="/404.svg"
+    alt="Page not found"
+    class="img-fluid"
+    width="897"
+    height="524"
+  />
+</main>
+
+<footer class="footer mt-auto py-3 bg-1 border-top">
+  <div class="container">
+    <span class="small fg-2">&copy; {new Date().getFullYear()} Trimble, Inc</span>
+  </div>
+</footer>
+

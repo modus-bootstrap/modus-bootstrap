@@ -1,0 +1,51 @@
+/* stylelint-disable property-disallowed-list */
+[data-vc-date-btn] button,
+[data-vc-date-selected] button,
+[data-vc-date-today] button {
+  aspect-ratio: 1;
+  margin: 2px;
+  border-radius: 50%;
+}
+
+.switch {
+  --bs-switch-checked-bg: #0063a3;
+}
+
+:root {
+  --bs-red-500: rgb(218, 33, 44);
+  --bs-danger-bg: rgb(218, 33, 44);
+  --bs-accent-bg: #0063a3;
+  --bs-primary-bg: #0063a3;
+  --bs-success-bg: rgb(30, 138, 68);
+  --bs-control-checked-bg: #0063a3;
+  --bs-warning-bg: rgb(228, 147, 37);
+}
+
+.check :where(input) {
+  aspect-ratio: 1;
+}
+
+.form-control {
+  --bs-control-select-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-control-select-bg-dark: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23666' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme="light"] .form-control {
+  --bs-control-border-color: #90939f;
+}
+
+[data-bs-theme="dark"] .form-control {
+  --bs-check-border-color: #464b52;
+  --bs-control-border-color: #464b52;
+}
+
+[data-bs-theme="light"] .alert.theme-primary {
+  --bs-alert-bg: #dcedf9;
+  --bs-alert-border-color: #0063a3;
+  --bs-alert-color: #fff;
+}
+
+.check,
+.radio {
+  --bs-radio-border-color: #90939f;
+}

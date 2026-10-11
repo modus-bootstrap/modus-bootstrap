@@ -1,0 +1,38 @@
+body {
+  padding-bottom: 20px;
+}
+
+.navbar-github {
+  --bs-navbar-padding-y: .5rem;
+  height: 64px;
+  margin-bottom: 20px;
+}
+
+.navbar-github .navbar-brand {
+  --bs-navbar-brand-margin-end: 0;
+}
+
+.navbar-github .btn-group .menu-toggle-split {
+  padding-inline: .35rem;
+}
+
+.navbar-github .btn-group .menu-toggle-split .bi {
+  opacity: .75;
+}
+
+.menu-profile-header {
+  display: flex;
+  gap: .75rem;
+  align-items: flex-start;
+  padding: .75rem .75rem .5rem;
+}
+
+.menu-profile-identity {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.menu-profile .menu-item {
+  --bs-menu-item-padding-y: .375rem;
+}

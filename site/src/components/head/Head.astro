@@ -1,0 +1,73 @@
+---
+import { getConfig } from '@libs/config'
+import { getVersionedDocsPath } from '@libs/path'
+import type { Layout } from '@libs/layout'
+import { getLastModified } from '@libs/last-modified'
+import Stylesheet from '@components/head/Stylesheet.astro'
+
+interface Props {
+  description: string
+  lastModified?: string
+  layout: Layout
+  robots: string | undefined
+  thumbnail: string
+  title: string
+}
+
+const { description, lastModified, layout, robots, thumbnail, title } = Astro.props
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site)
+const speculationRules = JSON.stringify(
+  {
+    prerender: [
+      {
+        where: {
+          href_matches: '/*'
+        },
+        eagerness: 'moderate'
+      }
+    ]
+  },
+  null,
+  2
+)
+
+const isHome = Astro.url.pathname === '/'
+const pageTitle = isHome
+  ? `${getConfig().title} · ${getConfig().subtitle}`
+  : `${title} · ${getConfig().title} v${getConfig().docs_version}`
+
+// Dynamic imports to avoid build-time processing
+const Scss = import.meta.env.PROD ? undefined : await import('@components/head/Scss.astro')
+const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.astro') : undefined
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<meta name="description" content={description} />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalUrl} />
+<meta name="color-scheme" content="light dark" />
+<meta name="last-modified" content={lastModified ?? getLastModified()} />
+
+<title>{pageTitle}</title>
+
+{robots && <meta name="robots" content={robots} />}
+
+{/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
+{/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
+{/* render-block at this exact spot in the head without going through the */}
+{/* bundler (which would defer it and cause a flash of the wrong theme). */}
+<script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+
+{
+  import.meta.env.PROD && ScssProd && (
+    <>
+      <Stylesheet />
+      <ScssProd.default />
+    </>
+  )
+}
+
+{!import.meta.env.PROD && Scss && <Scss.default />}

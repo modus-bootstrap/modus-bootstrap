@@ -1,0 +1,5 @@
+- group: v1.x
+  baseurl: 'https://getbootstrap.com/docs'
+  description: 'Our previous major release with its minor releases.'
+  versions:
+    - '4.0'

@@ -1,0 +1,347 @@
+---
+import Placeholder from '@shortcodes/Placeholder.astro'
+
+export const title = 'Navbar Template'
+export const extra_css = ['navbar.css']
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="bell" viewBox="0 0 16 16">
+    <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+  </symbol>
+  <symbol id="bookmark" viewBox="0 0 16 16">
+    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+  </symbol>
+  <symbol id="chevron-expand" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
+  </symbol>
+  <symbol id="cloud" viewBox="0 0 16 16">
+    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757 1.63-2.749 1.63-3.506 0a1 1 0 0 0-1.058-.089A2.5 2.5 0 0 0 1 9.318C1 10.308 1.795 11 2.781 11h9.906C13.98 11 15 10.043 15 8.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1 1 1 0 0 0 .999.089z"/>
+  </symbol>
+  <symbol id="github" viewBox="0 0 16 16">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+  </symbol>
+  <symbol id="git" viewBox="0 0 16 16">
+    <path d="M15.852 8.803a.5.5 0 0 1-.443.74l-3.55-1.43a.5.5 0 0 1-.322-.33l-.66-2.88a.5.5 0 0 0-.336-.313l-3.354-1.07a.5.5 0 0 1-.284-.506l.789-4.89a.5.5 0 0 0-.998-.172l-.492 3.048-1.862-1.43a.5.5 0 0 0-.62.788l1.478 1.137-.647 4.002a.5.5 0 0 1-.314.446l-3.527 1.422a.5.5 0 0 1-.74-.443l1.433-3.574a.5.5 0 0 1 .305-.323l4.56-1.666a.5.5 0 0 0 .287-.403l.515-3.097a.5.5 0 0 1 .491-.424h.07a.5.5 0 0 1 .49.424l.514 3.097a.5.5 0 0 0 .287.403l4.56 1.666a.5.5 0 0 1 .306.323z"/>
+  </symbol>
+  <symbol id="inbox" viewBox="0 0 16 16">
+    <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4H4.98zm9.954 5H10.45a2.5 2.5 0 0 1-4.9 0H1.066l.32 2.562a.5.5 0 0 0 .497.438h12.274a.5.5 0 0 0 .496-.438L14.933 9zM3.809 3.563A1.5 1.5 0 0 1 4.981 3h6.038a1.5 1.5 0 0 1 1.172.563l3.7 4.625a.5.5 0 0 1 .105.374l-.39 3.124A1.5 1.5 0 0 1 14.117 13H1.883a1.5 1.5 0 0 1-1.489-1.314l-.39-3.124a.5.5 0 0 1 .106-.374l3.7-4.625z"/>
+  </symbol>
+  <symbol id="issue-opened" viewBox="0 0 16 16">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
+  </symbol>
+  <symbol id="magic" viewBox="0 0 16 16">
+    <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
+  </symbol>
+  <symbol id="plus" viewBox="0 0 16 16">
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </symbol>
+  <symbol id="search" viewBox="0 0 16 16">
+    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+  </symbol>
+  <symbol id="arrow-left-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 0 1h12.983l-2.874 2.887a.5.5 0 0 0 .708.708l4-4.002a.498.498 0 0 0 0-.708l-4-4.002a.5.5 0 0 0-.708.708L13.983 11.5zm5-7.505a.5.5 0 0 0-.708-.708L3.017 6.99 5.89 4.103a.5.5 0 0 1 .708.708l-4 4.002a.498.498 0 0 0 0 .708l4 4.002a.5.5 0 0 1-.708-.708z"/>
+  </symbol>
+  <symbol id="box-arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H2v8h7.5a.5.5 0 0 1 0 1z"/>
+    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+  </symbol>
+  <symbol id="box-arrow-up" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M3.5 10a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h1.5V2H4v7.5H5.5a.5.5 0 0 1 0 1z"/>
+    <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 0 1-.708-.708l3-3z"/>
+  </symbol>
+  <symbol id="braces" viewBox="0 0 16 16">
+    <path d="M2.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C3.25 2 2.49 2.759 2.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6zM13.886 7.9v.163c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456V7.332c-1.114 0-1.49-.362-1.49-1.456V4.352C13.51 2.759 12.75 2 11.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6z"/>
+  </symbol>
+  <symbol id="building" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V14H3v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V.5a.5.5 0 0 1 .237-.472l6-3a.5.5 0 0 1 .526 0zM2 15V1.566l5-2.831L12 1.566V15z"/>
+  </symbol>
+  <symbol id="cup-hot" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-.5 3 3 0 0 0 .738-1.06l.133-.592a.5.5 0 0 0-.488-.608h-1.153c-.331 0-.62-.21-.724-.525l-.74-2.67a.5.5 0 0 0-.488-.355H.5zm1.64 1H14.5a.5.5 0 0 1 .488.41l.74 2.67A1.5 1.5 0 0 1 13.854 11H4.146a1.5 1.5 0 0 1-1.478-1.92l.74-2.67A.5.5 0 0 1 3.64 7zM4.5 14a1.5 1.5 0 0 0 1.472-1.36l.74-2.67H2.288l.74 2.67A1.5 1.5 0 0 0 4.5 14z"/>
+  </symbol>
+  <symbol id="gear" viewBox="0 0 16 16">
+    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+  </symbol>
+  <symbol id="globe2" viewBox="0 0 16 16">
+    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+  </symbol>
+  <symbol id="heart" viewBox="0 0 16 16">
+    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 3.385l1.228 1.465a.5.5 0 0 1 0 .708l-1.228 1.465c-.956.885-1.138 2.362-.314 3.385C2.514 15.122 5.6 15.72 7.283 13.99l.717-.737.717.737c1.683 1.729 4.769 1.132 6.083-2.102.824-1.023.642-2.5-.314-3.385l-1.228-1.465a.5.5 0 0 1 0-.708l1.228-1.465c.956-.885 1.138-2.362.314-3.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 4.994c-.879 0-1.66.562-1.93 1.395-.272.84-.058 1.77.53 2.385l3.47 3.47 3.47-3.47c.588-.615.802-1.545.53-2.385A2.012 2.012 0 0 0 8 4.994z"/>
+  </symbol>
+  <symbol id="palette" viewBox="0 0 16 16">
+    <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-2A1.5 1.5 0 0 1 11 14.5V13H5v1.5A1.5 1.5 0 0 1 3.5 16h-2A1.5 1.5 0 0 1 0 14.5v-13z"/>
+  </symbol>
+  <symbol id="person" viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+  </symbol>
+  <symbol id="shield-check" viewBox="0 0 16 16">
+    <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025.176.176 0 0 0 .096-.12.173.173 0 0 0 .014-.145.319.319 0 0 0-.033-.12.65.65 0 0 0-.249-.267 9.716 9.716 0 0 1-1.062-.605 9.5 9.5 0 0 1-2.019-2.127c-1.324-1.79-2.416-4.338-1.85-8.112a.48.48 0 0 1 .328-.39c.651-.213 1.75-.356 2.837-.855a.48.48 0 0 1 .464 0z"/>
+    <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+  <symbol id="star" viewBox="0 0 16 16">
+    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765a.77.77 0 0 1 .027-1.13L6.266 2.165a.76.76 0 0 1 1.468 0l5.99 3.32a.77.77 0 0 1 .027 1.13l-4.673 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+  </symbol>
+  <symbol id="beaker" viewBox="0 0 16 16">
+    <path d="M4.5 0a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM3.5 2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zM1 5.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5zM2 8.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5zM3 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+    <path fill-rule="evenodd" d="M6.854 14.854a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L6.5 13.293l2.146-2.147a.5.5 0 0 1 .708.708l-3 3z"/>
+  </symbol>
+  <symbol id="universal-access" viewBox="0 0 16 16">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7zM8 4.25a2.25 2.25 0 1 0 0 4.5 2.25 2.25 0 0 0 0-4.5zM6.75 11.5v2.793l-2.146 2.147a.5.5 0 0 0 .708.708L7.75 14.957V11.5h.5v3.457l2.438 2.438a.5.5 0 0 0 .708-.708L9.25 14.293V11.5H8.25v-3h-.5z"/>
+  </symbol>
+</svg>
+
+
+  <nav class="navbar navbar-github navbar-dark bg-dark border-bottom" data-bs-theme="dark" aria-label="Notifications toolbar">
+    <div class="container-fluid gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <button
+          class="btn-outline theme-secondary btn-sm btn-icon navbar-toggler"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#navbarsExample01"
+          aria-controls="navbarsExample01"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <svg class="navbar-toggler-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M1 3.5h14M1 8h14M1 12.5h14"/></svg>
+        </button>
+
+        <a class="navbar-brand d-inline-flex align-items-center gap-2 p-0 me-0" href="#">
+          <svg class="bi flex-shrink-0" width="32" height="32" aria-hidden="true"><use href="#github"/></svg>
+          <span class="fs-5 fw-semibold fg-white">Notifications</span>
+        </a>
+      </div>
+
+      <ul class="navbar-nav flex-row align-items-center gap-2 ms-auto mb-0">
+        <li class="nav-item">
+          <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Search">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#search"/></svg>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <div class="btn-group">
+            <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Copilot">
+              <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#magic"/></svg>
+            </button>
+            <button type="button" class="btn-outline theme-secondary btn-sm menu-toggle-split" data-bs-toggle="menu" aria-expanded="false" aria-label="Open Copilot menu">
+              <svg class="bi" width="12" height="12" aria-hidden="true"><use href="#chevron-expand"/></svg>
+            </button>
+            <div class="menu">
+              <span class="menu-item opacity-50 pe-none">Ask Copilot...</span>
+              <a class="menu-item" href="#">In immersive chat</a>
+              <a class="menu-item" href="#">In a space</a>
+              <hr class="menu-divider">
+               <div class="submenu">
+    <button class="menu-item pe-3" type="button">Download for...</button>
+    <div class="menu">
+      <a class="menu-item" href="#">VS Code</a>
+      <a class="menu-item" href="#">Visual Studio</a>
+      <a class="menu-item" href="#">XCode</a>
+      <a class="menu-item" href="#">JetBrains</a>
+      <a class="menu-item" href="#">Eclipse</a>
+      <a class="menu-item" href="#">Neovim</a>
+      <hr class="menu-divider">
+      <a class="menu-item" href="#">CLI</a>
+    </div>
+  </div>
+              <a class="menu-item" href="#">Settings</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <div class="btn-group">
+            <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Codespaces">
+              <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#cloud"/></svg>
+            </button>
+            <button type="button" class="btn-outline theme-secondary btn-sm menu-toggle-split" data-bs-toggle="menu" aria-expanded="false" aria-label="Open Codespaces menu">
+              <svg class="bi" width="12" height="12" aria-hidden="true"><use href="#chevron-expand"/></svg>
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="#">Your codespaces</a>
+              <a class="menu-item" href="#">Create codespace</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item d-none sm:d-block" aria-hidden="true">
+          <div class="vr mx-1 opacity-25 align-self-stretch" style="min-height: 1.5rem;"></div>
+        </li>
+
+        <li class="nav-item">
+          <div class="btn-group">
+            <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Create new">
+              <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#plus"/></svg>
+            </button>
+            <button type="button" class="btn-outline theme-secondary btn-sm menu-toggle-split" data-bs-toggle="menu" aria-expanded="false" aria-label="Open create menu">
+              <svg class="bi" width="12" height="12" aria-hidden="true"><use href="#chevron-expand"/></svg>
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="#">New repository</a>
+              <a class="menu-item" href="#">Import repository</a>
+              <hr class="menu-divider">
+              <a class="menu-item" href="#">New gist</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Issues">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#issue-opened"/></svg>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Pull requests">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#git"/></svg>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn-outline theme-secondary btn-sm btn-icon" aria-label="Discussions">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#bookmark"/></svg>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn-outline theme-secondary btn-sm btn-icon position-relative" aria-label="Notifications inbox">
+            <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#inbox"/></svg>
+            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-primary border border-dark rounded-circle">
+              <span class="visually-hidden">Unread notifications</span>
+            </span>
+          </button>
+        </li>
+
+        <li class="nav-item">
+          <button type="button" class="btn p-0 border-0 rounded-circle lh-1" aria-label="Open profile menu" data-bs-toggle="menu" data-bs-placement="bottom-end" aria-expanded="false">
+            <span class="avatar avatar-sm">
+  <img class="avatar-img" src="https://github.com/coliff.png" alt="coliff" width="32" height="32">
+</span>
+          </button>
+          <div class="menu menu-profile menu-scrollable" data-bs-theme="dark" style="--bs-menu-min-width: 18rem;">
+            <div class="menu-profile-header d-flex flew-row flex-fill w-100 justify-items-center">
+              <span class="avatar avatar-sm me-3 m-2">
+  <img class="avatar-img" src="https://github.com/coliff.png" alt="coliff" width="32" height="32" />
+</span>
+              <div class="menu-profile-identity">
+                <div class="fw-semibold">coliff</div>
+                <div class="small fg-3">Christian Oliff</div>
+              </div>
+              <button type="button" class="btn-icon btn-sm flex-shrink-0" aria-label="Switch account">
+                <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-left-right"/></svg>
+              </button>
+            </div>
+
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#cup-hot"/></svg>
+              coding and coffee
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#shield-check"/></svg>
+              Single sign-on
+            </a>
+
+            <hr class="menu-divider">
+
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#person"/></svg>
+              Profile
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#bookmark"/></svg>
+              Repositories
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#star"/></svg>
+              Stars
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#braces"/></svg>
+              Gists
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#building"/></svg>
+              Organizations
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#globe2"/></svg>
+              Enterprises
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#heart"/></svg>
+              Sponsors
+            </a>
+
+            <hr class="menu-divider">
+
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#gear"/></svg>
+              Settings
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#magic"/></svg>
+              Copilot settings
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#beaker"/></svg>
+              Feature preview
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#palette"/></svg>
+              Appearance
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#universal-access"/></svg>
+              Accessibility
+            </a>
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#box-arrow-up"/></svg>
+              Upgrade
+            </a>
+
+            <hr class="menu-divider">
+
+            <a class="menu-item" href="#">
+              <svg class="bi menu-item-icon fg-3" width="16" height="16" aria-hidden="true"><use href="#box-arrow-right"/></svg>
+              Sign out
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <dialog class="drawer drawer-start text-bg-dark" tabindex="-1" id="navbarsExample01" aria-labelledby="navbarsExample01Label">
+        <div class="drawer-header">
+          <h5 class="drawer-title" id="navbarsExample01Label">Menu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="drawer" aria-label="Close"></button>
+        </div>
+        <div class="drawer-body">
+          <ul class="navbar-nav me-auto mb-2">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="menu" aria-expanded="false">Menu</a>
+              <div class="menu">
+                <a class="menu-item" href="#">Action</a>
+                <a class="menu-item" href="#">Another action</a>
+                <a class="menu-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </dialog>
+    </div>
+  </nav>
+  <main>
+</main>

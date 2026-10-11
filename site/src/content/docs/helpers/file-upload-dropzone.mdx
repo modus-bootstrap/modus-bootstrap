@@ -1,0 +1,27 @@
+---
+title: File upload dropzone
+description: "File upload dropzone allows users to upload single or multiple files to the application by dragging and dropping."
+toc: true
+---
+
+import { getData } from '@libs/data'
+
+File upload dropzone allows users to upload content from their computer or device into the application by dragging a file (or files) into a target zone.
+
+## Example
+
+<Example code={`<div class="file-drop-zone w-100">
+  <div class="my-5 text-center fg-primary">
+    Drag and Drop CSV here
+  </div>
+</div>`} />
+
+## Disabled State
+
+Add the `.disabled` class to the file-drop-zone.
+
+<Example code={`<div class="file-drop-zone disabled w-100">
+  <div class="my-5 text-center fg-primary">
+    Drag and Drop CSV here
+  </div>
+</div>`} />

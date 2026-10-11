@@ -1,0 +1,316 @@
+---
+export const title = 'Application example'
+export const extra_css = [
+  'https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1.21.0/dist/transportation/css/transportation-icons.css',
+  'application.css',
+]
+export const extra_js = [{ src: 'application.js' }]
+export const body_class = 'app-with-sidebar'
+---
+
+  <aside class="app-sidebar bg-body d-flex flex-column bg-90 position-fixed align-items-center" aria-label="Primary navigation">
+    <nav class="nav">
+      <a href="#" class="nav-link active" aria-current="page" aria-label="Routing">
+        <i class="transportation-icon-map" aria-hidden="true"></i>
+      </a>
+      <a href="#" class="nav-link" aria-label="Application Settings">
+        <i class="transportation-icon-route" aria-hidden="true"></i>
+      </a>
+      <a href="#" class="nav-link" aria-label="Account Settings">
+        <i class="transportation-icon-trip-list" aria-hidden="true"></i>
+      </a>
+      <a href="#" class="nav-link" aria-label="Vehicle Routing Profiles">
+        <i class="transportation-icon-location" aria-hidden="true"></i>
+      </a>
+      <a href="#" class="nav-link" aria-label="QuickBatch">
+        <i class="transportation-icon-settings" aria-hidden="true"></i>
+      </a>
+    </nav>
+  </aside>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top" aria-label="Main">
+      <div class="container-fluid">
+        <button class="btn-icon navbar-toggler me-2 bg-transparent border-0" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <i class="transportation-icon-menu fg-white"></i>
+        </button>
+        <a href="#" class="d-flex align-items-center">
+          <img src="https://pcmilerweb.trimblemaps.com/assets/img/PCMILER_Logo_BW_New.svg" alt="PC*Miler" width="133" height="24" class="img-fluid fg-white" />
+        </a>
+
+        <ul class="navbar-nav d-flex align-items-center flex-row ms-auto">
+
+           <li class="nav-item">
+            <button class="btn-icon me-2 bg-transparent border-0" type="button"
+              aria-label="Chat"
+              data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Chat"
+            >
+              <i class="transportation-icon-chat fg-white"></i>
+            </button>
+          </li>
+
+           <li class="nav-item">
+            <span class="d-inline-flex" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Help">
+              <button class="btn-icon me-2 bg-transparent border-0" type="button" aria-label="Help"
+                data-bs-toggle="dialog" data-bs-target="#helpDialog">
+                <i class="transportation-icon-help fg-white" aria-hidden="true"></i>
+              </button>
+            </span>
+          </li>
+
+          <li class="nav-item">
+            <button class="btn-icon me-2 bg-transparent border-0" type="button" id="appMenuToggle" data-bs-toggle="menu"
+              data-bs-placement="bottom"
+              aria-controls="appMenu" aria-expanded="false" aria-label="My Apps">
+              <i class="transportation-icon-apps fg-white" aria-hidden="true"></i>
+            </button>
+            <div class="menu p-0 text-body" id="appMenu" aria-labelledby="appMenuToggle" style="width: 320px;">
+              <div class="align-items-center border-bottom d-flex justify-content-between px-3 py-2">
+                <h2 class="h6 mb-0">My Apps</h2>
+                <button class="btn-close" type="button" id="appMenuClose">
+                  <span class="visually-hidden">Close My Apps</span>
+                </button>
+              </div>
+              <div class="p-3 bg-1 bg-80">
+                <div class="row g-3 text-center">
+                  <div class="col-4">
+                    <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
+                      <div class="app-menu-icon mx-auto text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/content-tools.svg" alt="Content Tools" width="32" height="32"
+                          class="img-fluid">
+                      </div>
+                      <span class="d-block mt-1 fg-body">Account Manager</span>
+                    </a>
+                  </div>
+                  <div class="col-4">
+                    <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
+                      <div class="app-menu-icon mx-auto rounded-4 text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/content-tools.svg" alt="Content Tools" width="32" height="32"
+                          class="img-fluid">
+                      </div>
+                      <span class="d-block fg-body">Content Tools</span>
+                    </a>
+                  </div>
+                  <div class="col-4">
+                    <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
+                      <div class="app-menu-icon app-menu-tile--map mx-auto rounded-4 text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
+                      </div>
+                      <span class="d-block mt-1 fg-body">Map Sure</span>
+                    </a>
+                  </div>
+                  <div class="col-4">
+                    <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
+                      <div class="app-menu-icon app-menu-tile--pcmiler mx-auto rounded-4 text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
+                      </div>
+                      <span class="d-block mt-1 fg-body">PC*Miler Web</span>
+                    </a>
+                  </div>
+                  <div class="col-4">
+                    <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
+                      <div class="app-menu-icon app-menu-tile--reporter mx-auto rounded-4 text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
+                      </div>
+                      <span class="d-block mt-1 fg-body">Route Reporter</span>
+                    </a>
+                  </div>
+                  <div class="col-4">
+                    <span class="card rounded-4 p-1 opacity-50 pointer-events-none small text-secondary user-select-none">
+                      <span class="app-menu-icon mx-auto position-relative rounded-4 text-white">
+                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="" width="32" height="32" class="img-fluid">
+                        <span
+                          class="align-items-center app-menu-lock bg-white bottom-0 d-flex end-0 justify-content-center position-absolute rounded-circle shadow-sm text-secondary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path
+                              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z">
+                            </path>
+                          </svg>
+                        </span>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Smart Workflow</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="border-top py-3 text-center">
+                <a class="align-items-center d-inline-flex gap-1 fg-body small text-decoration-none" href="#">
+                  Browse All Apps
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                    aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1-.708-.708z">
+                    </path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <button type="button" class="btn-icon btn-solid bg-transparent border-0" id="userMenuToggle" data-bs-toggle="menu"
+              data-bs-placement="bottom-end"
+              aria-expanded="false" aria-label="Christian Oliff, christian.oliff@trimble.com">
+              <span class="avatar avatar-sm">
+                <img class="avatar-img" src="https://github.com/coliff.png" width="40" height="40" alt="" aria-hidden="true">
+              </span>
+            </button>
+            <div class="menu" style="--bs-menu-min-width: 14rem;">
+              <span class="avatar-xl mx-auto">
+                <img class="img-fluid rounded-circle m-3" src="https://github.com/coliff.png" width="128" height="128"
+                  alt="coliff">
+              </span>
+              <div class="text-center fw-bold fs-5">Christian Oliff</div>
+              <div class="text-center">christian.oliff@trimble.com</div>
+              <div class="text-center opacity-75">(Company Administrator)</div>
+              <div class="menu-divider"></div>
+              <a class="menu-item" href="#">Sign Out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="bottom-0 end-0 position-fixed start-0 top-0">
+    <div id="map" class="h-100 w-100" role="region" aria-label="Map"></div>
+
+    <div class="mt-5">
+      <button class="app-map-action btn-solid theme-primary m-3 mt-5 position-absolute top-0 z-3" type="button"
+        data-bs-toggle="drawer" data-bs-target="#drawerScrolling" aria-controls="drawerScrolling">Dispatch Trips</button>
+    </div>
+
+
+    <dialog class="drawer drawer-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="drawerScrolling"
+      aria-labelledby="drawerScrollingLabel">
+      <div class="drawer-header">
+        <h5 class="drawer-title" id="drawerScrollingLabel">Dispatch Trips</h5> <button type="button" class="btn-close"
+          data-bs-dismiss="drawer">
+          <span class="visually-hidden">Close</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59 7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12 5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4Z"
+              fill="currentColor"></path>
+          </svg></button>
+      </div>
+      <div class="drawer-body">
+        <div class="card">
+          <h5 class="card-header">Featured</h5>
+          <div class="card-body">
+            <h4 class="card-title">Special title treatment</h4>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> <a href="#"
+              class="btn-sm btn-solid theme-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="app-footer fixed-bottom bg-1 bg-80">
+    <div class="container-fluid d-flex flex-row justify-content-between align-items-center py-1">
+
+      <a href="#" class="small fg-body text-decoration-none"> &copy; 2026 Trimble</a>
+      <ul class="d-flex flex-row list-unstyled align-items-center mb-0">
+        <li> <button type="button" class="btn-sm btn-text small" data-bs-toggle="dialog"
+            data-bs-target="#privacyPolicyDialog">
+            Privacy Policy
+          </button> </li>
+        <li> <button type="button" class="btn-sm btn-text small" data-bs-toggle="dialog"
+            data-bs-target="#termsOfUseDialog">
+            Terms of Use
+          </button> </li>
+      </ul>
+    </div>
+  </footer>
+
+
+  <dialog class="dialog dialog-xl" id="termsOfUseDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Terms of Use</h1> <button type="button" class="btn-close" data-bs-dismiss="dialog"
+        aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20"
+          fill="none">
+          <path fill="currentcolor"
+            d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z">
+          </path>
+        </svg> </button>
+    </div>
+    <div class="dialog-body">
+      <p><iframe src="https://legal.trimblemaps.com/pcmiler-web/terms-of-use/external/en/" width="100%" height="100%"
+          class="w-100 h-100" aria-label="Terms of Use" style="height: 80dvh;"></iframe></p>
+    </div>
+    <div class="dialog-footer" hidden></div>
+  </dialog>
+  <dialog class="dialog dialog-xl" id="privacyPolicyDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Privacy Policy</h1> <button type="button" class="btn-close" data-bs-dismiss="dialog"
+        aria-label="Close"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20"
+          fill="none">
+          <path fill="currentcolor"
+            d="M12 0a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4zm-.646 4.646a.5.5 0 0 0-.707 0L8 7.293 5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.647a.5.5 0 1 0 .708.707L8 8.707l2.647 2.646a.5.5 0 1 0 .707-.707L8.707 8l2.646-2.646a.5.5 0 0 0 0-.708z">
+          </path>
+        </svg> </button>
+    </div>
+    <div class="dialog-body">
+      <p> <iframe src="https://legal.trimblemaps.com/pcmiler-web/privacy/external/en/" width="100%" height="100%"
+          class="w-100 h-100" aria-label="Privacy Policy" style="height: 80dvh;"></iframe> </p>
+    </div>
+    <div class="dialog-footer" hidden></div>
+  </dialog>
+
+  <dialog class="dialog" id="helpDialog">
+    <div class="dialog-header">
+      <h1 class="dialog-title">Help</h1> <button type="button" class="btn-close" data-bs-dismiss="dialog"
+        aria-label="Close">
+      </button>
+    </div>
+    <div class="dialog-body">
+        <table class="table">
+              <thead>
+                <tr>
+                  <th>Shortcut</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="w-25"><kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>N</kbd></td>
+                  <td>Creates a blank new route</td>
+                </tr>
+                <tr>
+                  <td><kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>S</kbd></td>
+                  <td>Opens the save route dialog on the active route</td>
+                </tr>
+                <tr>
+                  <td><kbd>Alt</kbd> + <kbd>F3</kbd></td>
+                  <td>Invoke the Route Options dialog for the active route</td>
+                </tr>
+                <tr>
+                  <td><kbd>F8</kbd></td>
+                  <td>Deletes the active route card</td>
+                </tr>
+                <tr>
+                  <td><kbd>Alt</kbd> + <kbd>F8</kbd></td>
+                  <td>Deletes all of the route cards.</td>
+                </tr>
+                <tr>
+                  <td><kbd>F10</kbd></td>
+                  <td>Run the route (if auto-calculate is off)</td>
+                </tr>
+                <tr>
+                  <td><kbd>F5</kbd></td>
+                  <td>Display the Detailed Route Report for the active route.</td>
+                </tr>
+                <tr>
+                  <td><kbd>F6</kbd></td>
+                  <td>Display the State/Country Distance Report for the active route.</td>
+                </tr>
+              </tbody>
+            </table>
+    </div>
+    <div class="dialog-footer" hidden></div>
+  </dialog>
+
+  <script is:inline src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>

@@ -1,0 +1,36 @@
+---
+import { highlightCode } from '@libs/highlight'
+
+interface Props {
+  /**
+   * The code to highlight.
+   */
+  code: string
+  /**
+   * The language to use for highlighting.
+   * @default 'bash'
+   */
+  lang?: string
+}
+
+const { code, lang = 'bash' } = Astro.props
+
+const highlightedCode = await highlightCode(code, lang)
+---
+
+<script>
+  import { initCopyButtons } from '@libs/clipboard'
+
+  initCopyButtons('.code-copy [data-bd-clipboard]', (trigger) => {
+    return trigger.closest('.code-copy')?.querySelector('.astro-code')?.textContent?.trim() || ''
+  })
+</script>
+
+<div class="code-copy">
+  <Fragment set:html={highlightedCode} />
+  <button type="button" class="btn btn-xs btn-icon bg-transparent" title="Copy" data-bd-clipboard>
+    <svg class="bi fs-md" aria-hidden="true">
+      <use href="#copy"></use>
+    </svg>
+  </button>
+</div>

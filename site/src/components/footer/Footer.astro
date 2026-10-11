@@ -1,0 +1,14 @@
+---
+import GitHubIcon from '@components/icons/GitHubIcon.astro'
+import { getConfig } from '@libs/config'
+---
+
+<footer class="bd-footer py-3 mt-5 bg-secondary bg-20 fg-2">
+  <div class="container bd-gutter d-flex flex-wrap align-items-center justify-content-between gap-2 small">
+    <span>&copy; {new Date().getFullYear()} The Bootstrap Authors · v{getConfig().current_version}</span>
+    <a class="d-inline-flex align-items-center gap-1" href={getConfig().repo} target="_blank" rel="noopener">
+      <GitHubIcon height={16} width={16} />
+      GitHub
+    </a>
+  </div>
+</footer>

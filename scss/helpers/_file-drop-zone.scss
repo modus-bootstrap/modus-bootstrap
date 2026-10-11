@@ -1,0 +1,13 @@
+@layer helpers {
+  .file-drop-zone {
+    background-color: var(--bs-bg-1);
+    border: 2px dotted var(--bs-secondary-border);
+    /* stylelint-disable-next-line property-disallowed-list */
+    border-radius: var(--bs-radius-5);
+
+    &.disabled {
+      cursor: not-allowed;
+      filter: grayscale(100%);
+    }
+  }
+}
