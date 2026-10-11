@@ -28,13 +28,10 @@ const port = Number.parseInt(process.env.PORT ?? '', 10) || 9001
 const headingsRangeRegex = new RegExp(`^h[${getConfig().anchors.min}-${getConfig().anchors.max}]$`)
 
 const site = isDev
-  ? // In development mode, use the local dev server.
+  ? // Dev server. Canonical links stay on this machine.
     `http://localhost:${port}`
-  : process.env.DEPLOY_PRIME_URL !== undefined
-    ? // If deploying on Netlify, use the `DEPLOY_PRIME_URL` environment variable.
-      process.env.DEPLOY_PRIME_URL
-    : // Otherwise, use the `baseURL` value defined in the `config.yml` file.
-      getConfig().baseURL
+  : // Production and preview builds. Canonical, Open Graph, and the sitemap use the public site.
+    getConfig().baseURL
 
 // https://astro.build/config
 export default defineConfig({
