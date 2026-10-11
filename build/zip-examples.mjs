@@ -18,10 +18,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const pkgJson = path.join(__dirname, '../package.json')
 const pkg = JSON.parse(await fs.readFile(pkgJson, 'utf8'))
 
-const { versionShort } = pkg.bootstrap
 const distFolder = `bootstrap-${pkg.version}-examples`
 const rootDocsDir = '_site'
-const docsDir = `${rootDocsDir}/docs/${versionShort}/`
+const docsDir = `${rootDocsDir}/`
 
 // these are the files we need in the examples
 const cssFiles = [
@@ -87,8 +86,8 @@ const htmlFiles = sh.find(`${distFolder}/**/*.html`)
 const formatPromises = htmlFiles.map(async file => {
   const fileContents = sh.cat(file)
     .toString()
-    .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
-    .replace(/"..\/dist\//g, '"../assets/dist/')
+    .replace(/"\/dist\//g, '"../assets/dist/')
+    .replace(/"\/assets\//g, '"../assets/')
     .replace(/(<link href="\.\.\/[^"]*"[^>]*) integrity="[^"]*"/g, '$1')
     .replace(/<link[^>]*href="\.\.\/assets\/img\/favicons\/[^"]*"[^>]*>/g, '')
     .replace(/(<script src="\.\.\/[^"]*"[^>]*) integrity="[^"]*"/g, '$1')

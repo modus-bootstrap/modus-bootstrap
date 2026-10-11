@@ -4,22 +4,16 @@ import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
 import { getConfig } from './config'
-import {
-  docsDirectory,
-  getDocsFsPath,
-  getDocsPublicFsPath,
-  getDocsStaticFsPath,
-  validateVersionedDocsPaths
-} from './path'
+import { docsDirectory, getDocsFsPath, getDocsPublicFsPath, getDocsStaticFsPath, validateDocsPaths } from './path'
 
 // A list of static file paths that will be aliased to a different path.
 const staticFileAliases = {
-  '/docs/[version]/assets/img/favicons/apple-touch-icon.png': '/apple-touch-icon.png',
-  '/docs/[version]/assets/img/favicons/favicon.ico': '/favicon.ico'
+  '/assets/img/favicons/apple-touch-icon.png': '/apple-touch-icon.png',
+  '/assets/img/favicons/favicon.ico': '/favicon.ico'
 }
 
 // A list of pages that will be excluded from the sitemap.
-const sitemapExcludes = ['/404', '/docs', `/docs/${getConfig().docs_version}`]
+const sitemapExcludes = ['/404', '/docs']
 
 export function bootstrap(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
@@ -40,7 +34,7 @@ export function bootstrap(): AstroIntegration[] {
           copyPagefindIndex()
         },
         'astro:build:done': ({ dir }) => {
-          validateVersionedDocsPaths(dir)
+          validateDocsPaths(dir)
         }
       }
     },
@@ -74,10 +68,10 @@ function copyPagefindIndex() {
 }
 
 // Copy the `dist` folder from the root of the repo containing the latest version of Bootstrap to make it available from
-// the `/docs/${docs_version}/dist` URL.
+// the `/dist` URL.
 function copyBootstrap() {
   const source = path.join(process.cwd(), 'dist')
-  const destination = path.join(getDocsPublicFsPath(), 'docs', getConfig().docs_version, 'dist')
+  const destination = path.join(getDocsPublicFsPath(), 'dist')
 
   fs.mkdirSync(destination, { recursive: true })
   fs.cpSync(source, destination, { recursive: true })

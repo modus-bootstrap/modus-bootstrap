@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 
 export const title = 'Signin Template'
 export const extra_css = ['sign-in.css']
@@ -8,7 +8,7 @@ export const body_class = 'd-flex align-items-center py-4 bg-1'
 
 <main class="form-signin w-100 m-auto">
   <form>
-    <img class="mb-4" src={getVersionedDocsPath('/assets/brand/trimble-logo.svg')} alt="Trimble logo" width="72" height="57">
+    <img class="mb-4" src={getDocsPath('/assets/brand/trimble-logo.svg')} alt="Trimble logo" width="72" height="57">
     <h1 class="h4 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">

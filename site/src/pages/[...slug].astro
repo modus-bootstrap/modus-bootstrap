@@ -3,14 +3,13 @@ import type { InferGetStaticPropsType } from 'astro'
 import { render } from 'astro:content'
 import DocsLayout from '@layouts/DocsLayout.astro'
 import * as shortcodes from '@components/shortcodes'
-import { getConfig } from '@libs/config'
 import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getLastModified } from '@libs/last-modified'
 
 export async function getStaticPaths() {
   return docsPages.map((docsPage) => {
     return {
-      params: { slug: getDocsPageSlug(docsPage.id), version: getConfig().docs_version },
+      params: { slug: getDocsPageSlug(docsPage.id) },
       props: docsPage
     }
   })
@@ -22,6 +21,11 @@ const { id, data, filePath } = Astro.props
 const { Content, headings, remarkPluginFrontmatter } = await render(Astro.props)
 ---
 
-<DocsLayout frontmatter={remarkPluginFrontmatter as typeof data} headings={headings} id={id} lastModified={getLastModified(filePath)}>
+<DocsLayout
+  frontmatter={remarkPluginFrontmatter as typeof data}
+  headings={headings}
+  id={id}
+  lastModified={getLastModified(filePath)}
+>
   <Content components={{ ...shortcodes, pre: shortcodes.Code }} />
 </DocsLayout>

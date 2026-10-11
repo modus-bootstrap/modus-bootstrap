@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
@@ -15,10 +15,7 @@ import Code from '@shortcodes/Code.astro'
       anywhere, while component and utility variables stay scoped to the relevant class for easy customization.
     </p>
     <p class="d-flex flex-column lead fw-normal mb-0">
-      <a
-        href={getVersionedDocsPath('getting-started/css-variables')}
-        class="icon-link icon-link-hover fw-semibold mb-3"
-      >
+      <a href={getDocsPath('getting-started/css-variables')} class="icon-link icon-link-hover fw-semibold mb-3">
         Learn more about CSS variables
         <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
       </a>
@@ -28,7 +25,7 @@ import Code from '@shortcodes/Code.astro'
     <div class="lg:col-6 mb-3">
       <h3 class="fw-semibold">Using CSS variables</h3>
       <p>
-        Use any of our <a href={getVersionedDocsPath('getting-started/css-variables/#root-variables')}
+        Use any of our <a href={getDocsPath('getting-started/css-variables/#root-variables')}
           >global <code>:root</code> variables</a
         > to write new styles. CSS variables use the <code>var(--bs-variableName)</code> syntax and can be inherited by children
         elements.
@@ -50,8 +47,8 @@ import Code from '@shortcodes/Code.astro'
     <div class="lg:col-6 mb-3">
       <h3 class="fw-semibold">Customizing via CSS variables</h3>
       <p>
-        Override global, component, or utility class variables to customize Modus Bootstrap just how you like. No need to
-        redeclare each rule, just a new variable value.
+        Override global, component, or utility class variables to customize Modus Bootstrap just how you like. No need
+        to redeclare each rule, just a new variable value.
       </p>
       <Code
         code={`body {

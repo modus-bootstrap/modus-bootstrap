@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'astro/types'
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 
 export function getVersionedBsCssProps() {
   let bsCssLinkHref = '/dist/css/modus-bootstrap'
@@ -12,7 +12,7 @@ export function getVersionedBsCssProps() {
   bsCssLinkHref = `${bsCssLinkHref}.css`
 
   const bsCssLinkProps: HTMLAttributes<'link'> = {
-    href: getVersionedDocsPath(bsCssLinkHref),
+    href: getDocsPath(bsCssLinkHref),
     rel: 'stylesheet'
   }
 

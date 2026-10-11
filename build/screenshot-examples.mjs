@@ -12,10 +12,10 @@
  *   npx playwright install chromium
  *
  * The script reads examples.yml and saves to:
- *   site/static/docs/[version]/assets/img/examples/{slug}.png       (480×300)
- *   site/static/docs/[version]/assets/img/examples/{slug}@2x.png    (960×600)
- *   site/static/docs/[version]/assets/img/examples/{slug}-dark.png  (480×300)
- *   site/static/docs/[version]/assets/img/examples/{slug}-dark@2x.png (960×600)
+ *   site/static/assets/img/examples/{slug}.png       (480×300)
+ *   site/static/assets/img/examples/{slug}@2x.png    (960×600)
+ *   site/static/assets/img/examples/{slug}-dark.png  (480×300)
+ *   site/static/assets/img/examples/{slug}-dark@2x.png (960×600)
  */
 
 import { readFileSync, mkdirSync } from 'node:fs'
@@ -45,12 +45,8 @@ const BASE_URL = `http://localhost:${PORT}`
 const SERVER_TIMEOUT_MS = 60_000
 const SERVER_POLL_INTERVAL_MS = 500
 
-// Read docs version from config.yml
-const configYml = readFileSync(path.resolve(ROOT, 'config.yml'), 'utf8')
-const DOCS_VERSION = parseYaml(configYml).docs_version ?? '6.0'
-
-// Output directory — [version] is a literal Astro dynamic-route folder name
-const OUT_DIR = path.resolve(ROOT, 'site/static/docs/[version]/assets/img/examples')
+// Output directory
+const OUT_DIR = path.resolve(ROOT, 'site/static/assets/img/examples')
 mkdirSync(OUT_DIR, { recursive: true })
 
 // Full-width capture viewport; images are then resized down to thumbnail sizes
@@ -175,7 +171,7 @@ async function run() {
 
     await Promise.all(filtered.map(async name => {
       const slug = getSlug(name)
-      const url = `${BASE_URL}/docs/${DOCS_VERSION}/examples/${slug}/`
+      const url = `${BASE_URL}/examples/${slug}/`
       console.log(`→ ${name} (${slug})`)
 
       // Single page load — reuse for light & dark, both scales (sharp handles resizing)

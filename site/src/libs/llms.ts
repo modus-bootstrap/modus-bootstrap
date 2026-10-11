@@ -1,12 +1,12 @@
 import { docsPages, getDocsPageSlug } from '@libs/content'
 import { getData, type SidebarItem, type SidebarSubItem } from '@libs/data'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import { getSlug } from '@libs/utils'
 
 export interface LlmsPage {
   title: string
   description: string
-  // The versioned docs path, e.g. `/docs/6.0/getting-started/install`.
+  // The docs path, e.g. `/getting-started/install`.
   path: string
   // The raw MDX body of the page, if available.
   body: string
@@ -37,7 +37,7 @@ function resolvePage(groupSlug: string, title: string | undefined): LlmsPage | u
   return {
     title: entry.data.title,
     description: entry.data.description,
-    path: getVersionedDocsPath(unversionedPageSlug),
+    path: getDocsPath(unversionedPageSlug),
     body: entry.body ?? ''
   }
 }

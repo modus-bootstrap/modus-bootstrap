@@ -1,6 +1,6 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import { getLastModified } from '@libs/last-modified'
 import Stylesheet from '@components/head/Stylesheet.astro'
@@ -56,10 +56,10 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 {robots && <meta name="robots" content={robots} />}
 
 {/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
-{/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
+{/* The script lives in `site/static/assets/js/` so it can */}
 {/* render-block at this exact spot in the head without going through the */}
 {/* bundler (which would defer it and cause a flash of the wrong theme). */}
-<script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+<script is:inline src={getDocsPath('assets/js/color-modes.js')}></script>
 
 {
   import.meta.env.PROD && ScssProd && (

@@ -1,10 +1,9 @@
 ---
 import ExamplesLayout from '@layouts/ExamplesLayout.astro'
-import { getConfig } from '@libs/config'
 import { exampleFrontmatterSchema, getExampleNameFromPagePath, type ExampleFrontmatter } from '@libs/examples'
 
 export async function getStaticPaths() {
-  const examplesPageModules = import.meta.glob('../../../../assets/examples/**/*.astro', { eager: true })
+  const examplesPageModules = import.meta.glob('../../assets/examples/**/*.astro', { eager: true })
   const examplesPages = Object.entries(examplesPageModules).map(([file, module]) => {
     return {
       file,
@@ -24,7 +23,7 @@ export async function getStaticPaths() {
     }
 
     return {
-      params: { example, version: getConfig().docs_version },
+      params: { example },
       props: { ...frontmatter, Content }
     }
   })

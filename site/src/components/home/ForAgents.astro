@@ -1,6 +1,6 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 
 const { baseURL, repo } = getConfig()
 const skillsSource = new URL(repo).pathname.slice(1)
@@ -62,8 +62,8 @@ const claudeHref = `https://claude.ai/new?q=${encodeURIComponent(agentPrompt)}`
     <svg class="bi bi-sm ms-auto" aria-hidden="true"><use href="#copy"></use></svg>
   </button>
   <hr class="menu-divider" />
-  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai')}> Modus Bootstrap & AI docs </a>
-  <a class="menu-item" href={getVersionedDocsPath('getting-started/ai#skills')}> Explore all skills </a>
+  <a class="menu-item" href={getDocsPath('getting-started/ai')}> Modus Bootstrap & AI docs </a>
+  <a class="menu-item" href={getDocsPath('getting-started/ai#skills')}> Explore all skills </a>
   <hr class="menu-divider" />
   <a class="menu-item" href={chatgptHref} rel="noopener" target="_blank">
     Ask ChatGPT

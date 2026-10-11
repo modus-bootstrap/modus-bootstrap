@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import { getData } from '@libs/data'
 import Code from '@shortcodes/Code.astro'
 
@@ -18,7 +18,7 @@ const plugins = getData('plugins')
       HTML. Need more control? Include individual plugins programmatically.
     </p>
     <p class="d-flex lead fw-normal md:mb-0">
-      <a href={getVersionedDocsPath('getting-started/javascript')} class="icon-link icon-link-hover fw-semibold">
+      <a href={getDocsPath('getting-started/javascript')} class="icon-link icon-link-hover fw-semibold">
         Learn more about Bootstrap JavaScript
         <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
       </a>
@@ -53,11 +53,9 @@ const plugins = getData('plugins')
         lang="html"
       />
       <p>
-        Learn more about <a href={getVersionedDocsPath('getting-started/javascript/#using-bootstrap-as-a-module')}
+        Learn more about <a href={getDocsPath('getting-started/javascript/#using-bootstrap-as-a-module')}
           >our JavaScript as modules</a
-        > and <a href={getVersionedDocsPath('getting-started/javascript/#programmatic-api')}
-          >using the programmatic API</a
-        >.
+        > and <a href={getDocsPath('getting-started/javascript/#programmatic-api')}>using the programmatic API</a>.
       </p>
     </div>
     <div class="lg:col-6 mb-3">
@@ -72,7 +70,7 @@ const plugins = getData('plugins')
           plugins.map((plugin) => {
             return (
               <div class="sm:col-6 mb-2">
-                <a class="d-block lg:pe-4 text-decoration-none lh-sm" href={getVersionedDocsPath(plugin.link)}>
+                <a class="d-block lg:pe-4 text-decoration-none lh-sm" href={getDocsPath(plugin.link)}>
                   <h4 class="mb-0 fs-5 fw-semibold">{plugin.name}</h4>
                   <small class="fg-2">{plugin.description}</small>
                 </a>

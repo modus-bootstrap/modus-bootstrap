@@ -1,6 +1,6 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import Ads from '@components/Ads.astro'
 import CodeCopy from '@components/shortcodes/CodeCopy.astro'
 ---
@@ -31,7 +31,7 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
       <div class="d-flex flex-column lg:flex-row md:align-items-stretch md:my-2 gap-2">
         <CodeCopy code={`npm i modus-bootstrap@${getConfig().current_version}`} />
         <a
-          href={getVersionedDocsPath('getting-started/install')}
+          href={getDocsPath('getting-started/install')}
           class="btn-solid theme-accent btn-lg justify-content-center fw-medium"
         >
           <svg class="bi me-2" aria-hidden="true"><use href="#book-half"></use></svg>
@@ -41,9 +41,8 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
       <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
         <span class="px-1">&middot;</span>
-        <a
-          href={getVersionedDocsPath('getting-started/install')}
-          class="theme-secondary underline-50 underline-secondary">Download</a
+        <a href={getDocsPath('getting-started/install')} class="theme-secondary underline-50 underline-secondary"
+          >Download</a
         >
         <span class="px-1 d-none">&middot;</span>
       </p>

@@ -14,7 +14,7 @@ Several quick start options are available:
 - Install with [yarn](https://yarnpkg.com/): `yarn add modus-bootstrap@6.0.0-alpha.1`
 - Install with [Bun](https://bun.sh/): `bun add modus-bootstrap@6.0.0-alpha.1`
 
-Read the [Getting started page](https://modus-bootstrap.com/docs/6.0/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
+Read the [Getting started page](https://modus-bootstrap.com/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
 
 ## Status
 

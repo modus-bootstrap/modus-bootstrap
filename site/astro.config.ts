@@ -36,7 +36,7 @@ const site = isDev
 // https://astro.build/config
 export default defineConfig({
   build: {
-    assets: `docs/${getConfig().docs_version}/assets`
+    assets: 'assets'
   },
   integrations: [
     bootstrap(),
