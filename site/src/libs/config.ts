@@ -38,6 +38,10 @@ const configSchema = z.object({
   icons: z.url(),
   repo: z.url(),
   rfs_version: zPrefixedVersionSemver,
+  site_verification: z.object({
+    bing: z.string(),
+    google: z.string()
+  }),
   subtitle: z.string(),
   title: z.string(),
   toc: z.object({
