@@ -21,6 +21,11 @@ swag:                   ""
 analytics:
   fathom_site:          "IT5SaYJG"
 
+# Search engine ownership codes. An empty value skips the meta tag.
+site_verification:
+  google:               ""  # Google Search Console `google-site-verification` code
+  bing:                 "FE5F7C37D3394A82C074EB2713834A35"  # Bing Webmaster Tools `msvalidate.01` code
+
 download:
   source:               "https://github.com/modus-bootstrap/modus-bootstrap/archive/v6.0.0-alpha.1.zip"
   dist:                 "https://github.com/modus-bootstrap/modus-bootstrap/releases/download/v6.0.0-alpha.1/bootstrap-6.0.0-alpha.1-dist.zip"

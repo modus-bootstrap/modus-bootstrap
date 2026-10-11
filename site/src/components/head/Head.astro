@@ -57,6 +57,9 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 {robots && <meta name="robots" content={robots} />}
 
+{getConfig().site_verification.google && <meta name="google-site-verification" content={getConfig().site_verification.google} />}
+{getConfig().site_verification.bing && <meta name="msvalidate.01" content={getConfig().site_verification.bing} />}
+
 {/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
 {/* The script lives in `site/static/assets/js/` so it can */}
 {/* render-block at this exact spot in the head without going through the */}
