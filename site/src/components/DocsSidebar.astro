@@ -42,7 +42,7 @@ const sidebar = getData('sidebar')
                         const docSlug = getSlug(page.title)
                         const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
-                        const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
+                        const url = `/${unversionedPageSlug}`
                         const active = Astro.params.slug === unversionedPageSlug
 
                         const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
@@ -81,7 +81,7 @@ const sidebar = getData('sidebar')
                 const docSlug = getSlug(item.title)
                 const unversionedPageSlug = `${groupSlug}/${docSlug}`
 
-                const url = `/docs/${getConfig().docs_version}/${unversionedPageSlug}`
+                const url = `/${unversionedPageSlug}`
                 const active = Astro.params.slug === unversionedPageSlug
 
                 const generatedPage = docsPages.find((page) => getDocsPageSlug(page.id) === unversionedPageSlug)
@@ -118,7 +118,7 @@ const sidebar = getData('sidebar')
           <>
             <div class="bd-links-span-all mt-1 mb-3 mx-4 border-top" />
             <a
-              href={`/docs/${getConfig().docs_version}/${groupSlug}/`}
+              href={`/${groupSlug}/`}
               class:list={['bd-links-link bd-links-span-all', { active }]}
               aria-current={active ? 'page' : undefined}
             >

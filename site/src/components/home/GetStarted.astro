@@ -1,6 +1,6 @@
 ---
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import Code from '@shortcodes/Code.astro'
 ---
 
@@ -14,7 +14,7 @@ import Code from '@shortcodes/Code.astro'
     code.
   </p>
   <p class="d-flex md:justify-content-center lead fw-normal">
-    <a href={getVersionedDocsPath('getting-started/install/')} class="icon-link icon-link-hover fw-semibold md:ps-4">
+    <a href={getDocsPath('getting-started/install/')} class="icon-link icon-link-hover fw-semibold md:ps-4">
       Read installation docs
       <svg class="bi" aria-hidden="true"><use href="#arrow-right"></use></svg>
     </a>
@@ -34,8 +34,8 @@ import Code from '@shortcodes/Code.astro'
     <Code code={`npm install modus-bootstrap@${getConfig().current_version}`} lang="sh" />
     <Code code={`gem install bootstrap -v ${getConfig().current_ruby_version}`} lang="sh" />
     <p>
-      <a href={getVersionedDocsPath('getting-started/install')}>Read our installation docs</a> for more info and additional
-      package managers.
+      <a href={getDocsPath('getting-started/install')}>Read our installation docs</a> for more info and additional package
+      managers.
     </p>
   </div>
   <div class="lg:col-6 lg:py-4 lg:ps-5 border-lg-start">
@@ -44,8 +44,8 @@ import Code from '@shortcodes/Code.astro'
     <p class="lg:pe-5">
       When you only need to include Modus Bootstrap’s compiled CSS or Bootstrap’s JS, you can use <a
         href="https://www.jsdelivr.com/package/npm/bootstrap">jsDelivr</a
-      >. See it in action with our simple <a href={getVersionedDocsPath('guides/quickstart/')}>quick start</a>, or <a
-        href={getVersionedDocsPath('examples')}>browse the examples</a
+      >. See it in action with our simple <a href={getDocsPath('guides/quickstart/')}>quick start</a>, or <a
+        href={getDocsPath('examples')}>browse the examples</a
       > to jumpstart your next project.
     </p>
     <Code code={`<link href="${getConfig().cdn.css}" rel="stylesheet">`} lang="html" />
@@ -63,11 +63,11 @@ import Code from '@shortcodes/Code.astro'
     <div class="d-flex flex-wrap align-items-center justify-content-center gap-4 mt-4">
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
-        href={getVersionedDocsPath('guides/npm/')}
+        href={getDocsPath('guides/npm/')}
       >
         <img
           class="d-block mb-2"
-          src={getVersionedDocsPath('/assets/img/npm.svg')}
+          src={getDocsPath('/assets/img/npm.svg')}
           alt=""
           width="72"
           height="72"
@@ -77,11 +77,11 @@ import Code from '@shortcodes/Code.astro'
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
-        href={getVersionedDocsPath('guides/webpack/')}
+        href={getDocsPath('guides/webpack/')}
       >
         <img
           class="d-block mb-2"
-          src={getVersionedDocsPath('/assets/img/webpack.svg')}
+          src={getDocsPath('/assets/img/webpack.svg')}
           alt=""
           width="72"
           height="72"
@@ -91,11 +91,11 @@ import Code from '@shortcodes/Code.astro'
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
-        href={getVersionedDocsPath('guides/parcel/')}
+        href={getDocsPath('guides/parcel/')}
       >
         <img
           class="d-block mb-2"
-          src={getVersionedDocsPath('/assets/img/parcel.png')}
+          src={getDocsPath('/assets/img/parcel.png')}
           alt=""
           width="72"
           height="72"
@@ -105,11 +105,11 @@ import Code from '@shortcodes/Code.astro'
       </a>
       <a
         class="d-flex flex-column align-items-center text-decoration-none animate-img"
-        href={getVersionedDocsPath('guides/vite/')}
+        href={getDocsPath('guides/vite/')}
       >
         <img
           class="d-block mb-2"
-          src={getVersionedDocsPath('/assets/img/vite.svg')}
+          src={getDocsPath('/assets/img/vite.svg')}
           alt=""
           width="72"
           height="72"

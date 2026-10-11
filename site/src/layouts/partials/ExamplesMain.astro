@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import { getConfig } from '@libs/config'
 import { getData } from '@libs/data'
 import { getSlug } from '@libs/utils'
@@ -55,24 +55,21 @@ import { getSlug } from '@libs/utils'
 
             return (
               <article class="sm:col-6 md:col-3 mb-3">
-                <a
-                  class="d-block underline-offset-1"
-                  href={`/docs/${getConfig().docs_version}/examples/${getSlug(example.name)}/`}
-                >
+                <a class="d-block underline-offset-1" href={`/examples/${getSlug(example.name)}/`}>
                   <img
                     class="img-thumbnail mb-3 examples-thumb"
-                    data-light-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
-                    data-light-srcset={`${getVersionedDocsPath(
+                    data-light-src={getDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                    data-light-srcset={`${getDocsPath(
                       `/assets/img/examples/${getSlug(example.name)}.png`
-                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
-                    data-dark-src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark.png`)}
-                    data-dark-srcset={`${getVersionedDocsPath(
+                    )}, ${getDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                    data-dark-src={getDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark.png`)}
+                    data-dark-srcset={`${getDocsPath(
                       `/assets/img/examples/${getSlug(example.name)}-dark.png`
-                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark@2x.png`)} 2x`}
-                    srcset={`${getVersionedDocsPath(
+                    )}, ${getDocsPath(`/assets/img/examples/${getSlug(example.name)}-dark@2x.png`)} 2x`}
+                    srcset={`${getDocsPath(
                       `/assets/img/examples/${getSlug(example.name)}.png`
-                    )}, ${getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
-                    src={getVersionedDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
+                    )}, ${getDocsPath(`/assets/img/examples/${getSlug(example.name)}@2x.png`)} 2x`}
+                    src={getDocsPath(`/assets/img/examples/${getSlug(example.name)}.png`)}
                     alt=""
                     width="480"
                     height="300"

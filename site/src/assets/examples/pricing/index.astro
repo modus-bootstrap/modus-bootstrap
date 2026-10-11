@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 
 export const title = 'Pricing example'
 export const extra_css = ['pricing.css']
@@ -149,7 +149,7 @@ export const extra_css = ['pricing.css']
   <footer class="pt-4 md:my-5 md:pt-5 border-top">
     <div class="row">
       <div class="col-12 md:col">
-        <img class="mb-2" src={getVersionedDocsPath('/assets/brand/trimble-logo.svg')} alt="" width="24" height="19">
+        <img class="mb-2" src={getDocsPath('/assets/brand/trimble-logo.svg')} alt="" width="24" height="19">
         <small class="d-block mb-3 fg-2">&copy; {new Date().getFullYear()}</small>
       </div>
       <div class="col-6 md:col">

@@ -3,7 +3,7 @@ import type { MdxJsxAttribute, MdxJsxExpressionAttribute } from 'mdast-util-mdx-
 import type { Plugin } from 'unified'
 import { visit } from 'unist-util-visit'
 import { getConfig } from './config'
-import { getVersionedDocsPath } from './path'
+import { getDocsPath } from './path'
 
 // [[config:foo]]
 // [[config:foo.bar]]
@@ -61,9 +61,8 @@ export const remarkBsConfig: Plugin<[], Root> = function () {
   }
 }
 
-// A remark plugin to add versioned docs links in markdown (or MDX) files.
-// For example, [[docsref:/foo]] will be replaced with the `/docs/${docs_version}/foo` value with the `docs_version`
-// value being read from the `config.yml` file.
+// A remark plugin to add docs links in markdown (or MDX) files.
+// For example, [[docsref:/foo]] will be replaced with the `/foo` value.
 // Note: this also works in frontmatter.
 // Note: this plugin is meant to facilitate the migration from Hugo to Astro while keeping the differences to a minimum.
 // At some point, this plugin should maybe be removed and embrace a more MDX-friendly syntax.
@@ -116,7 +115,7 @@ function replaceConfigInAttributes(attributes: (MdxJsxAttribute | MdxJsxExpressi
 
 function replaceDocsrefInText(text: string) {
   return text.replace(docsrefRegExp, (_match, path) => {
-    return getVersionedDocsPath(path)
+    return getDocsPath(path)
   })
 }
 

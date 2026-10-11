@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getConfig } from '@libs/config'
 import type { LayoutOverridesHTMLAttributes } from '@libs/layout'
 import { getSlug, processMarkdownToHtml } from '@libs/utils'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import Ads from '@components/Ads.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 import DocsSidebar from '@components/DocsSidebar.astro'
@@ -63,7 +63,7 @@ const allPages: NavigationPage[] = sidebar.flatMap((group) => {
       const subgroupTitle = item.group
       return item.pages.map((page: SidebarSubItem) => ({
         title: page.title,
-        url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(page.title)}/`,
+        url: `/${getSlug(group.title)}/${getSlug(page.title)}/`,
         groupTitle: subgroupTitle
       }))
     }
@@ -72,7 +72,7 @@ const allPages: NavigationPage[] = sidebar.flatMap((group) => {
       return [
         {
           title: item.title,
-          url: `/docs/${getConfig().docs_version}/${getSlug(group.title)}/${getSlug(item.title)}/`,
+          url: `/${getSlug(group.title)}/${getSlug(item.title)}/`,
           groupTitle: group.title
         }
       ]
@@ -82,7 +82,7 @@ const allPages: NavigationPage[] = sidebar.flatMap((group) => {
 })
 
 // Find the current page index
-const currentPageIndex = allPages.findIndex((page) => page.url === `/docs/${getConfig().docs_version}/${slug}/`)
+const currentPageIndex = allPages.findIndex((page) => page.url === `/${slug}/`)
 
 if (currentPageIndex > 0) {
   prevPage = allPages[currentPageIndex - 1]
@@ -159,9 +159,7 @@ if (currentPageIndex < allPages.length - 1) {
               {frontmatter.sections.map((section) => (
                 <a
                   class="d-block text-decoration-none bg-1 hover-bg-2 rounded-3 p-3"
-                  href={getVersionedDocsPath(
-                    `${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`
-                  )}
+                  href={getDocsPath(`${parentDirectory ? parentDirectory + '/' : ''}${getSlug(section.title)}/`)}
                 >
                   <strong class="d-block mb-0">{section.title}</strong>
                   <span class="fg-3">{section.description}</span>

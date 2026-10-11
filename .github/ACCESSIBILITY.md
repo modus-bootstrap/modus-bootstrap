@@ -21,7 +21,7 @@ Modus Bootstrap has not had a formal accessibility audit. We do not claim confor
 - Some generic components need extra ARIA attributes or JavaScript from you. The documentation tells you when.
 - Some default color combinations do not meet the WCAG contrast ratios of 4.5:1 for text and 3:1 for non-text content. Test your color choices.
 
-For more detail, read the [accessibility documentation](https://modus-bootstrap.com/docs/6.0/getting-started/accessibility/).
+For more detail, read the [accessibility documentation](https://modus-bootstrap.com/getting-started/accessibility/).
 
 ## Report an issue
 

@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'astro/types'
 import { getVersionedBsJsProps } from '@libs/bootstrap'
 import { getConfig } from '@libs/config'
 import type { ExampleFrontmatter } from '@libs/examples'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import Stylesheet from '@components/head/Stylesheet.astro'
 import Favicons from '@components/head/Favicons.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
@@ -37,10 +37,10 @@ const importMap = JSON.stringify({
     <link rel="canonical" href={canonicalUrl} />
 
     {/* Loaded as `is:inline` (not via Vite) so the theme is applied before paint. */}
-    {/* The script lives in `site/static/docs/[version]/assets/js/` so it can */}
+    {/* The script lives in `site/static/assets/js/` so it can */}
     {/* render-block at this exact spot in the head without going through the */}
     {/* bundler (which would defer it and cause a flash of the wrong theme). */}
-    <script is:inline src={getVersionedDocsPath('assets/js/color-modes.js')}></script>
+    <script is:inline src={getDocsPath('assets/js/color-modes.js')}></script>
 
     <Stylesheet />
     <Favicons />

@@ -7,38 +7,34 @@ import { fileURLToPath } from 'node:url'
 export const docsDirectory = getConfig().docsDir
 
 // A list of all the docs paths that were generated during a build.
-const generatedVersionedDocsPaths: string[] = []
+const generatedDocsPaths: string[] = []
 
-export function getVersionedDocsPath(docsPath: string): string {
-  const { docs_version } = getConfig()
-
+export function getDocsPath(docsPath: string): string {
   const sanitizedDocsPath = docsPath.replace(/^\//, '')
 
   if (import.meta.env.PROD) {
-    generatedVersionedDocsPaths.push(sanitizedDocsPath)
+    generatedDocsPaths.push(sanitizedDocsPath)
   }
 
-  return `/docs/${docs_version}/${sanitizedDocsPath}`
+  return `/${sanitizedDocsPath}`
 }
 
-// Validate that all the generated versioned docs paths point to an existing page or asset.
+// Validate that all the generated docs paths point to an existing page or asset.
 // This is useful to catch typos in docs paths.
 // Note: this function is only called during a production build.
 // Note: this could at some point be refactored to use Astro list of generated `routes` accessible in the
 // `astro:build:done` integration hook. Although as of 03/14/2023, this is not possible due to the route's data only
 // containing information regarding the last page generated page for dynamic routes.
 // @see https://github.com/withastro/astro/issues/5802
-export function validateVersionedDocsPaths(distUrl: URL) {
-  const { docs_version } = getConfig()
-
-  for (const docsPath of generatedVersionedDocsPaths) {
-    const sanitizedDocsPath = sanitizeVersionedDocsPathForValidation(docsPath)
-    const absoluteDocsPath = fileURLToPath(new URL(path.join('./docs', docs_version, sanitizedDocsPath), distUrl))
+export function validateDocsPaths(distUrl: URL) {
+  for (const docsPath of generatedDocsPaths) {
+    const sanitizedDocsPath = sanitizeDocsPathForValidation(docsPath)
+    const absoluteDocsPath = fileURLToPath(new URL(path.join('.', sanitizedDocsPath), distUrl))
 
     const docsPathExists = fs.existsSync(absoluteDocsPath)
 
     if (!docsPathExists) {
-      throw new Error(`A versioned docs path was generated but does not point to a valid page or asset: '${docsPath}'.`)
+      throw new Error(`A docs path was generated but does not point to a valid page or asset: '${docsPath}'.`)
     }
   }
 }
@@ -59,7 +55,7 @@ export function getDocsFsPath() {
   return path.join(process.cwd(), docsDirectory)
 }
 
-function sanitizeVersionedDocsPathForValidation(docsPath: string) {
+function sanitizeDocsPathForValidation(docsPath: string) {
   // Remove the hash part of the path if any.
   let sanitizedDocsPath = docsPath.split('#')[0]
 

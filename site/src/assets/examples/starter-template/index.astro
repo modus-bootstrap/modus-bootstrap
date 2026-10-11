@@ -1,5 +1,5 @@
 ---
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 
 export const title = 'Starter Template'
 ---
@@ -27,7 +27,7 @@ export const title = 'Starter Template'
     <p class="fs-lg md:col-8">Quickly and easily get started with Modus Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
 
     <div class="mb-9">
-      <a href={getVersionedDocsPath('/examples')} class="btn-solid theme-primary btn-lg px-6">Download examples</a>
+      <a href={getDocsPath('/examples')} class="btn-solid theme-primary btn-lg px-6">Download examples</a>
     </div>
 
     <hr class="col-3 md:col-2 mb-5">
@@ -69,31 +69,31 @@ export const title = 'Starter Template'
         <p>Read more detailed instructions and documentation on using or contributing to Modus Bootstrap.</p>
         <ul class="list-unstyled ps-0">
           <li>
-            <a class="icon-link mb-1" href={getVersionedDocsPath('/guides/quickstart')}>
+            <a class="icon-link mb-1" href={getDocsPath('/guides/quickstart')}>
               <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-right-circle"/></svg>
               Bootstrap quickstart guide
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href={getVersionedDocsPath('/guides/webpack')}>
+            <a class="icon-link mb-1" href={getDocsPath('/guides/webpack')}>
               <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-right-circle"/></svg>
               Bootstrap Webpack guide
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href={getVersionedDocsPath('/guides/parcel')}>
+            <a class="icon-link mb-1" href={getDocsPath('/guides/parcel')}>
               <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-right-circle"/></svg>
               Bootstrap Parcel guide
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href={getVersionedDocsPath('/guides/vite')}>
+            <a class="icon-link mb-1" href={getDocsPath('/guides/vite')}>
               <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-right-circle"/></svg>
               Bootstrap Vite guide
             </a>
           </li>
           <li>
-            <a class="icon-link mb-1" href={getVersionedDocsPath('/guides/contribute')}>
+            <a class="icon-link mb-1" href={getDocsPath('/guides/contribute')}>
               <svg class="bi" width="16" height="16" aria-hidden="true"><use href="#arrow-right-circle"/></svg>
               Contributing to Modus Bootstrap
             </a>

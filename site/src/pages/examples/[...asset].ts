@@ -2,7 +2,6 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { APIRoute } from 'astro'
 import mime from 'mime'
-import { getConfig } from '@libs/config'
 import { getExamplesAssets } from '@libs/examples'
 import { getDocsFsPath } from '@libs/path'
 
@@ -11,7 +10,7 @@ export function getStaticPaths() {
 
   return examplesAssets.map((examplesAsset) => {
     return {
-      params: { asset: examplesAsset, version: getConfig().docs_version }
+      params: { asset: examplesAsset }
     }
   })
 }

@@ -1,7 +1,7 @@
 ---
 import { getConfig } from '@libs/config'
 import { docsPages, getDocsPageSlug } from '@libs/content'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import { getSkills } from '@libs/skills'
 
 // Render the agent skills table from each `SKILL.md` frontmatter so the docs
@@ -21,7 +21,7 @@ function getGuide(guide: string | undefined) {
     return undefined
   }
 
-  return { href: getVersionedDocsPath(slug), label: page.data.title }
+  return { href: getDocsPath(slug), label: page.data.title }
 }
 ---
 

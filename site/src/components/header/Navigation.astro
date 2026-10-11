@@ -1,24 +1,21 @@
 ---
-import type { CollectionEntry } from 'astro:content'
 import { getConfig } from '@libs/config'
-import { getVersionedDocsPath } from '@libs/path'
+import { getDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import LinkItem from '@components/header/LinkItem.astro'
-import Versions from '@components/header/Versions.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
 import CloseButton from '@components/shortcodes/CloseButton.astro'
 import SearchTrigger from '@components/header/SearchTrigger.astro'
 import SearchDialog from '@components/header/SearchDialog.astro'
 
 interface Props {
-  addedIn?: CollectionEntry<'docs'>['data']['added']
   layout: Layout
   title: string
 }
 
-const { addedIn, layout, title } = Astro.props
+const { layout, title } = Astro.props
 
 const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Docs'
 ---
@@ -54,10 +51,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
               )
             }
           </a>
-          <a
-            class:list={['menu-item', { active: layout === 'docs' }]}
-            href={getVersionedDocsPath('getting-started/install/')}
-          >
+          <a class:list={['menu-item', { active: layout === 'docs' }]} href={getDocsPath('getting-started/install/')}>
             Docs
             {
               layout === 'docs' && (
@@ -67,7 +61,7 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
               )
             }
           </a>
-          <a class:list={['menu-item', { active: title === 'Examples' }]} href={getVersionedDocsPath('examples/')}>
+          <a class:list={['menu-item', { active: title === 'Examples' }]} href={getDocsPath('examples/')}>
             Examples
             {
               title === 'Examples' && (
@@ -91,10 +85,10 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
 
       {/* Desktop nav links - visible at lg+ */}
       <ul class="nav navbar-nav flex-row d-none lg:d-flex bd-navbar-nav">
-        <LinkItem active={layout === 'docs'} href={getVersionedDocsPath('getting-started/install/')} track>
+        <LinkItem active={layout === 'docs'} href={getDocsPath('getting-started/install/')} track>
           Docs
         </LinkItem>
-        <LinkItem active={title === 'Examples'} href={getVersionedDocsPath('examples/')} track>Examples</LinkItem>
+        <LinkItem active={title === 'Examples'} href={getDocsPath('examples/')} track>Examples</LinkItem>
         <LinkItem href={getConfig().icons} target="_blank" rel="noopener" track>Icons</LinkItem>
       </ul>
     </div>
@@ -107,8 +101,6 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
       <LinkItem class="px-1 d-none lg:d-flex" href={getConfig().github_org} target="_blank" rel="noopener">
         <GitHubIcon class="navbar-nav-svg" height={16} width={16} />
       </LinkItem>
-
-      <Versions layout={layout} addedIn={addedIn} />
 
       <li class="nav-item">
         <ThemeToggler layout={layout} />

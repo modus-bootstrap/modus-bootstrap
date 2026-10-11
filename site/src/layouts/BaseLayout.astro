@@ -49,11 +49,18 @@ const mainProps = overrides?.main ?? {}
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
-    <Head description={description} lastModified={lastModified} layout={layout} robots={robots} thumbnail={thumbnail} title={title} />
+    <Head
+      description={description}
+      lastModified={lastModified}
+      layout={layout}
+      robots={robots}
+      thumbnail={thumbnail}
+      title={title}
+    />
   </head>
   <body {...bodyProps}>
     <div class="navbar-translucent sticky-top bd-sticky-navbar">
-      <Header layout={layout} title={title} addedIn={frontmatter?.added} />
+      <Header layout={layout} title={title} />
     </div>
 
     {
