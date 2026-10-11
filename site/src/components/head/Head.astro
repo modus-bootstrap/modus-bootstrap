@@ -48,6 +48,8 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 <meta name="description" content={description} />
 <meta name="generator" content={Astro.generator} />
 <link rel="canonical" href={canonicalUrl} />
+<link rel="license" href={`${getConfig().repo}/blob/main/LICENSE`} />
+<link rel="author" href={`${getConfig().repo}/graphs/contributors`} />
 <meta name="color-scheme" content="light dark" />
 <meta name="last-modified" content={lastModified ?? getLastModified()} />
 
