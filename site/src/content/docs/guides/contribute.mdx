@@ -6,19 +6,19 @@ aliases: "/docs/[[config:docs_version]]/getting-started/build-tools/"
 ---
 ## Tooling setup
 
-Modus Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts/) to build the documentation and compile source files. Our [package.json]([[config:repo]]/blob/v[[config:current_version]]/package.json) houses these scripts for compiling code, running tests, and more. These aren’t intended for use outside our repository and documentation.
+Modus Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts/) to build the documentation and compile source files. Our [package.json]([[config:repo]]/blob/main/package.json) houses these scripts for compiling code, running tests, and more. These aren’t intended for use outside our repository and documentation.
 
 To use our build system and run our documentation locally, you’ll need a copy of Modus Bootstrap’s source files and Node. Follow these steps and you should be ready to rock:
 
 1. [Download and install Node.js](https://nodejs.org/en/download/), which we use to manage our dependencies.
 2. Either [download Modus Bootstrap’s sources]([[config:download.source]]) or fork and clone [Modus Bootstrap’s repository]([[config:repo]]).
-3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]([[config:repo]]/blob/v[[config:current_version]]/package.json).
+3. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]([[config:repo]]/blob/main/package.json).
 
 When completed, you’ll be able to run the various commands provided from the command line.
 
 ## Using npm scripts
 
-Our [package.json]([[config:repo]]/blob/v[[config:current_version]]/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
+Our [package.json]([[config:repo]]/blob/main/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
 
 <BsTable>
 | Task | Description |
@@ -41,19 +41,19 @@ Dart Sass uses a rounding precision of 10 and for efficiency reasons does not al
 
 Modus Bootstrap uses [PostCSS](https://postcss.org/) to process our compiled CSS with several plugins:
 
-- **[Autoprefixer](https://github.com/postcss/autoprefixer)** automatically adds vendor prefixes to CSS properties at build time. This saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins. We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]([[config:repo]]/blob/v[[config:current_version]]/.browserslistrc) for details.
+- **[Autoprefixer](https://github.com/postcss/autoprefixer)** automatically adds vendor prefixes to CSS properties at build time. This saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins. We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]([[config:repo]]/blob/main/.browserslistrc) for details.
 
 - **[postcss-prefix-custom-properties](https://github.com/twbs/postcss-prefix-custom-properties)** adds the `bs-` prefix to all CSS custom properties (variables). This allows us to write clean, unprefixed variable names in our Sass source (e.g., `--border-radius`) that become prefixed in the compiled CSS (e.g., `--bs-border-radius`).
 
-Our PostCSS configuration is located in [build/postcss.config.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/postcss.config.mjs).
+Our PostCSS configuration is located in [build/postcss.config.mjs]([[config:repo]]/blob/main/build/postcss.config.mjs).
 
 ## JavaScript
 
 Our JavaScript source is written in TypeScript and lives in `js/src/`. We bundle it with [Rolldown](https://rolldown.rs/), the Rust-based bundler from the Vite team, and then minify the output with [terser](https://github.com/terser/terser). Bootstrap v5 used [Rollup](https://rollupjs.org/) and [Babel](https://babeljs.io/) for this. Rolldown strips the TypeScript types and lowers the syntax itself, so we no longer need Babel.
 
-Rolldown does not read `.browserslistrc`, so [build/browser-targets.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/browser-targets.mjs) resolves that file at build time and converts it into the target list Rolldown expects. Both pipelines therefore honor one browser list.
+Rolldown does not read `.browserslistrc`, so [build/browser-targets.mjs]([[config:repo]]/blob/main/build/browser-targets.mjs) resolves that file at build time and converts it into the target list Rolldown expects. Both pipelines therefore honor one browser list.
 
-We ship our own TypeScript declarations, so you do not need `@types/bootstrap`. Our bundler configuration is located in [build/rolldown.config.mjs]([[config:repo]]/blob/v[[config:current_version]]/build/rolldown.config.mjs).
+We ship our own TypeScript declarations, so you do not need `@types/bootstrap`. Our bundler configuration is located in [build/rolldown.config.mjs]([[config:repo]]/blob/main/build/rolldown.config.mjs).
 
 ## Local documentation
 
