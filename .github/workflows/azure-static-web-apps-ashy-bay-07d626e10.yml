@@ -35,6 +35,9 @@ jobs:
           cache: npm
       - name: Install npm dependencies
         run: npm ci
+      # The docs build copies the compiled CSS and JS from `dist/`, so build it first.
+      - name: Build CSS and JS
+        run: npm run dist
       - name: Build docs
         run: npm run docs-build
       - name: Build And Deploy
@@ -44,9 +47,10 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ASHY_BAY_07D626E10 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
-          app_location: "." # App source code path
+          app_location: "_site" # Prebuilt site from the docs build step
           api_location: "" # Api source code path - optional
-          output_location: "_site" # Built app content directory
+          output_location: "" # Upload app_location as-is
+          skip_app_build: true # The steps above already built the site
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
