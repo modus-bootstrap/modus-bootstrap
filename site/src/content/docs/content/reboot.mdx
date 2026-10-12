@@ -441,9 +441,9 @@ The `<iframe>` element is updated to set `color-scheme: light dark`. A browser p
 An embedded document follows the system preference. It cannot see your `data-bs-theme` attribute. We therefore pin every iframe to the system preference too. This keeps an embed transparent, also when you force a theme with `data-bs-theme`.
 
 <Example code={`<div class="bg-body fg-body p-3" data-bs-theme="dark">
-    <iframe class="w-100" style="color-scheme: unset" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>Default iframe</h4></body></html>"></iframe>
-    <iframe class="w-100" src="data:text/html,<!DOCTYPE html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>iframe with color-scheme: light-dark</h4></body></html>"></iframe>
-    <iframe class="w-100" src="data:text/html,<!DOCTYPE html><html><body style='background-color:transparent;color:gray;'><h4>Embed that declares no color scheme</h4></body></html>"></iframe>
+    <iframe class="w-100" style="color-scheme: unset" src="data:text/html,<!doctype html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>Default iframe</h4></body></html>"></iframe>
+    <iframe class="w-100" src="data:text/html,<!doctype html><html><meta name='color-scheme' content='light dark'><body style='background-color:transparent;color:gray;'><h4>iframe with color-scheme: light-dark</h4></body></html>"></iframe>
+    <iframe class="w-100" src="data:text/html,<!doctype html><html><body style='background-color:transparent;color:gray;'><h4>Embed that declares no color scheme</h4></body></html>"></iframe>
   </div>`} />
 
 The first two embeds declare `<meta name="color-scheme" content="light dark">`, so they follow the system preference and stay transparent. The third declares nothing, like most third-party embeds. Set your system to dark mode to see the browser paint a white box behind it. Our rule cannot prevent that — read the next section.
