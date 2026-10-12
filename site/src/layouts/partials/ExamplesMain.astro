@@ -1,58 +1,17 @@
 ---
 import { getDocsPath } from '@libs/path'
-import { getConfig } from '@libs/config'
 import { getData } from '@libs/data'
 import { getSlug } from '@libs/utils'
 ---
 
 {
-  getData('examples').map(({ category, description, examples, external }) => {
+  getData('examples').map(({ category, description, examples }) => {
     return (
       <div class="bd-content">
         <h2 id={getSlug(category)}>{category}</h2>
         <p>{description}</p>
         <div class="row">
-          {examples.map((example, index) => {
-            if (external) {
-              return (
-                <article class="md:col-6 lg:col-4 mb-3 d-flex gap-3">
-                  <svg class="bi flex-shrink-0 mt-1" aria-hidden="true">
-                    <use href="#box-seam" />
-                  </svg>
-                  <div>
-                    <h3 class="h5 mb-1">
-                      <a
-                        class="d-block underline-offset-1"
-                        href={`${getConfig().github_org}${example.url}/`}
-                        target="_blank"
-                        rel="noopener"
-                        id={`starter-${index}`}
-                      >
-                        {example.name}
-                      </a>
-                    </h3>
-                    <p class="fg-2">{example.description}</p>
-                    <p>
-                      <a
-                        class="icon-link small theme-secondary underline-offset-1"
-                        href={`https://stackblitz.com/github/twbs${example.url}?file=${
-                          example.indexPath ? example.indexPath : 'index.html'
-                        }`}
-                        target="_blank"
-                        rel="noopener"
-                        aria-labelledby={`edit-${index} starter-${index}`}
-                      >
-                        <svg class="bi flex-shrink-0" aria-hidden="true">
-                          <use href="#lightning-charge-fill" />
-                        </svg>
-                        <span id={`edit-${index}`}>Edit in StackBlitz</span>
-                      </a>
-                    </p>
-                  </div>
-                </article>
-              )
-            }
-
+          {examples.map((example) => {
             return (
               <article class="sm:col-6 md:col-3 mb-3">
                 <a class="d-block underline-offset-1" href={`/examples/${getSlug(example.name)}/`}>
