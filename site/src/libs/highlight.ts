@@ -2,19 +2,6 @@ import { codeToHtml, type ShikiTransformer } from 'shiki'
 import bootstrapLight from 'bootstrap-vscode-theme/themes/bootstrap-light.json'
 import bootstrapDark from 'bootstrap-vscode-theme/themes/bootstrap-dark.json'
 
-const classTransformer: ShikiTransformer = {
-  name: 'class-name-transformer',
-  pre(node) {
-    const existingClasses = (node.properties?.className as string[]) || []
-    node.properties.className = existingClasses.map((cls) => {
-      if (typeof cls === 'string') {
-        return cls.replace(/shiki/g, 'astro-code')
-      }
-      return cls
-    })
-  }
-}
-
 const lineWrapperTransformer: ShikiTransformer = {
   name: 'line-wrapper',
   line(node) {
@@ -47,7 +34,7 @@ export async function highlightCode(
 ): Promise<string> {
   const shouldWrapLines = ['bash', 'sh', 'powershell'].includes(lang)
 
-  const transformers: ShikiTransformer[] = [...extraTransformers, classTransformer]
+  const transformers: ShikiTransformer[] = [...extraTransformers]
   if (shouldWrapLines) {
     transformers.push(lineWrapperTransformer)
   }
