@@ -50,6 +50,17 @@ export const rehypeBsTable: Plugin<[], Root> = function () {
         (child): child is Element => child.type === 'element' && child.tagName === 'thead'
       )
 
+      const theadClassAttribute = parent.attributes.find(
+        (attribute) => attribute.type === 'mdxJsxAttribute' && attribute.name === 'theadClass'
+      )
+
+      if (thead && typeof theadClassAttribute?.value === 'string') {
+        thead.properties = {
+          ...thead.properties,
+          class: theadClassAttribute.value
+        }
+      }
+
       if (thead) {
         const headerRow = thead.children.find(
           (child): child is Element => child.type === 'element' && child.tagName === 'tr'
