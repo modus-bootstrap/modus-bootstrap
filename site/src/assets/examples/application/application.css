@@ -54,3 +54,28 @@
 .app-with-sidebar .app-map-action {
   inset-inline-start: calc(var(--bs-app-sidebar-width) + 1rem);
 }
+
+.app-menu-icon {
+  display: inline-flex;
+  color: var(--bs-primary-fg);
+}
+
+.app-menu-icon > [class^="modus-icon-"] {
+  width: 2rem;
+  height: 2rem;
+}
+
+.app-menu-more > [class^="modus-icon-"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.app-menu-lock {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.app-menu-lock > [class^="modus-icon-"] {
+  width: .75rem;
+  height: .75rem;
+}
