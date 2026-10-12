@@ -38,12 +38,10 @@ const dataDefinitions = {
   examples: z
     .object({
       category: z.string(),
-      external: z.boolean().optional(),
       description: z.string(),
       examples: z
         .object({
           description: z.string(),
-          indexPath: z.string().optional(),
           name: z.string(),
           url: z.string().optional()
         })
