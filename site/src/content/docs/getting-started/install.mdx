@@ -59,28 +59,11 @@ yarn start # Start the project
 
 ## More packages
 
-Other package-managed installs are available for Modus Bootstrap as well.
-
-<Code
-  tabs={[
-    { label: 'RubyGems', code: `gem 'bootstrap', '~> [[config:current_ruby_version]]'`, lang: 'bash' },
-    { label: 'Composer', code: 'composer require twbs/bootstrap:[[config:current_version]]', lang: 'bash' },
-    { label: 'NuGet', code: `Install-Package bootstrap # Default
-Install-Package bootstrap.sass # Sass version`, lang: 'powershell' }
-  ]}
-/>
-
-### Using RubyGems
-
-We recommend installing Bootstrap in your Ruby apps using [Bundler](https://bundler.io/), but you can also use [RubyGems](https://rubygems.org/). See [the gem’s README](https://github.com/twbs/bootstrap-rubygem/blob/main/README.md) for further details.
+You can also install Modus Bootstrap with Composer.
 
 ```sh
-gem install bootstrap -v [[config:current_ruby_version]]
+composer require twbs/bootstrap:[[config:current_version]]
 ```
-
-### Using NuGet
-
-If you develop in .NET Framework, you can also install and manage Bootstrap’s [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/). Newer projects should use [libman](https://learn.microsoft.com/en-us/aspnet/core/client-side/libman/) or another method as NuGet is designed for compiled code, not frontend assets.
 
 ## CDN
 

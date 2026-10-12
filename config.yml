@@ -8,7 +8,6 @@ description:            "Powerful, extensible, and feature-packed frontend toolk
 authors:                "Bootstrap contributors"
 
 current_version:        "6.0.0-alpha.1"
-current_ruby_version:   "6.0.0-alpha.1"
 docs_version:           "6.0"
 rfs_version:            "v10.0.0"
 github_org:             "https://github.com/coliff"

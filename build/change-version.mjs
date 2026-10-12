@@ -39,12 +39,6 @@ async function replaceRecursively(file, oldVersion, newVersion) {
       new RegExp(regExpQuote(oldVersion), 'g'),
       regExpQuoteReplacement(newVersion)
     )
-    // Also replace the version used by the rubygem,
-    // which is using periods (`.`) instead of hyphens (`-`)
-    .replace(
-      new RegExp(regExpQuote(oldVersion.replace(/-/g, '.')), 'g'),
-      regExpQuoteReplacement(newVersion.replace(/-/g, '.'))
-    )
 
   // No need to move any further if the strings are identical
   if (originalString === newString) {
