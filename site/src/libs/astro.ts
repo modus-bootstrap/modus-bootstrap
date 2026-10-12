@@ -17,6 +17,7 @@ const sitemapExcludes = ['/404', '/docs']
 
 export function bootstrap(): AstroIntegration[] {
   const sitemapExcludedUrls = sitemapExcludes.map((url) => `${getConfig().baseURL}${url}/`)
+  let outDir: URL | undefined
 
   return [
     {
@@ -26,7 +27,8 @@ export function bootstrap(): AstroIntegration[] {
           // Reload the config when the integration is modified.
           addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
         },
-        'astro:config:done': () => {
+        'astro:config:done': ({ config }) => {
+          outDir = config.outDir
           cleanPublicDirectory()
           copyBootstrap()
           copyStatic()
@@ -41,7 +43,7 @@ export function bootstrap(): AstroIntegration[] {
     // https://github.com/withastro/astro/issues/6475
     mdx() as AstroIntegration,
     sitemap({
-      filter: (page) => sitemapFilter(page, sitemapExcludedUrls)
+      filter: (page) => sitemapFilter(page, sitemapExcludedUrls, outDir)
     })
   ]
 }
@@ -116,10 +118,25 @@ function replacePathVersionPlaceholder(name: string) {
   return name.replace('[version]', getConfig().docs_version)
 }
 
-function sitemapFilter(page: string, excludedUrls: string[]) {
+function sitemapFilter(page: string, excludedUrls: string[], outDir: URL | undefined) {
   if (excludedUrls.includes(page)) {
     return false
   }
 
-  return true
+  return !isNoindexPage(page, outDir)
+}
+
+// Alias pages redirect to their new URL and use `noindex`. Keep them out of the sitemap.
+function isNoindexPage(page: string, outDir: URL | undefined) {
+  if (!outDir) {
+    return false
+  }
+
+  const htmlFile = new URL(`.${new URL(page).pathname}index.html`, outDir)
+
+  if (!fs.existsSync(htmlFile)) {
+    return false
+  }
+
+  return /<meta name="robots" content="noindex"/.test(fs.readFileSync(htmlFile, 'utf8'))
 }
