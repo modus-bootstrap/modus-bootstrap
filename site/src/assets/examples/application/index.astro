@@ -2,6 +2,7 @@
 export const title = 'Application example'
 export const extra_css = [
   'https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons@1.21.0/dist/transportation/css/transportation-icons.css',
+  'https://cdn.jsdelivr.net/npm/@trimble-oss/modus-icons-css@0.11.0/css/modus-icons-duotone.min.css',
   'application.css',
 ]
 export const extra_js = [{ src: 'application.js' }]
@@ -33,7 +34,6 @@ export const body_class = 'app-with-sidebar'
       <div class="container-fluid">
         <button class="btn-icon navbar-toggler me-2 bg-transparent border-0" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
           <i class="transportation-icon-menu fg-white"></i>
         </button>
         <a href="#" class="d-flex align-items-center">
@@ -77,74 +77,62 @@ export const body_class = 'app-with-sidebar'
                 <div class="row g-3 text-center">
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
-                      <div class="app-menu-icon mx-auto text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/content-tools.svg" alt="Content Tools" width="32" height="32"
-                          class="img-fluid">
-                      </div>
-                      <span class="d-block mt-1 fg-body">Account Manager</span>
+                      <span class="app-menu-icon mx-auto">
+                        <i class="modus-icon-path-duotone" aria-hidden="true"></i>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Route Pro</span>
                     </a>
                   </div>
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
-                      <div class="app-menu-icon mx-auto rounded-4 text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/content-tools.svg" alt="Content Tools" width="32" height="32"
-                          class="img-fluid">
-                      </div>
-                      <span class="d-block fg-body">Content Tools</span>
+                      <span class="app-menu-icon mx-auto">
+                        <i class="modus-icon-briefcase-duotone" aria-hidden="true"></i>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Smart Work</span>
                     </a>
                   </div>
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
-                      <div class="app-menu-icon app-menu-tile--map mx-auto rounded-4 text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
-                      </div>
-                      <span class="d-block mt-1 fg-body">Map Sure</span>
+                      <span class="app-menu-icon mx-auto">
+                        <i class="modus-icon-road-horizon-duotone" aria-hidden="true"></i>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Road Plan</span>
                     </a>
                   </div>
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
-                      <div class="app-menu-icon app-menu-tile--pcmiler mx-auto rounded-4 text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
-                      </div>
-                      <span class="d-block mt-1 fg-body">PC*Miler Web</span>
+                      <span class="app-menu-icon mx-auto">
+                        <i class="modus-icon-truck-duotone" aria-hidden="true"></i>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Fleet Sync</span>
                     </a>
                   </div>
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
-                      <div class="app-menu-icon app-menu-tile--reporter mx-auto rounded-4 text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="Map Sure" width="32" height="32" class="img-fluid">
-                      </div>
-                      <span class="d-block mt-1 fg-body">Route Reporter</span>
+                      <span class="app-menu-icon mx-auto">
+                        <i class="modus-icon-package-duotone" aria-hidden="true"></i>
+                      </span>
+                      <span class="d-block mt-1 fg-body">Load Tracker</span>
                     </a>
                   </div>
                   <div class="col-4">
                     <span class="card rounded-4 p-1 opacity-50 pointer-events-none small text-secondary user-select-none">
-                      <span class="app-menu-icon mx-auto position-relative rounded-4 text-white">
-                        <img src="https://trimblemaps.github.io/f3-video/img/icons/mapsure.svg" alt="" width="32" height="32" class="img-fluid">
+                      <span class="app-menu-icon mx-auto position-relative">
+                        <i class="modus-icon-chart-bar-duotone" aria-hidden="true"></i>
                         <span
                           class="align-items-center app-menu-lock bg-white bottom-0 d-flex end-0 justify-content-center position-absolute rounded-circle shadow-sm text-secondary">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
-                            viewBox="0 0 16 16" aria-hidden="true">
-                            <path
-                              d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z">
-                            </path>
-                          </svg>
+                          <i class="modus-icon-lock-duotone" aria-hidden="true"></i>
                         </span>
                       </span>
-                      <span class="d-block mt-1 fg-body">Smart Workflow</span>
+                      <span class="d-block mt-1 fg-body">Insight Hub</span>
                     </span>
                   </div>
                 </div>
               </div>
               <div class="border-top py-3 text-center">
-                <a class="align-items-center d-inline-flex gap-1 fg-body small text-decoration-none" href="#">
+                <a class="app-menu-more align-items-center d-inline-flex gap-1 fg-body small text-decoration-none" href="#">
                   Browse All Apps
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
-                    aria-hidden="true">
-                    <path fill-rule="evenodd"
-                      d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1-.708-.708z">
-                    </path>
-                  </svg>
+                  <i class="modus-icon-caret-right-duotone" aria-hidden="true"></i>
                 </a>
               </div>
             </div>
@@ -220,10 +208,10 @@ export const body_class = 'app-with-sidebar'
     </div>
   </footer>
 
-  <dialog class="dialog" id="helpDialog">
+  <dialog class="dialog dialog-lg" id="helpDialog">
     <div class="dialog-header">
-      <h1 class="dialog-title">Help</h1> <button type="button" class="btn-close" data-bs-dismiss="dialog"
-        aria-label="Close">
+      <h1 class="dialog-title">Help</h1> <button type="button" class="btn-close" data-bs-dismiss="dialog">
+        <span class="visually-hidden">Close</span>
       </button>
     </div>
     <div class="dialog-body">
