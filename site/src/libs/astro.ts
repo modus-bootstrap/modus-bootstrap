@@ -38,7 +38,7 @@ export function bootstrap(): AstroIntegration[] {
         },
         'astro:build:done': ({ dir }) => {
           validateDocsPaths(dir)
-          lowercaseDoctype(dir)
+          tidyHtml(dir)
         }
       }
     },
@@ -50,9 +50,14 @@ export function bootstrap(): AstroIntegration[] {
   ]
 }
 
-// Astro always emits an uppercase `<!DOCTYPE html>`, even when the layout uses lowercase. Rewrite it to lowercase in
-// every built HTML page.
-function lowercaseDoctype(dir: URL) {
+// Elements whose content is whitespace-sensitive. The tidy step does not change their content.
+const preservedElementsRegex = /(<(pre|textarea|script|style)\b[\s\S]*?<\/\2>)/i
+
+// Tidy every built HTML page. `compressHTML` is off, so Astro keeps the source indentation and blank lines.
+// - Astro always emits an uppercase `<!DOCTYPE html>`, even when the layout uses lowercase. Rewrite it to lowercase.
+// - Remove trailing whitespace, leading indentation, and blank lines outside whitespace-sensitive elements. Line breaks
+//   stay, so the spacing between inline elements does not change.
+function tidyHtml(dir: URL) {
   const dirPath = fileURLToPath(dir)
   const files = fs.readdirSync(dirPath, { recursive: true, encoding: 'utf8' }).filter((file) => file.endsWith('.html'))
 
@@ -60,10 +65,32 @@ function lowercaseDoctype(dir: URL) {
     const filePath = path.join(dirPath, file)
     const html = fs.readFileSync(filePath, 'utf8')
 
-    if (html.startsWith('<!DOCTYPE html>')) {
-      fs.writeFileSync(filePath, `<!doctype html>${html.slice('<!DOCTYPE html>'.length)}`)
-    }
+    fs.writeFileSync(filePath, tidyHtmlContent(html))
   }
+}
+
+function tidyHtmlContent(html: string) {
+  const tidied = html
+    .split(preservedElementsRegex)
+    .map((part, index) => {
+      // `split()` with capture groups returns [text, element, tagName, text, element, tagName, ...].
+      if (index % 3 === 1) {
+        return part
+      }
+
+      if (index % 3 === 2) {
+        return ''
+      }
+
+      return part
+        .replace(/[ \t]+$/gm, '')
+        .replace(/^[ \t]+/gm, '')
+        .replace(/\n{2,}/g, '\n')
+    })
+    .join('')
+    .trim()
+
+  return `${tidied.replace(/^<!DOCTYPE html>/, '<!doctype html>')}\n`
 }
 
 function cleanPublicDirectory() {

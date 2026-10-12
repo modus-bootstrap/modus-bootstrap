@@ -38,6 +38,8 @@ export default defineConfig({
   build: {
     assets: 'assets'
   },
+  // Keep the built HTML readable. The `bootstrap-integration` removes unneeded whitespace after the build.
+  compressHTML: false,
   integrations: [
     bootstrap(),
     astroBrokenLinksChecker({
