@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import type { AstroIntegration } from 'astro'
@@ -37,6 +38,7 @@ export function bootstrap(): AstroIntegration[] {
         },
         'astro:build:done': ({ dir }) => {
           validateDocsPaths(dir)
+          lowercaseDoctype(dir)
         }
       }
     },
@@ -46,6 +48,22 @@ export function bootstrap(): AstroIntegration[] {
       filter: (page) => sitemapFilter(page, sitemapExcludedUrls, outDir)
     })
   ]
+}
+
+// Astro always emits an uppercase `<!DOCTYPE html>`, even when the layout uses lowercase. Rewrite it to lowercase in
+// every built HTML page.
+function lowercaseDoctype(dir: URL) {
+  const dirPath = fileURLToPath(dir)
+  const files = fs.readdirSync(dirPath, { recursive: true, encoding: 'utf8' }).filter((file) => file.endsWith('.html'))
+
+  for (const file of files) {
+    const filePath = path.join(dirPath, file)
+    const html = fs.readFileSync(filePath, 'utf8')
+
+    if (html.startsWith('<!DOCTYPE html>')) {
+      fs.writeFileSync(filePath, `<!doctype html>${html.slice('<!DOCTYPE html>'.length)}`)
+    }
+  }
 }
 
 function cleanPublicDirectory() {
