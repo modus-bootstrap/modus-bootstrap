@@ -54,7 +54,7 @@ function initNavbarTooltips() {
     { element: document.getElementById('appMenuToggle'), title: 'My Apps' },
     {
       element: document.getElementById('userMenuToggle'),
-      title: '<strong>Christian Oliff</strong><br>christian.oliff@trimble.com',
+      title: '<strong>Christian Oliff</strong><br>christian@example.com',
       html: true,
       placement: 'bottom-end'
     }
