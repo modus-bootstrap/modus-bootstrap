@@ -25,7 +25,6 @@ const configSchema = z.object({
     vanilla_calendar_pro_esm: z.url()
   }),
   current_version: zVersionSemver,
-  current_ruby_version: zVersionSemver,
   description: z.string(),
   docs_version: zVersionMajorMinor,
   docsDir: z.string(),
