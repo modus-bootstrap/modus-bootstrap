@@ -18,18 +18,15 @@ Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `l
 | Chrome | 130 |
 | Edge | 130 |
 | Firefox | 132 |
-| Safari (macOS) | 18 |
-| Safari (iOS and iPadOS) | 18 |
+| Safari (macOS) | 18.7 |
+| Safari (iOS and iPadOS) | 18.7 |
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
 
 ### How to read the query list
 
-Two of those lines do more than they look like they do:
-
-- **`last 2 major versions` carries our mobile coverage.** caniuse tracks Chrome for Android as a single unversioned entry rather than one entry per release, so this line, not the `>=` floors, is what picks it up.
-- **`unreleased versions` is worth about eight points of coverage, and it costs nothing.** caniuse gives the newest Safari a null release date, yet that version already holds most of Safari’s usage share. Both range queries and `last N versions` skip unreleased versions, so without this line we would exclude the single most-used Safari. It cannot pull in anything old, because an unreleased version is newer than every floor.
+One of those lines does more than it looks like it does. **`last 2 major versions` carries our mobile coverage.** caniuse tracks Chrome for Android as a single unversioned entry rather than one entry per release, so this line, not the `>=` floors, is what picks it up.
 
 To measure coverage yourself, run `npx browserslist --coverage` in a clone of the repository. Do not read the figure off browserslist.dev: that site pins an older copy of caniuse-db and reports a materially different number.
 
@@ -51,7 +48,7 @@ Our floors also have to last. They apply to the whole v6.x line, and we cannot r
 
 `light-dark()` sets the hard lower bound: Chrome 123, Firefox 120, and Safari 17.5. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. We will not go below that bound in any release.
 
-Together these targets cover about 85% of global browser usage.
+Together these targets cover about 88% of global browser usage.
 
 Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
@@ -118,8 +115,8 @@ Generally speaking, Modus Bootstrap supports the latest versions of each major p
 | Platform | Supported browsers |
 | --- | --- |
 | Android | Chrome (last two major versions) |
-| iOS and iPadOS | Safari 18+, Chrome (uses WebKit on iOS) |
-| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 18+ on macOS |
+| iOS and iPadOS | Safari 18.7+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 18.7+ on macOS |
 </BsTable>
 
 As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:
