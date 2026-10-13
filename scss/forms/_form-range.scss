@@ -14,7 +14,8 @@ $range-tokens: () !default;
 $range-tokens: defaults(
   (
     --range-track-width: 100%,
-    --range-track-height: .25rem,
+    --range-track-height: var(--range-thumb-height),
+    --range-track-rail-height: .25rem,
     --range-track-cursor: pointer,
     --range-track-bg: color-mix(in oklch, var(--fg-body) 10%, transparent),
     --range-track-border-radius: 1rem,
@@ -64,18 +65,20 @@ $range-tokens: defaults(
 }
 
 @mixin range-track() {
+  // Fill ends at the thumb center. The Range plugin keeps `--range-fill` (0–1) in sync.
+  --range-fill-end: calc((var(--range-thumb-width) * .5) + var(--range-fill, 0) * (100% - var(--range-thumb-width)));
+
   width: var(--range-track-width);
   height: var(--range-track-height);
   color: transparent;
   cursor: var(--range-track-cursor);
-  // Fill (progress) up to the thumb. The Range plugin keeps `--range-fill` (0–1) in sync.
-  background-color: var(--range-track-bg);
-  background-image:
+  // The fill is as tall as the thumb. The unfilled rail is a thin band centered behind it.
+  background:
     linear-gradient(
       to right,
-      var(--range-track-fill-bg) calc(var(--range-fill, 0) * 100%),
-      transparent calc(var(--range-fill, 0) * 100%)
-    );
+      var(--range-track-fill-bg) var(--range-fill-end),
+      transparent var(--range-fill-end)
+    ), linear-gradient(var(--range-track-bg), var(--range-track-bg)) center / 100% var(--range-track-rail-height) no-repeat;
   border-color: transparent;
   @include border-radius(var(--range-track-border-radius));
   @include box-shadow(var(--range-track-box-shadow));
