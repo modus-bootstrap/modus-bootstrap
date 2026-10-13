@@ -14,20 +14,22 @@ $range-tokens: () !default;
 $range-tokens: defaults(
   (
     --range-track-width: 100%,
-    --range-track-height: .5rem,
+    --range-track-height: .25rem,
     --range-track-cursor: pointer,
-    --range-track-bg: var(--bg-3),
+    --range-track-bg: color-mix(in oklch, var(--fg-body) 10%, transparent),
     --range-track-border-radius: 1rem,
     --range-track-fill-bg: var(--theme-bg, var(--primary-base)),
-    --range-track-disabled-bg: color-mix(in oklch, var(--bg-4), var(--fg-3)),
-    --range-thumb-width: 1rem,
+    --range-track-disabled-bg: color-mix(in oklch, var(--fg-body) 30%, var(--bg-body)),
+    --range-thumb-width: 1.25rem,
     --range-thumb-height: var(--range-thumb-width),
-    --range-thumb-bg: var(--theme-bg, var(--primary-base)),
-    --range-thumb-border: var(--range-thumb-bg) solid var(--border-color),
-    --range-thumb-border-radius: 1rem,
-    --range-thumb-box-shadow: "0 1px 2px rgb(0 0 0 / 7.5%), 0 2px 4px rgb(0 0 0 / 7.5%)",
-    --range-thumb-active-bg: color-mix(in oklch, var(--theme-bg, var(--primary-base)) 70%, var(--bg-body)),
-    --range-thumb-disabled-bg: var(--fg-3),
+    --range-thumb-bg: var(--bg-body),
+    --range-thumb-border-width: 3px,
+    --range-thumb-border-color: var(--range-track-fill-bg),
+    --range-thumb-border-radius: 50%,
+    --range-thumb-box-shadow: none,
+    --range-thumb-active-bg: color-mix(in oklch, var(--range-track-fill-bg) 15%, var(--bg-body)),
+    --range-thumb-focus-bg: var(--range-track-fill-bg),
+    --range-thumb-focus-inset: 3px,
     --range-thumb-transition-property: "background-color, border-color, box-shadow",
     --range-thumb-transition-duration: .15s,
     --range-thumb-transition-timing: ease-in-out,
@@ -42,11 +44,12 @@ $range-tokens: defaults(
 
 // scss-docs-start range-mixins
 @mixin range-thumb() {
+  box-sizing: border-box;
   width: var(--range-thumb-width);
   height: var(--range-thumb-height);
   appearance: none;
+  border: var(--range-thumb-border-width) solid var(--range-thumb-border-color);
   @include gradient-bg(var(--range-thumb-bg));
-  border: var(--range-thumb-border);
   @include border-radius(var(--range-thumb-border-radius));
   @include box-shadow(var(--range-thumb-box-shadow));
   @include transition-props(
@@ -96,25 +99,21 @@ $range-tokens: defaults(
     appearance: none;
     background-color: transparent;
 
-    &:hover {
-      &::-webkit-slider-thumb {
-        @include focus-ring(false, color-mix(in oklch, var(--theme-focus-ring, var(--primary-focus-ring)), transparent));
-      }
-      &::-moz-range-thumb     {
-        @include focus-ring(false, color-mix(in oklch, var(--theme-focus-ring, var(--primary-focus-ring)), transparent));
-      }
-    }
-
     &:focus-visible {
       outline: 0;
 
+      // Modus focus: the thumb fills with the track color inside a thin ring of the body color.
       &::-webkit-slider-thumb {
         @include focus-ring(true);
         --focus-ring-offset: 0;
+        background-color: var(--range-thumb-focus-bg);
+        box-shadow: inset 0 0 0 var(--range-thumb-focus-inset) var(--range-thumb-bg);
       }
       &::-moz-range-thumb     {
         @include focus-ring(true);
         --focus-ring-offset: 0;
+        background-color: var(--range-thumb-focus-bg);
+        box-shadow: inset 0 0 0 var(--range-thumb-focus-inset) var(--range-thumb-bg);
       }
     }
 
@@ -140,23 +139,9 @@ $range-tokens: defaults(
     }
 
     &:disabled {
+      --range-track-fill-bg: var(--range-track-disabled-bg);
+      --range-thumb-border-color: var(--range-track-disabled-bg);
       pointer-events: none;
-
-      &::-webkit-slider-thumb {
-        background-color: var(--range-thumb-disabled-bg);
-      }
-
-      &::-moz-range-thumb {
-        background-color: var(--range-thumb-disabled-bg);
-      }
-
-      &::-webkit-slider-runnable-track {
-        --range-track-fill-bg: var(--range-track-disabled-bg);
-      }
-
-      &::-moz-range-track {
-        --range-track-fill-bg: var(--range-track-disabled-bg);
-      }
     }
   }
 
