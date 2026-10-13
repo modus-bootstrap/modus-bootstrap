@@ -1,6 +1,15 @@
 @use "../../../scss/layout/breakpoints" as *;
 
 @layer custom {
+  // Pale grid behind the homepage content. The lines use the body text color at 10% opacity, so they adapt to each color mode.
+  .bd-home {
+    --bd-home-grid-color: color-mix(in oklch, var(--bs-fg-body) 10%, transparent);
+    --bd-home-grid-size: 2rem;
+    background-image: linear-gradient(to right, var(--bd-home-grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--bd-home-grid-color) 1px, transparent 1px);
+    background-position: center top;
+    background-size: var(--bd-home-grid-size) var(--bd-home-grid-size);
+  }
+
   .bd-masthead {
     padding-block: 3rem;
     // stylelint-disable
