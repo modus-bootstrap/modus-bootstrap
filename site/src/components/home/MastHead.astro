@@ -2,6 +2,7 @@
 import { getConfig } from '@libs/config'
 import { getDocsPath } from '@libs/path'
 import Ads from '@components/Ads.astro'
+import ForAgents from '@components/home/ForAgents.astro'
 import CodeCopy from '@components/shortcodes/CodeCopy.astro'
 ---
 
@@ -37,6 +38,9 @@ import CodeCopy from '@components/shortcodes/CodeCopy.astro'
           <svg class="bi me-2" aria-hidden="true"><use href="#book-half"></use></svg>
           Read the docs
         </a>
+        <div class="d-grid">
+          <ForAgents />
+        </div>
       </div>
       <p class="fg-2 mb-0">
         Currently <strong>v{getConfig().current_version}</strong>
