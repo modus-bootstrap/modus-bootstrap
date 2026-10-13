@@ -19,7 +19,7 @@ $range-tokens: defaults(
     --range-track-cursor: pointer,
     --range-track-bg: color-mix(in oklch, var(--fg-body) 10%, transparent),
     --range-track-border-radius: 1rem,
-    --range-track-fill-bg: var(--theme-bg, var(--primary-base)),
+    --range-track-fill-bg: var(--theme-bg, light-dark(var(--black), var(--white))),
     --range-track-disabled-bg: color-mix(in oklch, var(--fg-body) 30%, var(--bg-body)),
     --range-thumb-width: 1.25rem,
     --range-thumb-height: var(--range-thumb-width),
