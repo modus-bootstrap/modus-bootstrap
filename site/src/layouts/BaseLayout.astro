@@ -86,5 +86,16 @@ const mainProps = overrides?.main ?? {}
         </div>
       )
     }
+
+    <script is:inline>
+      // Fallback to instant.page for browsers that don't support speculation rules
+      if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules'))) {
+        const script = document.createElement('script')
+        script.type = 'module'
+        script.src = 'https://instant.page/5.2.0'
+        script.defer = true
+        document.head.appendChild(script)
+      }
+    </script>
   </body>
 </html>
