@@ -16,19 +16,9 @@
   },
   "type": "module",
   "sideEffects": [
-    "./js/src/*.ts",
-    "./js/dist/*.js",
-    "./dist/js/*.js"
+    "./dist/css/*.css"
   ],
   "exports": {
-    ".": {
-      "types": "./js/dist/index.d.ts",
-      "default": "./js/dist/index.js"
-    },
-    "./js/src/*.js": "./js/dist/*.js",
-    "./js/src/*": "./js/src/*",
-    "./js/dist/*": "./js/dist/*",
-    "./dist/js/*": "./dist/js/*",
     "./dist/css/*": "./dist/css/*",
     "./scss/*": "./scss/*"
   },
@@ -36,7 +26,7 @@
   "style": "dist/css/modus-bootstrap.css",
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "build": "npm run docs-build",
+    "build": "npm-run-all dist docs-build",
     "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "bundlewatch:fix": "node build/bundlewatch-fix.mjs",
     "bundlewatch:table": "node build/bundlewatch-table.mjs",
@@ -106,10 +96,6 @@
     "astro-build": "astro build --root site && shx rm -rf _site && shx cp -r site/dist _site && pagefind --site _site",
     "astro-preview": "astro preview --root site --port 9001",
     "spellcheck": "cspell --config .cspell.json \".gitignore\" \"**/*.{md,mdx,yml,yaml,json,js,cjs,mjs,ts}\""
-  },
-  "peerDependencies": {
-    "@floating-ui/dom": "^1.8.0",
-    "vanilla-calendar-pro": "^3.4.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
@@ -184,8 +170,7 @@
     "zod": "^4.6.5"
   },
   "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map,ts}",
+    "dist/css/*.{css,map}",
     "scss/**/*.scss",
     "!scss/tests/**",
     ".browserslistrc"

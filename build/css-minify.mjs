@@ -15,7 +15,7 @@ const distDir = path.join(process.cwd(), 'dist/css')
 
 // Get all CSS files that need minification
 const cssFiles = fs.readdirSync(distDir)
-  .filter(file => file.endsWith('.css') && !file.endsWith('.min.css'))
+  .filter(file => file.endsWith('.css') && !file.endsWith('.min.css') && !file.startsWith('._'))
 
 // Target browsers (read from .browserslistrc when available)
 let targets
