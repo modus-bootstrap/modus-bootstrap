@@ -1,70 +1,70 @@
-.trimble-footer-example {
+.footer-example {
   background-color: #1e2124;
 }
 
-.trimble-footer {
-  --bs-trimble-footer-accent: #e4a72b;
+.footer {
+  --bs-footer-accent: #e4a72b;
   background-color: #1e2124;
 }
 
-.trimble-footer-logo-icon {
+.footer-logo-icon {
   filter: brightness(0) invert(1);
 }
 
-.trimble-footer-brand .trimble-footer-wordmark {
+.footer-brand .footer-wordmark {
   letter-spacing: -.02em;
 }
 
-.trimble-footer-heading {
+.footer-heading {
   font-size: .8125rem;
   letter-spacing: .04em;
 }
 
-.trimble-footer-nav .nav-link {
+.footer-nav .nav-link {
   font-size: .9375rem;
   line-height: 1.5;
 }
 
-.trimble-footer-nav .nav-link:hover,
-.trimble-footer-nav .nav-link:focus {
+.footer-nav .nav-link:hover,
+.footer-nav .nav-link:focus {
   color: var(--bs-fg-1);
 }
 
-.trimble-footer-social-link {
+.footer-social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  color: var(--bs-trimble-footer-accent);
+  color: var(--bs-footer-accent);
   text-decoration: none;
-  border: 2px solid var(--bs-trimble-footer-accent);
+  border: 2px solid var(--bs-footer-accent);
   border-radius: 50%;
   transition: background-color .15s ease-in-out, color .15s ease-in-out;
 }
 
-.trimble-footer-social-link:hover,
-.trimble-footer-social-link:focus {
+.footer-social-link:hover,
+.footer-social-link:focus {
   color: #1e2124;
-  background-color: var(--bs-trimble-footer-accent);
+  background-color: var(--bs-footer-accent);
 }
 
-.trimble-footer-social-link .bi {
+.footer-social-link .bi {
   width: 1rem;
   height: 1rem;
 }
 
-.trimble-footer-about {
+.footer-about {
   font-size: .9375rem;
   line-height: 1.6;
 }
 
-.trimble-footer-legal .nav-link {
+.footer-legal .nav-link {
   font-size: .9375rem;
   line-height: 1.5;
 }
 
-.trimble-footer-privacy-icon {
+.footer-privacy-icon {
   flex-shrink: 0;
   width: 1.875rem;
   height: 1rem;
