@@ -1,5 +1,5 @@
 {
-  "name": "mb3",
+  "name": "modus-bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "6.0.0-alpha.1",
   "bootstrap": {
@@ -91,6 +91,7 @@
     "release-version": "node build/change-version.mjs",
     "release-zip": "cross-env-shell \"rm -rf bootstrap-$npm_package_version-dist bootstrap-$npm_package_version-dist.zip && cp -r dist/ bootstrap-$npm_package_version-dist && zip -qr9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist -x \\\"*.DS_Store\\\" && rm -rf bootstrap-$npm_package_version-dist\"",
     "release-zip-examples": "node build/zip-examples.mjs",
+    "prepublishOnly": "npm run dist",
     "dist": "npm-run-all --aggregate-output --parallel css js",
     "test": "npm-run-all lint dist js-typecheck-dist js-test docs-build docs-lint",
     "netlify": "npm-run-all dist release-sri astro-build",

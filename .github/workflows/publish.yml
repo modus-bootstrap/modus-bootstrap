@@ -2,8 +2,9 @@
 name: Publish
 
 # Publishes the library to npm when run from the Actions tab ("Run workflow" on main).
-# Publishes the version in projects/bootstrap-ng/package.json.
-# Prerelease versions (such as 6.0.0-alpha.2) go to the `next` dist-tag, stable versions to `latest`.
+# Publishes the version in package.json.
+# Prerelease versions go to a dist-tag named after their identifier (6.0.0-alpha.2 goes to `alpha`).
+# Stable versions go to `latest`.
 # Authenticates with npm trusted publishing (OIDC), so no npm token is stored in the repository.
 
 on:
@@ -31,16 +32,16 @@ jobs:
           package-manager-cache: false # no cache in release builds, to rule out cache poisoning
       - run: npm ci
       - run: npx playwright install --with-deps chromium
-      - run: npm run lint
       - run: npm test
-      - run: npm run build:lib
       - name: Update npm for trusted publishing
         run: npm install --global npm@11.21.0 # trusted publishing needs npm 11.5.1+, Node 22 bundles npm 10
       - name: Publish to npm
-        working-directory: dist/bootstrap-ng
         run: |
           version="$(node -p "require('./package.json').version")"
-          case "${version}" in *-*) dist_tag=next ;; *) dist_tag=latest ;; esac
+          case "${version}" in
+            *-*) prerelease="${version#*-}"; dist_tag="${prerelease%%.*}" ;;
+            *) dist_tag=latest ;;
+          esac
           npm publish --access public --tag "${dist_tag}"
         env:
           # npm only accepts provenance from public repositories. Turn it on once this repository is public.
