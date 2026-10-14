@@ -1,0 +1,47 @@
+---
+name: Publish
+
+# Publishes the library to npm when run from the Actions tab ("Run workflow" on main).
+# Publishes the version in projects/bootstrap-ng/package.json.
+# Prerelease versions (such as 6.0.0-alpha.2) go to the `next` dist-tag, stable versions to `latest`.
+# Authenticates with npm trusted publishing (OIDC), so no npm token is stored in the repository.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write # to authenticate with npm trusted publishing
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false # no cache in release builds, to rule out cache poisoning
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build:lib
+      - name: Update npm for trusted publishing
+        run: npm install --global npm@11.21.0 # trusted publishing needs npm 11.5.1+, Node 22 bundles npm 10
+      - name: Publish to npm
+        working-directory: dist/bootstrap-ng
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          case "${version}" in *-*) dist_tag=next ;; *) dist_tag=latest ;; esac
+          npm publish --access public --tag "${dist_tag}"
+        env:
+          # npm only accepts provenance from public repositories. Turn it on once this repository is public.
+          NPM_CONFIG_PROVENANCE: false
