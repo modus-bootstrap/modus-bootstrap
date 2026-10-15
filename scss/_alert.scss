@@ -14,7 +14,7 @@ $alert-tokens: defaults(
     --alert-bg: var(--bg-1),
     --alert-padding-x: var(--spacer),
     --alert-padding-y: var(--spacer),
-    --alert-color: var(--body-fg, inherit), // Modus Custom
+    --alert-color: var(--fg-body), // Modus Custom
     --alert-border-color: var(--border-color),
     --alert-border-radius: var(--radius-6),
     --alert-link-color: inherit,
