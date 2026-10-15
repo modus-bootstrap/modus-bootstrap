@@ -64,6 +64,9 @@ $alert-tokens: defaults(
   }
 
   .alert-heading {
+    // Modus Custom: match the alert body text size, but use bold weight
+    font-size: inherit;
+    font-weight: var(--font-weight-bold);
     // Specified to prevent conflicts of changing --heading-color
     color: inherit;
   }
