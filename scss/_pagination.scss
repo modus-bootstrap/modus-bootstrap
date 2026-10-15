@@ -17,7 +17,7 @@ $pagination-tokens: defaults(
     --pagination-padding-y: var(--btn-input-padding-y),
     --pagination-font-size: var(--btn-input-font-size),
     --pagination-color: var(--link-color),
-    --pagination-bg: var(--bg-body),
+    --pagination-bg: color-mix(in oklch, var(--secondary-bg) 10%, transparent), // Matches `.bg-secondary.bg-10`
     --pagination-border-width: var(--border-width),
     --pagination-border-color: var(--border-color),
     --pagination-border-radius: var(--btn-input-border-radius),
