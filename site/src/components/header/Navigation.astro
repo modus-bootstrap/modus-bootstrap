@@ -2,7 +2,6 @@
 import { getConfig } from '@libs/config'
 import { getDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
-import BootstrapWhiteFillIcon from '@components/icons/BootstrapWhiteFillIcon.astro'
 import GitHubIcon from '@components/icons/GitHubIcon.astro'
 import LinkItem from '@components/header/LinkItem.astro'
 import ThemeToggler from '@layouts/partials/ThemeToggler.astro'
@@ -23,8 +22,8 @@ const activeSection = !layout ? 'Home' : title === 'Examples' ? 'Examples' : 'Do
 <header class="navbar lg:navbar-expand bd-navbar border-bottom border-inverse border-20">
   <nav class="2xl:container bd-gutter flex-wrap lg:flex-nowrap justify-content-start" aria-label="Main navigation">
     <div class="d-flex align-items-center gap-2 lg:gap-1">
-      <a class="navbar-brand p-0 me-0 lg:me-2" href="/" aria-label="Modus Bootstrap" style="color: var(--bs-indigo-500);">
-        <BootstrapWhiteFillIcon class="d-block my-1" height={32} width={40} />
+      <a class="navbar-brand p-0 me-0 lg:me-2" href="/" aria-label="Modus Bootstrap">
+        <img class="d-block my-1" src="/favicon.svg" alt="" width="32" height="32">
       </a>
 
       <span class="lg:d-none fg-4">/</span>
