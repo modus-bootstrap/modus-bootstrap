@@ -3,7 +3,7 @@ import { getData } from '@libs/data'
 import Example from '@components/shortcodes/Example.astro'
 
 const themeColors = getData('theme-colors')
-const styles = ['solid', 'outline', 'subtle', 'text']
+const styles = ['solid', 'outline', 'text']
 const sizes = [
   { value: 'xs', label: 'Extra small' },
   { value: 'sm', label: 'Small' },
@@ -234,7 +234,7 @@ const rounded = ['default', 'pill', 'square']
       button.classList.add(`theme-${selectedColor}`)
 
       // Remove all style classes
-      button.classList.remove('btn-solid', 'btn-outline', 'btn-subtle', 'btn-text')
+      button.classList.remove('btn-solid', 'btn-outline', 'btn-text')
       // Add selected style
       if (selectedStyle) {
         button.classList.add(`btn-${selectedStyle}`)
