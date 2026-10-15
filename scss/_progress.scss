@@ -12,7 +12,7 @@ $progress-tokens: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $progress-tokens: defaults(
   (
-    --progress-height: 1rem,
+    --progress-height: .5rem,
     --progress-font-size: var(--font-size-sm),
     --progress-bg: var(--bg-2),
     --progress-border-radius: var(--radius-5),
