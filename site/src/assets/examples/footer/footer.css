@@ -7,10 +7,6 @@
   background-color: #1e2124;
 }
 
-.footer-logo-icon {
-  filter: brightness(0) invert(1);
-}
-
 .footer-brand .footer-wordmark {
   letter-spacing: -.02em;
 }
