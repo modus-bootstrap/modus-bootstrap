@@ -14,7 +14,7 @@ $progress-tokens: defaults(
   (
     --progress-height: .5rem,
     --progress-font-size: var(--font-size-sm),
-    --progress-bg: var(--bg-2),
+    --progress-bg: light-dark(#d4d4d5, var(--gray-800)),
     --progress-border-radius: var(--radius-5),
     --progress-box-shadow: var(--box-shadow-inset),
     --progress-bar-color: var(--white),
