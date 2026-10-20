@@ -36,7 +36,8 @@ const imgFiles = [
   'bootstrap-logo-white.svg'
 ]
 const staticJsFiles = [
-  'color-modes.js'
+  'color-modes.js',
+  'color-modes.min.js'
 ]
 
 sh.config.fatal = true
