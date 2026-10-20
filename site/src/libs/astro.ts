@@ -3,6 +3,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
+import { minify } from 'terser'
 import type { AstroIntegration } from 'astro'
 import { getConfig } from './config'
 import { docsDirectory, getDocsFsPath, getDocsPublicFsPath, getDocsStaticFsPath, validateDocsPaths } from './path'
@@ -12,6 +13,9 @@ const staticFileAliases = {
   '/assets/img/favicons/apple-touch-icon.png': '/apple-touch-icon.png',
   '/assets/img/favicons/favicon.ico': '/favicon.ico'
 }
+
+// A list of static scripts (relative to the `static` folder) that also get a minified `.min.js` copy.
+const staticScriptsToMinify = ['assets/js/color-modes.js']
 
 // A list of pages that will be excluded from the sitemap.
 const sitemapExcludes = ['/404', '/docs']
@@ -28,12 +32,13 @@ export function bootstrap(): AstroIntegration[] {
           // Reload the config when the integration is modified.
           addWatchFile(path.join(getDocsFsPath(), 'src/libs/astro.ts'))
         },
-        'astro:config:done': ({ config }) => {
+        'astro:config:done': async ({ config }) => {
           outDir = config.outDir
           cleanPublicDirectory()
           copyBootstrap()
           copyStatic()
           aliasStatic()
+          await minifyStaticScripts()
           copyPagefindIndex()
         },
         'astro:build:done': ({ dir }) => {
@@ -141,6 +146,25 @@ function aliasStatic() {
 
   for (const [aliasSource, aliasDestination] of Object.entries(staticFileAliases)) {
     fs.cpSync(path.join(source, aliasSource), path.join(destination, aliasDestination))
+  }
+}
+
+// Write a minified `.min.js` copy of each static script next to the original. The pages load the minified copy, and
+// the original stays readable for the docs code snippets and the examples download.
+async function minifyStaticScripts() {
+  for (const script of staticScriptsToMinify) {
+    const source = path.join(getDocsPublicFsPath(), script)
+    const { code } = await minify(fs.readFileSync(source, 'utf8'), {
+      compress: { passes: 2 },
+      mangle: true,
+      format: { comments: /^!/ }
+    })
+
+    if (!code) {
+      throw new Error(`Failed to minify "${script}".`)
+    }
+
+    fs.writeFileSync(source.replace(/\.js$/, '.min.js'), `${code}\n`)
   }
 }
 
