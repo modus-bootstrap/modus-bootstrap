@@ -40,16 +40,21 @@ export default () => {
 
 // The Bootstrap JS bundle is an ES module, so the playground loads it with
 // `type="module"`. The docs snippets import from `@bootstrap`; point that
-// import at the CDN bundle and run the snippets once.
-const getSnippetsModule = () => `${snippetsContent
+// import at the CDN bundle and run the snippets once. StackBlitz does not run
+// a separate module file in a static project, so the snippets go inline.
+const getSnippetsScript = () => `<script type="module">
+${snippetsContent
   .replace(/from '@bootstrap'/, `from '${CONFIG.jsBundleCdn}'`)
-  .replace('export default () => {', 'const snippets = () => {')}
-snippets()
-`
+  .replace('export default () => {', 'const snippets = () => {')
+  .trimEnd()
+  .replace(/^(?=.)/gm, '  ')}
+
+  snippets()
+</script>`
 
 const openBootstrapSnippet = (htmlSnippet, addJs, classes) => {
   const scriptTag = addJs ?
-    '<script type="module" src="index.js"></script>' :
+    getSnippetsScript() :
     `<script type="module" src="${CONFIG.jsBundleCdn}"></script>`
 
   const indexHtml = `<!doctype html>
@@ -59,20 +64,19 @@ const openBootstrapSnippet = (htmlSnippet, addJs, classes) => {
     <meta name="viewport" content="width=device-width">
     <link href="${CONFIG.cssCdn}" rel="stylesheet">
     <title>Modus Bootstrap Example</title>
-    ${scriptTag}
   </head>
   <body class="p-3 m-0 border-0 ${classes}">
     <!-- Example Code Start-->
 ${htmlSnippet.trimStart().replace(/^/gm, '    ').replace(/^ {4}$/gm, '').trimEnd()}
     <!-- Example Code End -->
+${scriptTag.replace(/^(?=.)/gm, '    ')}
   </body>
 </html>
 `
 
   const project = {
     files: {
-      'index.html': indexHtml,
-      ...(addJs && { 'index.js': getSnippetsModule() })
+      'index.html': indexHtml
     },
     title: 'Modus Bootstrap Example',
     description: `Example from ${window.location.href}`,
