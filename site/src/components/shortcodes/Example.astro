@@ -93,7 +93,14 @@ const simplifiedMarkup = sourceMarkup
   }
   {
     showMarkup && (
-      <Code code={simplifiedMarkup} lang={lang} file={file} nestedInExample={true} addStackblitzJs={addStackblitzJs}>
+      <Code
+        code={simplifiedMarkup}
+        lang={lang}
+        file={file}
+        nestedInExample={true}
+        addStackblitzJs={addStackblitzJs}
+        showStackblitz={showPreview && lang === 'html'}
+      >
         <slot name="actions" slot="actions" />
       </Code>
     )

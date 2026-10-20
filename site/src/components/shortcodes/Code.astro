@@ -61,6 +61,12 @@ interface Props {
    */
   nestedInExample?: boolean
   /**
+   * If true, shows the "Open in StackBlitz" button in the toolbar.
+   * Only works when nested in an `Example` that renders a preview.
+   * @default false
+   */
+  showStackblitz?: boolean
+  /**
    * If true, hides the highlight toolbar (language label and copy button).
    * @default false
    */
@@ -84,6 +90,7 @@ const {
   lang,
   nestedInExample = false,
   noToolbar = false,
+  showStackblitz = false,
   tabs
 } = Astro.props
 
@@ -156,7 +163,7 @@ const highlightedCode =
   import { initCopyButtons } from '@libs/clipboard'
 
   document.querySelectorAll('.btn-edit').forEach((btn) => {
-    Tooltip.getOrCreateInstance(btn, { title: 'Edit on StackBlitz' })
+    Tooltip.getOrCreateInstance(btn, { title: 'Open in StackBlitz' })
   })
 
   // Handle tab switching
@@ -217,9 +224,14 @@ const highlightedCode =
           )}
           <div class="d-flex ms-auto align-items-center gap-1">
             <slot name="actions" />
-            {addStackblitzJs && (
-              <button type="button" class="btn-edit text-nowrap" title="Try it on StackBlitz">
-                <svg class="bi" aria-hidden="true">
+            {showStackblitz && (
+              <button
+                type="button"
+                class="btn btn-xs btn-icon bg-transparent btn-edit"
+                aria-label="Open in StackBlitz"
+                data-sb-js-snippet={addStackblitzJs ? 'true' : undefined}
+              >
+                <svg class="bi fs-md" aria-hidden="true">
                   <use href="#lightning-charge-fill" />
                 </svg>
               </button>
