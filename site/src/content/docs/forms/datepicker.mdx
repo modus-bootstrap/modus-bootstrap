@@ -44,14 +44,14 @@ Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your
 
 ### With icon
 
-Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar icon alongside the datepicker input. When the input is inside a `.form-adorn` wrapper, the calendar automatically positions relative to the wrapper instead of the input.
+Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar icon alongside the datepicker input. Add `.form-adorn-end` to place the icon on the trailing side. When the input is inside a `.form-adorn` wrapper, the calendar automatically positions relative to the wrapper instead of the input.
 
-<Example code={`<label for="datepickerIconStart" class="form-label">Select date</label>
-  <div class="form-control form-adorn w-12">
-    <div class="form-adorn-icon">
+<Example code={`<label for="datepickerIconEnd" class="form-label">Select date</label>
+  <div class="form-control form-adorn form-adorn-end w-12">
+    <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
     </div>
-    <input type="text" class="form-ghost" id="datepickerIconStart" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
+    <input type="text" class="form-ghost" id="datepickerIconEnd" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
   </div>`} />
 
 ### Min & Max dates
