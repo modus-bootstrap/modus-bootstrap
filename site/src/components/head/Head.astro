@@ -1,6 +1,6 @@
 ---
 import { getConfig } from '@libs/config'
-import { getDocsPath } from '@libs/path'
+import { getDocsPath, getVersionedDocsPath } from '@libs/path'
 import type { Layout } from '@libs/layout'
 import { getLastModified } from '@libs/last-modified'
 import Stylesheet from '@components/head/Stylesheet.astro'
@@ -44,6 +44,7 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width" />
+<link rel="icon" href={getVersionedDocsPath('/favicon.ico')} sizes="32x32" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
 <meta name="description" content={description} />

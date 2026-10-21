@@ -1,3 +1,4 @@
+import crypto from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import { getConfig } from './config'
@@ -17,6 +18,15 @@ export function getDocsPath(docsPath: string): string {
   }
 
   return `/${sanitizedDocsPath}`
+}
+
+// Get a docs path to a static asset with a `?v=` query string based on the asset content hash. This busts the browser
+// cache whenever the asset changes, which matters for long-cached assets like the favicon.
+export function getVersionedDocsPath(docsPath: string): string {
+  const assetPath = path.join(getDocsPublicFsPath(), docsPath)
+  const hash = crypto.createHash('sha256').update(fs.readFileSync(assetPath)).digest('hex').slice(0, 8)
+
+  return `${getDocsPath(docsPath)}?v=${hash}`
 }
 
 // Validate that all the generated docs paths point to an existing page or asset.
@@ -56,8 +66,8 @@ export function getDocsFsPath() {
 }
 
 function sanitizeDocsPathForValidation(docsPath: string) {
-  // Remove the hash part of the path if any.
-  let sanitizedDocsPath = docsPath.split('#')[0]
+  // Remove the hash and query string parts of the path if any.
+  let sanitizedDocsPath = docsPath.split('#')[0].split('?')[0]
 
   // Append the `index.html` part if the path doesn't have an extension.
   if (!sanitizedDocsPath.includes('.')) {
