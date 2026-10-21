@@ -18,8 +18,8 @@ Browserslist joins these lines with OR, not AND. The `>=` lines do not narrow `l
 | Chrome | 130 |
 | Edge | 130 |
 | Firefox | 132 |
-| Safari (macOS) | 18.7 |
-| Safari (iOS and iPadOS) | 18.7 |
+| Safari (macOS) | 17.6 |
+| Safari (iOS and iPadOS) | 17.6 |
 </BsTable>
 
 Alternative browsers built on these engines (Chromium-based browsers like Brave, Opera, or Vivaldi, and browsers using WebKit on iOS) are not explicitly tested, but should be fully supported at equivalent engine versions.
@@ -40,17 +40,17 @@ Our floors also have to last. They apply to the whole v6.x line, and we cannot r
 | Feature | Sets the floor for |
 | --- | --- |
 | `:has()` | Firefox 121—used by forms, button groups, and cards |
-| `content-visibility` | Firefox 125 and Safari 18—the accordion transitions it with `allow-discrete` |
+| `content-visibility` | Firefox 125—the accordion transitions it with `allow-discrete` |
 | `<details name="…">` | Firefox 130—exclusive accordions |
 | `text-wrap: balance` | Chrome 130—shipped as a utility |
-| Unprefixed `backdrop-filter` | Safari and iOS 18—Dialog and Drawer blur their `::backdrop` |
+| iOS 17 | Safari 17.6—iOS 17 is the last release for the iPhone XS and XR, so we keep it rather than follow Safari to 18 |
 </BsTable>
 
 `light-dark()` sets the hard lower bound: Chrome 123, Firefox 120, and Safari 17.5. Below it, our build pipeline lowers `light-dark()` to a custom-property polyfill, and that polyfill breaks `data-bs-theme` dark mode. We will not go below that bound in any release.
 
-Together these targets cover about 88% of global browser usage.
+Together these targets cover about 89% of global browser usage.
 
-Unlike previous major versions, Bootstrap 6 does not ship fallbacks, prefixes, or polyfills for browsers below this floor. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
+Unlike previous major versions, Bootstrap 6 does not ship fallbacks or polyfills for browsers below this floor, and Autoprefixer adds only the prefixes the floor itself still needs, such as `-webkit-backdrop-filter` for Safari 17. Pages will not render correctly in unsupported browsers—most visibly, colors depending on `light-dark()` will not resolve.
 
 ## Modern platform features
 
@@ -65,6 +65,7 @@ The table below lists the platform features v6 relies on and how each behaves at
 | `:has()` | Forms, button groups with menus, and other contextual styling | Fully supported above the floor |
 | Native `<dialog>` | [Dialog]([[docsref:/components/dialog]]), [Drawer]([[docsref:/components/drawer]]) | Fully supported above the floor; focus containment and `inert` behavior come from the browser |
 | `<details name="…">` | [Exclusive accordions]([[docsref:/components/accordion]]) | Fully supported above the floor; in older, unsupported browsers accordion items degrade gracefully to independently openable `<details>` elements |
+| `::details-content`, `content-visibility` | [Accordion]([[docsref:/components/accordion]]) open and close animation | Animates in Safari 18.4 and later; in Safari 17.6 to 18.3 panels open and close at once |
 | CSS scroll snap | [Carousel]([[docsref:/components/carousel]]) | Fully supported above the floor; native touch, wheel, and keyboard scrolling |
 | Logical properties | Spacing, borders, and [RTL]([[docsref:/customize/rtl]]) support throughout | Fully supported above the floor |
 </BsTable>
@@ -77,8 +78,8 @@ The floors clear more of the platform than the components currently use. All of 
 - `@layer`, which our [layer order]([[docsref:/getting-started/approach]]) depends on
 - `:focus-visible` for keyboard-only focus styling
 - Container query units and `subgrid`
-- `content-visibility`, `transition-behavior: allow-discrete`, and `@starting-style`, which together animate `<details>` and `<dialog>` open and closed
-- Unprefixed `backdrop-filter`
+- `transition-behavior: allow-discrete` and `@starting-style`, which animate `<dialog>` open and closed
+- `backdrop-filter`, which Autoprefixer prefixes for Safari 17
 - `text-wrap: balance`
 - Range syntax in media queries, such as `@media (width >= 1024px)`
 
@@ -115,8 +116,8 @@ Generally speaking, Modus Bootstrap supports the latest versions of each major p
 | Platform | Supported browsers |
 | --- | --- |
 | Android | Chrome (last two major versions) |
-| iOS and iPadOS | Safari 18.7+, Chrome (uses WebKit on iOS) |
-| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 18.7+ on macOS |
+| iOS and iPadOS | Safari 17.6+, Chrome (uses WebKit on iOS) |
+| Windows, macOS, Linux | Chrome 130+, Edge 130+, Firefox 132+; Safari 17.6+ on macOS |
 </BsTable>
 
 As with v5, make sure you include the responsive viewport meta tag in your `<head>` for proper rendering on mobile devices:
