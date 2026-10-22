@@ -14,7 +14,7 @@ deps:
 The Bootstrap Datepicker is a wrapper around [Vanilla Calendar Pro](https://vanilla-calendar.pro/) that provides a consistent, accessible date selection experience. It supports light/dark themes, input binding, and flexible configuration via data attributes or JavaScript.
 
 <Example code={`<label for="datepicker1" class="form-label">Datepicker</label>
-  <input type="text" class="form-control w-12" id="datepicker1" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">`} />
+  <input type="text" class="form-control w-12" id="datepicker1" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">`} />
 
 Note that we’re using a width utility of `.w-12` to ensure the input is wide enough to accommodate the date format and imply some affordance for the expected type of input.
 
@@ -36,7 +36,7 @@ Use the [form field]([[docsref:/forms/field]]) component to layout and wrap your
 
 <Example code={`<div class="form-field">
     <label for="datepicker2" class="form-label">Datepicker field</label>
-    <input type="text" class="form-control w-12" id="datepicker2" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
+    <input type="text" class="form-control w-12" id="datepicker2" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
     <div class="form-text">
       We’ll never share your email with anyone else.
     </div>
@@ -51,7 +51,7 @@ Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar 
     <div class="form-adorn-icon" aria-hidden="true">
       <svg class="bi" width="16" height="16"><use href="#calendar-week" /></svg>
     </div>
-    <input type="text" class="form-ghost" id="datepickerIconEnd" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
+    <input type="text" class="form-ghost" id="datepickerIconEnd" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" placeholder="Choose date…">
   </div>`} />
 
 ### Min & Max dates
@@ -59,7 +59,7 @@ Use the [form adorn component]([[docsref:/forms/form-adorn]]) to add a calendar 
 Restrict the selectable date range using `data-bs-date-min` and `data-bs-date-max`.
 
 <Example code={`<label for="datepickerMinMax" class="form-label">Event date (2026 only)</label>
-  <input type="text" class="form-control w-12" id="datepickerMinMax" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">`} />
+  <input type="text" class="form-control w-12" id="datepickerMinMax" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" data-bs-date-min="2026-01-01" data-bs-date-max="2026-12-31" placeholder="Select a date in 2026">`} />
 
 ### Multiple dates
 
@@ -105,15 +105,15 @@ Control where the calendar appears relative to the input with `data-bs-placement
 <Example code={`<div class="d-flex gap-3">
     <div>
       <label for="datepickerLeft" class="form-label">Left aligned</label>
-      <input type="text" class="form-control" id="datepickerLeft" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="left" placeholder="Left">
+      <input type="text" class="form-control" id="datepickerLeft" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="left" placeholder="Left">
     </div>
     <div>
       <label for="datepickerCenter" class="form-label">Center aligned</label>
-      <input type="text" class="form-control" id="datepickerCenter" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="center" placeholder="Center">
+      <input type="text" class="form-control" id="datepickerCenter" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="center" placeholder="Center">
     </div>
     <div>
       <label for="datepickerRight" class="form-label">Right aligned</label>
-      <input type="text" class="form-control" id="datepickerRight" maxlength="8" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="right" placeholder="Right">
+      <input type="text" class="form-control" id="datepickerRight" maxlength="10" autocomplete="off" data-bs-toggle="datepicker" data-bs-placement="right" placeholder="Right">
     </div>
   </div>`} />
 
