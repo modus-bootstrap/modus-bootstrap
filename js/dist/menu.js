@@ -1,6 +1,6 @@
 /*!
-* Bootstrap menu.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
-* Copyright 2011-2026 undefined
+* Bootstrap menu.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import { autoUpdate, computePosition, flip, offset, shift } from "@floating-ui/dom";
@@ -199,12 +199,10 @@ var Menu = class Menu extends BaseComponent {
 	}
 	async _updateFloatingPosition(referenceElement = null) {
 		if (!this._menu) return;
-		if (!referenceElement) {
-			if (this._config.reference === "parent") referenceElement = this._parent;
-			else if (isElement(this._config.reference)) referenceElement = getElement(this._config.reference);
-			else if (typeof this._config.reference === "object") referenceElement = this._config.reference;
-			else referenceElement = this._element;
-		}
+		if (!referenceElement) if (this._config.reference === "parent") referenceElement = this._parent;
+		else if (isElement(this._config.reference)) referenceElement = getElement(this._config.reference);
+		else if (typeof this._config.reference === "object") referenceElement = this._config.reference;
+		else referenceElement = this._element;
 		const placement = this._getPlacement();
 		const middleware = this._getFloatingMiddleware();
 		const floatingConfig = this._getFloatingConfig(placement, middleware);
@@ -238,12 +236,11 @@ var Menu = class Menu extends BaseComponent {
 		const { offset: offsetConfig } = this._config;
 		if (typeof offsetConfig === "string") return offsetConfig.split(",").map((value) => Number.parseInt(value, 10));
 		if (typeof offsetConfig === "function") return ({ placement, rects }) => {
-			const result = offsetConfig({
+			return toFloatingOffset(offsetConfig({
 				placement,
 				reference: rects.reference,
 				floating: rects.floating
-			}, this._element);
-			return toFloatingOffset(result);
+			}, this._element));
 		};
 		return offsetConfig;
 	}

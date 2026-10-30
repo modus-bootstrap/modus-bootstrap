@@ -40,7 +40,6 @@ declare class Chips extends BaseComponent {
         rangeSelect?: boolean;
     }): void;
     focus(): void;
-    dispose(): void;
     protected _getChipElements(): HTMLElement[];
     protected _createInput(): void;
     protected _initializeExistingChips(): void;

@@ -1,12 +1,11 @@
 /*!
-* Bootstrap range.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
-* Copyright 2011-2026 undefined
+* Bootstrap range.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { onDocumentReady } from "./util/component-functions.js";
 //#region js/src/range.ts
 /**
 * --------------------------------------------------------------------------
@@ -162,7 +161,7 @@ var Range = class extends BaseComponent {
 /**
 * Data API implementation
 */
-onDocumentReady(EVENT_DOM_CONTENT_LOADED, () => {
+EventHandler.on(document, EVENT_DOM_CONTENT_LOADED, () => {
 	for (const element of SelectorEngine.find(SELECTOR_RANGE)) Range.getOrCreateInstance(element);
 });
 //#endregion

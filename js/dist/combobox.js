@@ -1,13 +1,12 @@
 /*!
-* Bootstrap combobox.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
-* Copyright 2011-2026 undefined
+* Bootstrap combobox.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
 import Menu from "./menu.js";
-import { onDocumentReady } from "./util/component-functions.js";
 import { getNextActiveElement, isDisabled, isVisible, setAriaAttribute } from "./util/index.js";
 //#region js/src/combobox.ts
 /**
@@ -124,7 +123,6 @@ var Combobox = class extends BaseComponent {
 		}
 		EventHandler.off(this._menu, EVENT_KEY);
 		EventHandler.off(this._toggle, EVENT_KEY);
-		EventHandler.off(this._searchInput, EVENT_KEY);
 		super.dispose();
 	}
 	_isShown() {
@@ -155,24 +153,24 @@ var Combobox = class extends BaseComponent {
 		} else this._showPlaceholder();
 	}
 	_addEventListeners() {
-		EventHandler.on(this._menu, `click${EVENT_KEY}`, SELECTOR_MENU_ITEM, (event) => {
+		EventHandler.on(this._menu, "click", SELECTOR_MENU_ITEM, (event) => {
 			const item = event.target.closest(SELECTOR_MENU_ITEM);
 			if (!item || isDisabled(item)) return;
 			event.preventDefault();
 			event.stopPropagation();
 			this._selectItem(item);
 		});
-		EventHandler.on(this._toggle, `keydown${EVENT_KEY}`, (event) => {
+		EventHandler.on(this._toggle, "keydown", (event) => {
 			this._handleToggleKeydown(event);
 		});
-		EventHandler.on(this._menu, `keydown${EVENT_KEY}`, (event) => {
+		EventHandler.on(this._menu, "keydown", (event) => {
 			this._handleMenuKeydown(event);
 		});
 		if (this._searchInput) {
-			EventHandler.on(this._searchInput, `input${EVENT_KEY}`, () => {
+			EventHandler.on(this._searchInput, "input", () => {
 				this._filterItems(this._searchInput.value);
 			});
-			EventHandler.on(this._searchInput, `keydown${EVENT_KEY}`, (event) => {
+			EventHandler.on(this._searchInput, "keydown", (event) => {
 				if (event.key === ARROW_DOWN_KEY) {
 					event.preventDefault();
 					const items = this._getVisibleItems();
@@ -312,7 +310,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function(e
 	event.preventDefault();
 	Combobox.getOrCreateInstance(this).toggle();
 });
-onDocumentReady("DOMContentLoaded", () => {
+EventHandler.on(document, "DOMContentLoaded", () => {
 	for (const toggle of SelectorEngine.find(SELECTOR_DATA_TOGGLE)) Combobox.getOrCreateInstance(toggle);
 });
 //#endregion

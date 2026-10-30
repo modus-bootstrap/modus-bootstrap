@@ -1,12 +1,11 @@
 /*!
-* Bootstrap otp-input.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
-* Copyright 2011-2026 undefined
+* Bootstrap otp-input.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { onDocumentReady } from "./util/component-functions.js";
 //#region js/src/otp-input.ts
 /**
 * --------------------------------------------------------------------------
@@ -25,6 +24,11 @@ const EVENT_INPUT = `input${EVENT_KEY}`;
 const EVENT_DOMCONTENT_LOADED = `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`;
 const SELECTOR_DATA_OTP = "[data-bs-otp]";
 const SELECTOR_INPUT = "input";
+const SYNC_EVENTS = [
+	"blur",
+	"keyup",
+	"select"
+];
 const CLASS_NAME_INPUT = "otp-input";
 const CLASS_NAME_RENDERED = "otp-rendered";
 const CLASS_NAME_SLOTS = "otp-slots";
@@ -111,8 +115,12 @@ var OtpInput = class extends BaseComponent {
 		this._render();
 	}
 	dispose() {
-		for (const [type, listener] of Object.entries(this._inputListeners ?? {})) EventHandler.off(this._input, type, listener);
+		EventHandler.off(this._input, "input", this._onInput);
+		EventHandler.off(this._input, "beforeinput", this._onBeforeInput);
+		EventHandler.off(this._input, "focus", this._onFocus);
+		EventHandler.off(this._input, "pointerdown", this._onPointerDown);
 		EventHandler.off(document, "selectionchange", this._onSelectionChange);
+		for (const type of SYNC_EVENTS) EventHandler.off(this._input, type, this._onSync);
 		this._slotsContainer?.remove();
 		this._element.classList.remove(CLASS_NAME_RENDERED);
 		super.dispose();
@@ -161,13 +169,10 @@ var OtpInput = class extends BaseComponent {
 		this._element.classList.add(CLASS_NAME_RENDERED);
 	}
 	_addEventListeners() {
-		this._inputListeners = {
-			input: () => this._handleInput(),
-			beforeinput: (event) => this._handleBeforeInput(event),
-			paste: (event) => this._handlePaste(event),
-			pointerdown: (event) => this._handlePointerDown(event)
-		};
-		this._inputListeners.focus = () => {
+		this._onInput = () => this._handleInput();
+		this._onBeforeInput = (event) => this._handleBeforeInput(event);
+		this._onPointerDown = (event) => this._handlePointerDown(event);
+		this._onFocus = () => {
 			if (this._pointerActive) {
 				this._pointerActive = false;
 				this._selectSlot(this._pointerIndex);
@@ -177,38 +182,21 @@ var OtpInput = class extends BaseComponent {
 			this._selectSlot(this._firstEmptyIndex());
 			this._render();
 		};
-		const onSync = () => this._render();
+		this._onSync = () => this._render();
 		this._onSelectionChange = () => {
 			if (document.activeElement === this._input) this._render();
 		};
-		for (const type of [
-			"blur",
-			"keyup",
-			"select"
-		]) this._inputListeners[type] = onSync;
-		for (const [type, listener] of Object.entries(this._inputListeners)) EventHandler.on(this._input, type, listener);
+		EventHandler.on(this._input, "input", this._onInput);
+		EventHandler.on(this._input, "beforeinput", this._onBeforeInput);
+		EventHandler.on(this._input, "focus", this._onFocus);
+		EventHandler.on(this._input, "pointerdown", this._onPointerDown);
 		EventHandler.on(document, "selectionchange", this._onSelectionChange);
+		for (const type of SYNC_EVENTS) EventHandler.on(this._input, type, this._onSync);
 	}
 	_handleInput() {
 		const sanitized = this._sanitize(this._input.value);
 		if (sanitized !== this._input.value) this._input.value = sanitized;
 		if (document.activeElement === this._input) this._selectSlot(this._firstEmptyIndex());
-		this._afterValueChange();
-	}
-	_handlePaste(event) {
-		const pastedValue = event.clipboardData?.getData("text");
-		if (!pastedValue || this._input.readOnly) return;
-		const sanitized = this._sanitize(pastedValue);
-		let start = this._input.selectionStart ?? this._input.value.length;
-		let end = this._input.selectionEnd ?? start;
-		if (sanitized.length === this._length) {
-			start = 0;
-			end = this._input.value.length;
-		}
-		const inserted = sanitized.slice(0, this._length - this._input.value.length + end - start);
-		event.preventDefault();
-		if (!inserted) return;
-		this._input.setRangeText(inserted, start, end, "end");
 		this._afterValueChange();
 	}
 	_handleBeforeInput(event) {
@@ -294,7 +282,7 @@ var OtpInput = class extends BaseComponent {
 /**
 * Data API implementation
 */
-onDocumentReady(EVENT_DOMCONTENT_LOADED, () => {
+EventHandler.on(document, EVENT_DOMCONTENT_LOADED, () => {
 	for (const element of SelectorEngine.find(SELECTOR_DATA_OTP)) OtpInput.getOrCreateInstance(element);
 });
 //#endregion

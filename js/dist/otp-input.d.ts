@@ -29,7 +29,11 @@ declare class OtpInput extends BaseComponent {
     protected _pointerActive: boolean;
     protected _pointerIndex: number;
     protected _slotsContainer: HTMLElement;
-    protected _inputListeners: Record<string, (event: BootstrapEvent) => void>;
+    protected _onInput: () => void;
+    protected _onBeforeInput: (event: BootstrapEvent) => void;
+    protected _onFocus: () => void;
+    protected _onPointerDown: (event: BootstrapEvent) => void;
+    protected _onSync: () => void;
     protected _onSelectionChange: () => void;
     constructor(element?: string | Element | null, config?: Partial<OtpInputConfig> | null);
     static get Default(): OtpInputConfig;
@@ -45,7 +49,6 @@ declare class OtpInput extends BaseComponent {
     protected _renderSlots(): void;
     protected _addEventListeners(): void;
     protected _handleInput(): void;
-    protected _handlePaste(event: BootstrapEvent): void;
     protected _handleBeforeInput(event: BootstrapEvent): void;
     protected _handlePointerDown(event: BootstrapEvent): void;
     protected _slotIndexFromPoint(x: number): number | null;

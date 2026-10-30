@@ -1,12 +1,11 @@
 /*!
-* Bootstrap strength.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
-* Copyright 2011-2026 undefined
+* Bootstrap strength.js v6.0.0-alpha1 (https://getbootstrap.com/)
+* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";
 import EventHandler from "./dom/event-handler.js";
 import SelectorEngine from "./dom/selector-engine.js";
-import { onDocumentReady } from "./util/component-functions.js";
 //#region js/src/strength.ts
 /**
 * --------------------------------------------------------------------------
@@ -92,18 +91,14 @@ var Strength = class extends BaseComponent {
 	evaluate() {
 		this._evaluate();
 	}
-	dispose() {
-		EventHandler.off(this._input, EVENT_KEY);
-		super.dispose();
-	}
 	_getInput() {
 		if (this._config.input) return typeof this._config.input === "string" ? SelectorEngine.findOne(this._config.input) : this._config.input;
 		const parent = this._element.parentElement;
 		return SelectorEngine.findOne("input[type=\"password\"]", parent);
 	}
 	_addEventListeners() {
-		EventHandler.on(this._input, `input${EVENT_KEY}`, () => this._evaluate());
-		EventHandler.on(this._input, `change${EVENT_KEY}`, () => this._evaluate());
+		EventHandler.on(this._input, "input", () => this._evaluate());
+		EventHandler.on(this._input, "change", () => this._evaluate());
 	}
 	_evaluate() {
 		const password = this._input.value;
@@ -148,21 +143,25 @@ var Strength = class extends BaseComponent {
 		const strengthIndex = strength ? STRENGTH_LEVELS.indexOf(strength) : -1;
 		for (const [index, segment] of this._segments.entries()) if (index <= strengthIndex) segment.classList.add("active");
 		else segment.classList.remove("active");
-		if (this._textElement) {
-			if (strength && this._config.messages[strength]) {
-				this._textElement.textContent = this._config.messages[strength];
-				this._textElement.dataset.bsStrength = strength;
-			} else {
-				this._textElement.textContent = "";
-				delete this._textElement.dataset.bsStrength;
-			}
+		if (this._textElement) if (strength && this._config.messages[strength]) {
+			this._textElement.textContent = this._config.messages[strength];
+			this._textElement.dataset.bsStrength = strength;
+			this._textElement.style.setProperty("--strength-color", `var(--${{
+				weak: "danger",
+				fair: "warning",
+				good: "info",
+				strong: "success"
+			}[strength]}-text)`);
+		} else {
+			this._textElement.textContent = "";
+			delete this._textElement.dataset.bsStrength;
 		}
 	}
 };
 /**
 * Data API implementation
 */
-onDocumentReady(`DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
+EventHandler.on(document, `DOMContentLoaded${EVENT_KEY}${DATA_API_KEY}`, () => {
 	for (const element of SelectorEngine.find(SELECTOR_DATA_STRENGTH)) Strength.getOrCreateInstance(element);
 });
 //#endregion

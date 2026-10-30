@@ -28,7 +28,6 @@ declare class Strength extends BaseComponent {
     static get NAME(): string;
     getStrength(): string | null;
     evaluate(): void;
-    dispose(): void;
     protected _getInput(): HTMLInputElement | null;
     protected _addEventListeners(): void;
     protected _evaluate(): void;
