@@ -133,24 +133,25 @@ Modus changes are layered on top of the Bootstrap defaults. They live in `scss/_
 
 ## Colors
 
-The palette uses the Trimble Modus brand colors. Each theme color also has a generated scale from `025` to `975` in `scss/_colors.scss`.
+The palette uses the Trimble Modus brand colors. The Modus name of each color is in brackets. The names match the `--modus-wc-color-*` tokens in Modus Web Components. Each theme color also has a generated scale from `025` to `975` in `scss/_colors.scss`.
 
-- **Primary (#0063a3):** Trimble Blue. Use it for primary actions, links, checked controls, and switches.
-- **Primary light (#217cbb):** The `--bs-blue-500` value inside `.theme-primary`.
-- **Primary pale (#dcedf9):** Subtle backgrounds, such as the light-mode primary alert and info themes.
-- **Success (#1e8a44) and success dark (#006638):** Positive status. Use the dark value for filled backgrounds and borders.
-- **Danger (#da212c):** Errors and destructive actions.
-- **Warning (#e49325):** Caution. The warning border uses #f08c00. Use dark text on warning backgrounds.
-- **Neutral (#6a6e79):** Default border color for controls.
-- **Neutral light (#90939f):** Form control, check, and radio borders in light mode.
-- **Neutral dark (#464b52):** Form control and check borders in dark mode.
-- **Surface (#ffffff) and on-surface (#252a2e):** Page background and body text in light mode. The framework sets body text with `--bs-fg-body`.
+- **Primary (#0063a3) [Trimble Blue]:** Use it for primary actions, links, checked controls, and switches.
+- **Primary light (#217cbb) [Blue Light]:** The `--bs-blue-500` value inside `.theme-primary`.
+- **Primary pale (#dcedf9) [Blue Pale]:** Subtle backgrounds, such as the light-mode primary alert and info themes.
+- **Primary dark (#004f83) [Info Blue]:** The info theme border.
+- **Success (#1e8a44) [Green] and success dark (#006638) [Green Dark]:** Positive status. Use the dark value for filled backgrounds and borders.
+- **Danger (#da212c) [Red]:** Errors and destructive actions.
+- **Warning (#e49325) [Yellow Dark]:** Caution. Use dark text on warning backgrounds. The warning border uses #f08c00. That value is not a Modus color.
+- **Neutral (#6a6e79) [Gray 6]:** Default border color for controls.
+- **Neutral light (#90939f) [Gray 4]:** Form control, check, and radio borders in light mode.
+- **Neutral dark (#464b52) [Gray 8]:** Form control and check borders in dark mode.
+- **Surface (#ffffff) [White] and on-surface (#252a2e) [Trimble Gray]:** Page background and body text in light mode. The framework sets body text with `--bs-fg-body`.
 
 Use the semantic theme classes, such as `.theme-primary` and `.theme-danger`. Do not hard-code hex values in components. Use the CSS custom properties, such as `--bs-primary-bg`.
 
 ## Typography
 
-The Modus brand font is Open Sans. The docs site loads Open Sans in weights 300, 400, 600, and 700. The framework CSS uses the native system font stack (`--bs-body-font-family`). Set Open Sans on that token when your product loads the font.
+The Modus brand font is Open Sans. Modus Web Components uses the stack `"Open Sans", "Segoe UI", "Noto Sans", "San Francisco", Helvetica, Arial, sans-serif`. The docs site loads Open Sans in weights 300, 400, 600, and 700. The framework CSS uses the native system font stack (`--bs-body-font-family`). Set Open Sans on that token when your product loads the font.
 
 - Body text is 1rem with a 1.5 line height.
 - Buttons and form labels use weight 600 (semibold).
