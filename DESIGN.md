@@ -101,7 +101,7 @@ components:
   alert-primary:
     backgroundColor: "{colors.primary-pale}"
     textColor: "{colors.on-surface}"
-    rounded: "{rounded.lg}"
+    rounded: "{rounded.md}"
   card:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
@@ -181,8 +181,7 @@ Modus is mostly flat.
 
 Corners are slightly rounded.
 
-- Buttons and inputs use `--bs-radius-5` (8px).
-- Alerts use `--bs-radius-6` (10px).
+- Buttons, inputs, and alerts use `--bs-radius-5` (8px).
 - Cards and badges use `--bs-radius-7` (12px).
 - Date picker days, avatars, and similar round items use `50%`.
 - Pills use `--bs-radius-pill`.
@@ -195,7 +194,7 @@ The YAML front matter lists the main component tokens. Component styles live in 
 - **Buttons:** Semibold label, 8px radius, filled theme colors. Primary is Trimble Blue with white text.
 - **Inputs, selects, checks, and radios:** White background, neutral border, 8px radius. Checked state uses Trimble Blue.
 - **Switch:** The checked track uses Trimble Blue (#0063a3).
-- **Alerts:** Pale tinted background, theme-colored border, 10px radius.
+- **Alerts:** Pale tinted background, theme-colored border, 8px radius.
 - **Cards:** White surface, subtle border, 12px radius.
 - **Badges:** Small semibold text, 12px radius.
 
