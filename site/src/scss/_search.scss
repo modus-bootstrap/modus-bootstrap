@@ -21,9 +21,15 @@
     margin-inline-start: -100px;
   }
 
+  // 20px wider on large screens and up
+  @include media-breakpoint-up(lg) {
+    width: 260px;
+    margin-inline-start: -110px;
+  }
+
   @include media-breakpoint-up(xl) {
-    width: 280px;
-    margin-inline-start: -140px;
+    width: 300px;
+    margin-inline-start: -150px;
   }
 }
 
@@ -58,11 +64,12 @@
     width: 100%;
     padding: .375rem .5rem .375rem .75rem;
     background-color: var(--bs-bg-1);
-    border: var(--bs-border-width-keyline) solid var(--bs-border-color);
+    // gray-500 gives at least 3:1 non-text contrast (WCAG 1.4.11) against the
+    // trigger and navbar backgrounds in light and dark modes
+    border: var(--bs-border-width-keyline) solid var(--bs-gray-500);
 
     &:hover {
       background-color: var(--bs-bg-2);
-      border-color: var(--bs-border-color);
     }
   }
 }
