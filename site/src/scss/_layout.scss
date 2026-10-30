@@ -23,6 +23,8 @@
 
   .bd-sidebar {
     grid-area: sidebar;
+    min-width: 200px;
+    overflow-x: hidden;
   }
 
   .bd-main {
