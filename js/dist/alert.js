@@ -1,6 +1,6 @@
 /*!
-* Bootstrap alert.js v6.0.0-alpha1 (https://getbootstrap.com/)
-* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+* Bootstrap alert.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
+* Copyright 2011-2026 undefined
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import BaseComponent from "./base-component.js";

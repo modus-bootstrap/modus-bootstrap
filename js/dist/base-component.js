@@ -1,6 +1,6 @@
 /*!
-* Bootstrap base-component.js v6.0.0-alpha1 (https://getbootstrap.com/)
-* Copyright 2011-2026 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+* Bootstrap base-component.js v6.0.0-alpha.1 (https://modus-bootstrap.com)
+* Copyright 2011-2026 undefined
 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 */
 import Data from "./dom/data.js";
@@ -17,7 +17,7 @@ import { executeAfterTransition, getElement } from "./util/index.js";
 /**
 * Constants
 */
-const VERSION = "6.0.0-alpha1";
+const VERSION = "6.0.0-alpha.1";
 /**
 * Class definition
 */
