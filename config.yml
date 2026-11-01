@@ -31,7 +31,7 @@ download:
   dist_examples:        "https://github.com/modus-bootstrap/modus-bootstrap/releases/download/v6.0.0-alpha.1/bootstrap-6.0.0-alpha.1-examples.zip"
 
 cdn:
-  # See https://www.srihash.org for info on how to generate the hashes
+  # See https://srihash.org for info on how to generate the hashes
   css:                  "https://cdn.jsdelivr.net/npm/modus-bootstrap@6.0.0-alpha.1/dist/css/modus-bootstrap.min.css"
   css_hash:             "sha384-TDmpFhAO5TwSQwPF95I/odgwpTUuv0aaVm9/0fL7b+kKe7hFBp/+9cBCMkydgGOi"
   js:                   "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.min.js"
