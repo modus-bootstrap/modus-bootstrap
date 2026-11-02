@@ -44,6 +44,10 @@
   --bs-alert-border-color: #0063a3;
 }
 
+.alert.theme-danger {
+  --bs-theme-border: #ab1f26;
+}
+
 .check,
 .radio {
   --bs-radio-border-color: #90939f;

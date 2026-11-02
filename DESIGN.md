@@ -141,6 +141,7 @@ The palette uses the Trimble Modus brand colors. The Modus name of each color is
 - **Primary dark (#004f83) [Info Blue]:** The info theme border.
 - **Success (#1e8a44) [Green] and success dark (#006638) [Green Dark]:** Positive status. Use the dark value for filled backgrounds and borders.
 - **Danger (#da212c) [Red]:** Errors and destructive actions.
+- **Danger dark (#ab1f26) [Red Dark]:** The danger alert border in light and dark mode.
 - **Warning (#e49325) [Yellow Dark]:** Caution. Use dark text on warning backgrounds. The warning border uses #f08c00. That value is not a Modus color.
 - **Neutral (#6a6e79) [Gray 6]:** Default border color for controls.
 - **Neutral light (#90939f) [Gray 4]:** Form control, check, and radio borders in light mode.
