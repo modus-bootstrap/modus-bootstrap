@@ -57,7 +57,7 @@ const ScssProd = import.meta.env.PROD ? await import('@components/head/ScssProd.
 
 <title>{pageTitle}</title>
 
-<meta name="robots" content={robots ?? 'noindex'} />
+{robots && <meta name="robots" content={robots} />}
 
 {getConfig().site_verification.google && <meta name="google-site-verification" content={getConfig().site_verification.google} />}
 {getConfig().site_verification.bing && <meta name="msvalidate.01" content={getConfig().site_verification.bing} />}
