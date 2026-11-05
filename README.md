@@ -1,9 +1,5 @@
 # Modus Bootstrap
 
-## Bootstrap 6
-
-Our default branch is for development of our Bootstrap 6 release. Head to the [`v5-dev` branch](https://github.com/twbs/bootstrap/tree/v5-dev) to view the readme, documentation, and source code for Bootstrap 5.
-
 ## Quick start
 
 Several quick start options are available:
@@ -19,8 +15,6 @@ Read the [Getting started page](https://modus-bootstrap.com/getting-started/intr
 ## Status
 
 [![npm version](https://img.shields.io/npm/v/modus-bootstrap?logo=npm&logoColor=fff)](https://www.npmjs.com/package/modus-bootstrap)
-[![CSS gzip size](https://img.badgesize.io/modus-bootstrap/modus-bootstrap/main/dist/css/modus-bootstrap.min.css?compression=gzip&label=CSS%20gzip%20size)](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/dist/css/modus-bootstrap.min.css)
-[![CSS Brotli size](https://img.badgesize.io/modus-bootstrap/modus-bootstrap/main/dist/css/modus-bootstrap.min.css?compression=brotli&label=CSS%20Brotli%20size)](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/dist/css/modus-bootstrap.min.css)
 ![Open Source Security Foundation Scorecard](https://img.shields.io/ossf-scorecard/github.com/modus-bootstrap/modus-bootstrap)
 
 ## What’s included
