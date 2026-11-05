@@ -63,6 +63,10 @@ $alert-tokens: defaults(
     margin-bottom: 0;
   }
 
+  .alert .btn-close {
+    color: inherit;
+  }
+
   .alert-heading {
     // Modus Custom: match the alert body text size, but use bold weight
     font-size: inherit;
