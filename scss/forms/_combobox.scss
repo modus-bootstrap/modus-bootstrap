@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    min-width: 0;
     padding-inline-end: var(--control-padding-x);
     text-align: start;
     cursor: pointer;
@@ -18,22 +19,21 @@
     &:disabled,
     &.disabled {
       cursor: not-allowed;
-      opacity: .65;
+      opacity: var(--control-disabled-opacity);
     }
   }
 
   .combobox-value {
-    display: flex;
+    display: block;
     flex: 1;
-    gap: .5rem;
-    align-items: center;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .combobox-placeholder {
-    color: color-mix(in oklch, currentcolor 65%, transparent);
+    color: var(--control-placeholder-color);
   }
 
   .combobox-caret {
@@ -52,7 +52,7 @@
 
   .combobox-search {
     position: sticky;
-    top: 0;
+    inset-block-start: calc(-1 * var(--menu-padding-y, .25rem));
     z-index: 1;
     padding: var(--menu-padding-x, .25rem);
     background-color: var(--menu-bg, var(--bg-body));

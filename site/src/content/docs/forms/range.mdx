@@ -86,6 +86,8 @@ Wrap the `.form-range` in a `.form-field` to pair it with a label and descriptio
 
 Every `.form-range` is initialized automatically on page load—the component is JavaScript-driven, so the fill won’t render without the plugin.
 
+When compiling Sass yourself, apply the `bs-` prefix with `postcss-prefix-custom-properties`. The Range plugin writes `--bs-range-fill`, which must match your compiled CSS. See [CSS variables]([[docsref:/getting-started/css-variables]]).
+
 ### Via data attributes
 
 <BsTable>
