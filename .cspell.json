@@ -1,6 +1,7 @@
 {
   "version": "0.2",
   "words": [
+    "activedescendant",
     "affordance",
     "allowfullscreen",
     "Analyser",
@@ -139,6 +140,7 @@
     "monospace",
     "mouseleave",
     "msvalidate",
+    "multiselectable",
     "navbars",
     "navoverflow",
     "navs",

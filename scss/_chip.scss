@@ -63,7 +63,7 @@ $chip-tokens: defaults(
 
     &:is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]),
     :is(:any-link, button, [role="button"], [role="link"]):not(:disabled, .disabled, [aria-disabled="true"]) &,
-    .chip-input > & {
+    .combobox-control > & {
       cursor: pointer;
 
       &:hover {
