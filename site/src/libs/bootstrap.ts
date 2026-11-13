@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'astro/types'
-import { getConfig } from '@libs/config'
 import { getDocsPath } from '@libs/path'
 
 export function getVersionedBsCssProps() {
@@ -20,10 +19,17 @@ export function getVersionedBsCssProps() {
 }
 
 export function getVersionedBsJsProps() {
-  // Load Bootstrap's JS from the upstream `bootstrap` package on jsDelivr.
+  let bsJsScriptSrc = '/dist/js/bootstrap.bundle'
+
+  if (import.meta.env.PROD) {
+    bsJsScriptSrc = `${bsJsScriptSrc}.min`
+  }
+
+  bsJsScriptSrc = `${bsJsScriptSrc}.js`
+
   const bsJsLinkProps: HTMLAttributes<'script'> = {
     type: 'module',
-    src: getConfig().cdn.js_bundle
+    src: getDocsPath(bsJsScriptSrc)
   }
 
   return bsJsLinkProps
