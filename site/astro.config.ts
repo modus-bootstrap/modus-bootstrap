@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'astro/config'
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
 import { unified } from '@astrojs/markdown-remark'
@@ -14,11 +15,10 @@ import { rehypeBsTable } from './src/libs/rehype'
 import { remarkBsConfig, remarkBsDocsref } from './src/libs/remark'
 import { stackblitzPlugin } from './src/plugins/stackblitz-plugin'
 
-// Resolve `@bootstrap` to the Bootstrap bundle on jsDelivr. Vite keeps the URL
-// as an external import, so every docs script imports from a single module
-// instance (no duplicated component registries). The `@bootstrap` alias in
-// `tsconfig.json` still points at the local bundle for types.
-const bootstrapBundlePath = getConfig().cdn.js_bundle
+// Resolve `@bootstrap` to the same on-disk Bootstrap bundle the docs ship, so
+// every docs script imports from a single module instance (no duplicated
+// component registries). Mirrors the `@bootstrap` alias in `tsconfig.json`.
+const bootstrapBundlePath = fileURLToPath(new URL('../dist/js/bootstrap.bundle.js', import.meta.url))
 
 const isDev = process.env.NODE_ENV === 'development'
 
