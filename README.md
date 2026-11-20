@@ -3,7 +3,11 @@
 Modus Bootstrap is [Bootstrap v6](https://getbootstrap.com/) themed to the Trimble Modus design system. It gives you Bootstrap’s grid, components, and utilities with Modus colors, typography, spacing, and component styles.
 
 [![npm version](https://img.shields.io/npm/v/modus-bootstrap?logo=npm&logoColor=fff)](https://www.npmjs.com/package/modus-bootstrap)
-![Open Source Security Foundation Scorecard](https://img.shields.io/ossf-scorecard/github.com/modus-bootstrap/modus-bootstrap)
+[![npm downloads](https://img.shields.io/npm/dm/modus-bootstrap?logo=npm&logoColor=fff)](https://www.npmjs.com/package/modus-bootstrap)
+[![jsDelivr hits for the minified CSS](https://data.jsdelivr.com/v1/package/npm/modus-bootstrap/badge?style=rounded)](https://www.jsdelivr.com/package/npm/modus-bootstrap?path=dist/css)
+[![Super-Linter](https://github.com/modus-bootstrap/modus-bootstrap/actions/workflows/super-linter.yml/badge.svg?branch=main)](https://github.com/modus-bootstrap/modus-bootstrap/actions/workflows/super-linter.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/modus-bootstrap/modus-bootstrap/badge)](https://scorecard.dev/viewer/?uri=github.com/modus-bootstrap/modus-bootstrap)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 > [!NOTE]
 > Modus Bootstrap is in alpha. Expect breaking changes before the stable release.
