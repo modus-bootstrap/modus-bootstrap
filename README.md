@@ -44,7 +44,7 @@ Modus Bootstrap does not change Bootstrap’s JavaScript. Use the Bootstrap v6 J
 
 ## Design rules
 
-[DESIGN.md](DESIGN.md) lists the Modus visual rules: colors, typography, spacing, shapes, and components. [`_variables-modus.scss`](_variables-modus.scss) holds the Modus Sass variables.
+[DESIGN.md](DESIGN.md) lists the Modus visual rules: colors, typography, spacing, shapes, and components.
 
 ## Documentation
 
