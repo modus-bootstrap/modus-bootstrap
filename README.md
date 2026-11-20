@@ -1,115 +1,74 @@
 # Modus Bootstrap
 
-## Quick start
-
-Several quick start options are available:
-
-- [Download the latest source](https://github.com/modus-bootstrap/modus-bootstrap/archive/refs/heads/main.zip)
-- Clone the repo: `git clone https://github.com/modus-bootstrap/modus-bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install modus-bootstrap@6.0.0-alpha.1`
-- Install with [yarn](https://yarnpkg.com/): `yarn add modus-bootstrap@6.0.0-alpha.1`
-- Install with [Bun](https://bun.sh/): `bun add modus-bootstrap@6.0.0-alpha.1`
-
-Read the [Getting started page](https://modus-bootstrap.com/getting-started/introduction/) for information on the framework contents, templates, examples, and more.
-
-## Status
+Modus Bootstrap is [Bootstrap v6](https://getbootstrap.com/) themed to the Trimble Modus design system. It gives you Bootstrap’s grid, components, and utilities with Modus colors, typography, spacing, and component styles.
 
 [![npm version](https://img.shields.io/npm/v/modus-bootstrap?logo=npm&logoColor=fff)](https://www.npmjs.com/package/modus-bootstrap)
 ![Open Source Security Foundation Scorecard](https://img.shields.io/ossf-scorecard/github.com/modus-bootstrap/modus-bootstrap)
 
+> [!NOTE]
+> Modus Bootstrap is in alpha. Expect breaking changes before the stable release.
+
+## Quick start
+
+- Install with npm: `npm install modus-bootstrap@6.0.0-alpha.1`
+- Install with pnpm: `pnpm add modus-bootstrap@6.0.0-alpha.1`
+- Install with Yarn: `yarn add modus-bootstrap@6.0.0-alpha.1`
+- Install with Bun: `bun add modus-bootstrap@6.0.0-alpha.1`
+- Clone the repo: `git clone https://github.com/modus-bootstrap/modus-bootstrap.git`
+
+Or load the compiled CSS from the CDN:
+
+```html
+<link href="https://cdn.jsdelivr.net/npm/modus-bootstrap@6.0.0-alpha.1/dist/css/modus-bootstrap.min.css" rel="stylesheet">
+```
+
+Read the [install guide](https://modus-bootstrap.com/getting-started/install/) for CDN, JavaScript, and Sass setup.
+
 ## What’s included
 
-Within the download you’ll find the following directories and files, logically grouping common assets and providing both compiled and minified variations.
+The npm package contains the CSS and the Sass source:
 
-<details>
-  <summary>Download contents</summary>
+```text
+modus-bootstrap/
+├── dist/css/
+│   ├── modus-bootstrap.css            # Full framework
+│   ├── modus-bootstrap-grid.css       # Grid only
+│   ├── modus-bootstrap-reboot.css     # Reboot only
+│   ├── modus-bootstrap-utilities.css  # Utilities only
+│   └── *.min.css, *.map               # Minified files and source maps
+├── scss/                              # Sass source
+└── .browserslistrc
+```
 
-  ```text
-  bootstrap/
-  ├── css/
-  │   ├── modus-bootstrap-grid.css
-  │   ├── modus-bootstrap-grid.css.map
-  │   ├── modus-bootstrap-grid.min.css
-  │   ├── modus-bootstrap-grid.min.css.map
-  │   ├── modus-bootstrap-reboot.css
-  │   ├── modus-bootstrap-reboot.css.map
-  │   ├── modus-bootstrap-reboot.min.css
-  │   ├── modus-bootstrap-reboot.min.css.map
-  │   ├── modus-bootstrap-utilities.css
-  │   ├── modus-bootstrap-utilities.css.map
-  │   ├── modus-bootstrap-utilities.min.css
-  │   ├── modus-bootstrap-utilities.min.css.map
-  │   ├── modus-bootstrap.css
-  │   ├── modus-bootstrap.css.map
-  │   ├── modus-bootstrap.min.css
-  │   └── modus-bootstrap.min.css.map
-  └── js/
-      ├── bootstrap.bundle.js
-      ├── bootstrap.bundle.js.map
-      ├── bootstrap.bundle.min.js
-      ├── bootstrap.bundle.min.js.map
-      ├── bootstrap.js
-      ├── bootstrap.js.map
-      ├── bootstrap.min.js
-      └── bootstrap.min.js.map
-  ```
-</details>
+Modus Bootstrap does not change Bootstrap’s JavaScript. Use the Bootstrap v6 JavaScript files with the Modus Bootstrap CSS. The install guide shows the CDN links. All CSS files support LTR and RTL layouts. Set `dir="rtl"` on the `<html>` element for RTL.
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). [Source maps](https://web.dev/articles/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Floating UI](https://floating-ui.com/) and [Vanilla Calendar Pro](https://vanilla-calendar.pro/). All CSS files work for both LTR and RTL layouts thanks to logical properties—simply set `dir="rtl"` on your HTML element.
+## Design rules
 
-## Bugs and feature requests
-
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/.github/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/modus-bootstrap/modus-bootstrap/issues/new/choose).
+[DESIGN.md](DESIGN.md) lists the Modus visual rules: colors, typography, spacing, shapes, and components. [`_variables-modus.scss`](_variables-modus.scss) holds the Modus Sass variables.
 
 ## Documentation
 
-Bootstrap’s documentation, included in this repo in the root directory, is built with [Astro](https://astro.build/) and publicly hosted at <https://modus-bootstrap.com/>. The docs may also be run locally.
+The docs are at <https://modus-bootstrap.com/>. The docs source is in `site/`. The site uses [Astro](https://astro.build/). [Pagefind](https://pagefind.app/) powers the search.
 
-Documentation search is powered by [Pagefind](https://pagefind.app/).
+To run the docs locally:
 
-### Running documentation locally
+1. Run `npm install` to install the dependencies.
+2. Run `npm run dist` to build the CSS and JavaScript.
+3. Run `npm start` to watch the source files and start the docs server.
+4. Open <http://localhost:9001> in your browser.
 
-1. Run `npm install` to install the Node.js dependencies, including Astro (the site builder).
-2. Run `npm run test` (or a specific npm script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-3. From the root `/modus-bootstrap` directory, run `npm run docs-serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and voilà.
+## Bugs and feature requests
 
-Learn more about using Astro by reading its [documentation](https://docs.astro.build/en/getting-started/).
-
-### Documentation for previous releases
-
-You can find all our previous releases docs on <https://getbootstrap.com/docs/versions/>.
-
-[Previous releases](https://github.com/modus-bootstrap/modus-bootstrap/releases) and their documentation are also available for download.
+Search the [existing issues](https://github.com/modus-bootstrap/modus-bootstrap/issues) first. If your issue is new, [open an issue](https://github.com/modus-bootstrap/modus-bootstrap/issues/new/choose).
 
 ## Contributing
 
-Please read through our [contributing guidelines](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/.github/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
-
-Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/modus-bootstrap/modus-bootstrap/tree/main/js/tests). All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
-
-Editor preferences are available in the [editor config](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
+Read the [contributing guidelines](.github/CONTRIBUTING.md) before you open a pull request. If you change JavaScript, add [unit tests](js/tests). Run `npm test` to run the full test suite.
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we adhere to those rules whenever possible.
-
-See [the Releases section of our GitHub project](https://github.com/modus-bootstrap/modus-bootstrap/releases) for changelogs for each release version of Bootstrap.
-
-## Thanks
-
-<a href="https://www.browserstack.com/">
-  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack" width="192" height="42">
-</a>
-
-Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
-
-<a href="https://www.netlify.com/">
-  <img src="https://www.netlify.com/v3/img/components/full-logo-light.svg" alt="Netlify" width="147" height="40">
-</a>
-
-Thanks to [Netlify](https://www.netlify.com/) for providing us with Deploy Previews!
+Modus Bootstrap follows [Semantic Versioning](https://semver.org/). Its version matches the Bootstrap version it is based on. See the [releases](https://github.com/modus-bootstrap/modus-bootstrap/releases) for the changelog of each version.
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2026 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](https://github.com/modus-bootstrap/modus-bootstrap/blob/main/LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
+Modus Bootstrap is a fork of Bootstrap. Bootstrap code and documentation copyright 2011-2026 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors). Code released under the [MIT License](LICENSE). Docs released under [Creative Commons](https://creativecommons.org/licenses/by/3.0/).
