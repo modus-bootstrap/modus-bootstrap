@@ -15,11 +15,11 @@
 last 2 major versions
 not dead
 
-Chrome >= 130
-Edge >= 130
-Firefox >= 132
-iOS >= 17.6
-Safari >= 17.6
+Chrome >= 138
+Edge >= 138
+Firefox >= 147
+iOS >= 18.5
+Safari >= 18.5
 
 not and_uc > 0
 not and_qq > 0

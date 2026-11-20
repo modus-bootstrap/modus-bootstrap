@@ -24,6 +24,9 @@ $datepicker-tokens: defaults(
     --datepicker-min-width: 280px,
     --datepicker-zindex: var(--z-menu),
     --datepicker-header-font-weight: 600,
+    --datepicker-header-bg: var(--primary-bg),
+    --datepicker-header-color: var(--primary-contrast),
+    --datepicker-header-hover-bg: color-mix(in srgb, var(--primary-contrast) 15%, transparent),
     --datepicker-weekday-color: var(--fg-3),
     --datepicker-day-hover-bg: var(--bg-1),
     --datepicker-day-selected-bg: var(--primary-bg),
@@ -88,6 +91,11 @@ $datepicker-tokens: defaults(
     padding: 0;
     border: 0;
     box-shadow: none;
+
+    [data-vc="header"] {
+      margin-block-start: 0;
+      margin-inline: 0;
+    }
   }
 
   [data-vc-position="bottom"] {
@@ -103,7 +111,7 @@ $datepicker-tokens: defaults(
     display: block;
     width: 2rem;
     height: 2rem;
-    color: var(--datepicker-color);
+    color: var(--datepicker-header-color);
     pointer-events: auto;
     cursor: pointer;
     background-color: transparent;
@@ -114,12 +122,12 @@ $datepicker-tokens: defaults(
       position: absolute;
       inset: .25rem;
       content: "";
-      background-color: var(--datepicker-color);
+      background-color: var(--datepicker-header-color);
       @include mask-icon(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 16c-.3 0-.5-.1-.7-.3l-6-6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l5.3 5.3 5.3-5.3c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-6 6c-.2.2-.4.3-.7.3'/></svg>"), $size: null);
     }
 
     &:hover {
-      background-color: var(--datepicker-day-hover-bg);
+      background-color: var(--datepicker-header-hover-bg);
     }
   }
 
@@ -141,9 +149,8 @@ $datepicker-tokens: defaults(
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 1rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: .5rem;
+    padding-top: .5rem;
     pointer-events: none;
   }
 
@@ -169,7 +176,11 @@ $datepicker-tokens: defaults(
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: .75rem;
+    padding: .5rem;
+    margin: calc(-1 * var(--datepicker-padding)) calc(-1 * var(--datepicker-padding)) .75rem;
+    color: var(--datepicker-header-color);
+    background-color: var(--datepicker-header-bg);
+    @include border-top-radius(calc(var(--datepicker-border-radius) - var(--datepicker-border-width)));
   }
 
   // Month and year
@@ -187,19 +198,19 @@ $datepicker-tokens: defaults(
     margin-inline: -.125rem;
     font-size: 1rem;
     font-weight: var(--datepicker-header-font-weight);
-    color: var(--datepicker-color);
+    color: var(--datepicker-header-color);
     // cursor: pointer;
     background-color: transparent;
     border: 0;
     @include border-radius(var(--radius-5));
 
     &:disabled {
-      color: var(--datepicker-day-disabled-color);
+      color: color-mix(in srgb, var(--datepicker-header-color) 60%, transparent);
       pointer-events: none;
     }
 
     &:hover:not(:disabled) {
-      background-color: var(--datepicker-day-hover-bg);
+      background-color: var(--datepicker-header-hover-bg);
     }
   }
 
