@@ -25,6 +25,7 @@ const { Content, headings, remarkPluginFrontmatter } = await render(Astro.props)
   frontmatter={remarkPluginFrontmatter as typeof data}
   headings={headings}
   id={id}
+  filePath={filePath}
   lastModified={getLastModified(filePath)}
 >
   <Content components={{ ...shortcodes, pre: shortcodes.Code }} />
