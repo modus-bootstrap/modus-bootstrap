@@ -9,7 +9,7 @@ export const extra_js = [{ src: 'application.js' }]
 export const body_class = 'app-with-sidebar'
 ---
 
-  <aside class="app-sidebar bg-body d-flex flex-column bg-90 position-fixed align-items-center" aria-label="Primary navigation">
+  <aside class="app-sidebar bg-body d-flex flex-column bg-opacity-90 position-fixed align-items-center" aria-label="Primary navigation">
     <nav class="nav">
       <a href="#" class="nav-link active" aria-current="page" aria-label="Routing">
         <i class="transportation-icon-map" aria-hidden="true"></i>
@@ -42,7 +42,7 @@ export const body_class = 'app-with-sidebar'
 
         <ul class="navbar-nav d-flex align-items-center flex-row ms-auto">
 
-           <li class="nav-item">
+          <li class="nav-item">
             <button class="btn-icon me-2 bg-transparent border-0" type="button"
               aria-label="Chat"
               data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Chat"
@@ -51,7 +51,7 @@ export const body_class = 'app-with-sidebar'
             </button>
           </li>
 
-           <li class="nav-item">
+          <li class="nav-item">
             <span class="d-inline-flex" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-title="Help">
               <button class="btn-icon me-2 bg-transparent border-0" type="button" aria-label="Help"
                 data-bs-toggle="dialog" data-bs-target="#helpDialog">
@@ -73,7 +73,7 @@ export const body_class = 'app-with-sidebar'
                   <span class="visually-hidden">Close My Apps</span>
                 </button>
               </div>
-              <div class="p-3 bg-1 bg-80">
+              <div class="p-3 bg-1 bg-opacity-80">
                 <div class="row g-3 text-center">
                   <div class="col-4">
                     <a class="card rounded-4 p-1 small text-decoration-none text-reset h-100" href="#">
@@ -197,7 +197,7 @@ export const body_class = 'app-with-sidebar'
     </dialog>
   </main>
 
-  <footer class="app-footer fixed-bottom bg-1 bg-80">
+  <footer class="app-footer fixed-bottom bg-1 bg-opacity-80">
     <div class="container-fluid d-flex flex-row justify-content-between align-items-center py-1">
 
       <a href="#" class="small fg-body text-decoration-none"> &copy; 2026 Modus Bootstrap</a>

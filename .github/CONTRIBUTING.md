@@ -43,17 +43,17 @@ Good bug reports are extremely helpful, so thanks!
 Guidelines for bug reports:
 
 0. **[Validate your HTML](https://html5.validator.nu/)** to ensure your
-   problem isn’t caused by a simple error in your own code.
+    problem isn’t caused by a simple error in your own code.
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
-   reported.
+    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
+    latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
-   case](https://css-tricks.com/reduced-test-cases/) and a live example.
-   These [v4 CodePen](https://codepen.io/team/bootstrap/pen/yLabNQL) and [v5 CodePen](https://codepen.io/team/bootstrap/pen/qBamdLj) are helpful templates.
+    case](https://css-tricks.com/reduced-test-cases/) and a live example.
+    These [v4 CodePen](https://codepen.io/team/bootstrap/pen/yLabNQL) and [v5 CodePen](https://codepen.io/team/bootstrap/pen/qBamdLj) are helpful templates.
 
 
 A good bug report shouldn’t leave others needing to chase you up for more
@@ -125,7 +125,7 @@ and/or [`/bootstrap/js/src/`](https://github.com/twbs/bootstrap/tree/main/js/src
 
 Similarly, when contributing to Bootstrap’s documentation, you should edit the
 documentation source files in
-[the `/bootstrap/site/content/docs/` directory of the `main` branch](https://github.com/twbs/bootstrap/tree/main/site/content/docs).
+[the `/bootstrap/site/src/content/docs/` directory of the `main` branch](https://github.com/twbs/bootstrap/tree/main/site/src/content/docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 
@@ -133,65 +133,65 @@ Adhering to the following process is the best way to get your work
 included in the project:
 
 1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork,
-   and configure the remotes:
+    and configure the remotes:
 
-   ```bash
-   # Clone your fork of the repo into the current directory
-   git clone https://github.com/<your-username>/bootstrap.git
-   # Navigate to the newly cloned directory
-   cd bootstrap
-   # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/twbs/bootstrap.git
-   ```
+    ```bash
+    # Clone your fork of the repo into the current directory
+    git clone https://github.com/<your-username>/bootstrap.git
+    # Navigate to the newly cloned directory
+    cd bootstrap
+    # Assign the original repo to a remote called "upstream"
+    git remote add upstream https://github.com/twbs/bootstrap.git
+    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
 
-   ```bash
-   git checkout main
-   git pull upstream main
-   ```
+    ```bash
+    git checkout main
+    git pull upstream main
+    ```
 
 3. Install or update project dependencies with npm:
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 4. Create a new topic branch (off the main project development branch) to
-   contain your feature, change, or fix:
+    contain your feature, change, or fix:
 
-   ```bash
-   git checkout -b <topic-branch-name>
-   ```
+    ```bash
+    git checkout -b <topic-branch-name>
+    ```
 
 5. Commit your changes in logical chunks. Please adhere to these [git commit
-   message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely be merged into the main project. Use Git’s
-   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
-   feature to tidy up your commits before making them public.
+    message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+    or your code is unlikely be merged into the main project. Use Git’s
+    [interactive rebase](https://help.github.com/articles/about-git-rebase/)
+    feature to tidy up your commits before making them public.
 
 6. Ensure your changes compile the dist CSS and JS files in the `dist/` directory. Verify
-   the build succeeds locally without errors.
+    the build succeeds locally without errors.
 
-   ```bash
-   npm run dist
-   ```
+    ```bash
+    npm run dist
+    ```
 
 7. Locally merge (or rebase) the upstream development branch into your topic branch:
 
-   ```bash
-   git pull [--rebase] upstream main
-   ```
+    ```bash
+    git pull [--rebase] upstream main
+    ```
 
 8. Commit your changes, but **do not push compiled CSS and JS files in `dist` and `js/dist`**.
-   Push your topic branch up to your fork:
+    Push your topic branch up to your fork:
 
-   ```bash
-   git push origin <topic-branch-name>
-   ```
+    ```bash
+    git push origin <topic-branch-name>
+    ```
 
 9. [Open a pull request](https://help.github.com/articles/about-pull-requests/)
-   with a clear title and description against the `main` branch.
+    with a clear title and description against the `main` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](../LICENSE) (if it
