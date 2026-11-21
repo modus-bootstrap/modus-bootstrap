@@ -3,8 +3,8 @@ baseURL:                "https://modus-bootstrap.com"
 
 docsDir:                "site"
 
-subtitle:               "The most popular HTML, CSS, and JS library in the world."
-description:            "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins."
+subtitle:               "Forked from Bootstrap - the most popular HTML, CSS, and JS library in the world."
+description:            "Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life."
 authors:                "Modus Bootstrap"
 
 current_version:        "6.0.0-alpha.1"
@@ -12,13 +12,7 @@ docs_version:           "6.0"
 rfs_version:            "v10.0.0"
 github_org:             "https://github.com/modus-bootstrap"
 repo:                   "https://github.com/modus-bootstrap/modus-bootstrap"
-x:                      "getbootstrap"
-opencollective:         ""
 icons:                  "https://modus-icons.trimble.com/"
-swag:                   ""
-
-analytics:
-  fathom_site:          "IT5SaYJG"
 
 # Search engine ownership codes. An empty value skips the meta tag.
 site_verification:

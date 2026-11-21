@@ -38,8 +38,10 @@ $btn-close-tokens: defaults(
     color: var(--btn-close-color);
     background: transparent;
     border: 0; // for button elements
-    @include border-radius(var(--radius-4));
+    outline: 1px solid transparent;
+    forced-color-adjust: auto;
     opacity: var(--btn-close-opacity);
+    @include border-radius(var(--radius-4));
 
     // Paint the icon on a pseudo-element so the mask does not clip the focus ring
     &::before {

@@ -1,7 +1,0 @@
-{
-  "reject": [
-    "hammer-simulator",
-    "rolldown",
-    "stylelint"
-  ]
-}

@@ -5,9 +5,6 @@ import { zPrefixedVersionSemver, zVersionMajorMinor, zVersionSemver } from './va
 
 // The config schema used to validate the config file content and ensure all values required by the site are valid.
 const configSchema = z.object({
-  analytics: z.object({
-    fathom_site: z.string()
-  }),
   anchors: z.object({
     min: z.number(),
     max: z.number()
@@ -46,8 +43,7 @@ const configSchema = z.object({
   toc: z.object({
     min: z.number(),
     max: z.number()
-  }),
-  x: z.string()
+  })
 })
 
 let config: Config | undefined

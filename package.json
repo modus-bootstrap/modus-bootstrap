@@ -72,7 +72,7 @@
     "docs-lint": "npm-run-all docs-prettier-check docs-html-validate",
     "docs-prettier-check": "prettier --config site/.prettierrc.json --write --cache site",
     "docs-prettier-format": "prettier --config site/.prettierrc.json --write --cache site",
-    "docs-serve": "npm run astro-dev -- --host",
+    "docs-serve": "npm run astro-dev -- --host --open",
     "docs-serve-only": "npx sirv-cli _site --port 9001",
     "screenshots": "shx rm -f site/static/assets/img/examples/*.png && node build/screenshot-examples.mjs",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",

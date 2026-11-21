@@ -185,6 +185,8 @@ $navbar-nav-tokens: defaults(
     width: var(--navbar-toggler-icon-size);
     height: var(--navbar-toggler-icon-size);
     background-color: currentcolor;
+    outline: 1px solid transparent;
+    forced-color-adjust: none;
     @include mask-icon(var(--navbar-toggler-icon));
   }
 

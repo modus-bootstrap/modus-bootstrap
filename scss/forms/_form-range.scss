@@ -94,6 +94,7 @@ $range-tokens: defaults(
     position: relative;
     display: block;
     width: 100%;
+    outline: 1px solid transparent;
 
     &:dir(rtl) {
       --range-track-fill-direction: to left;
