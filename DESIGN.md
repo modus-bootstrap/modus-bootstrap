@@ -78,40 +78,40 @@ components:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
     typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.sm}"
     padding: 0.375rem 0.75rem
     height: 2.375rem
   button-success:
     backgroundColor: "{colors.success-dark}"
     textColor: "{colors.on-primary}"
     typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.sm}"
   button-danger:
     backgroundColor: "{colors.danger}"
     textColor: "{colors.on-primary}"
     typography: "{typography.label-md}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.sm}"
   input:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
     typography: "{typography.body-md}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.sm}"
     padding: 0.375rem 0.75rem
     height: 2.375rem
   alert-primary:
     backgroundColor: "{colors.primary-pale}"
     textColor: "{colors.on-surface}"
-    rounded: "{rounded.md}"
+    rounded: "{rounded.sm}"
   card:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
-    rounded: "{rounded.xl}"
+    rounded: "{rounded.sm}"
     padding: 1rem
   badge:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
     typography: "{typography.label-sm}"
-    rounded: "{rounded.xl}"
+    rounded: "{rounded.sm}"
 ---
 
 # Modus Bootstrap
