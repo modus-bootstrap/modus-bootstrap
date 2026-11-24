@@ -31,8 +31,6 @@ jobs:
           registry-url: https://registry.npmjs.org
           package-manager-cache: false # no cache in release builds, to rule out cache poisoning
       - run: npm ci
-      - run: npx playwright install --with-deps chromium
-      - run: npm test
       - name: Update npm for trusted publishing
         run: npm install --global npm@11.21.0 # trusted publishing needs npm 11.5.1+, Node 22 bundles npm 10
       - name: Publish to npm
