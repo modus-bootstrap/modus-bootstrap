@@ -14,16 +14,16 @@ Modus Bootstrap is [Bootstrap v6](https://getbootstrap.com/) themed to the Trimb
 
 ## Quick start
 
-- Install with npm: `npm install modus-bootstrap@6.0.0-alpha.1`
-- Install with pnpm: `pnpm add modus-bootstrap@6.0.0-alpha.1`
-- Install with Yarn: `yarn add modus-bootstrap@6.0.0-alpha.1`
-- Install with Bun: `bun add modus-bootstrap@6.0.0-alpha.1`
+- Install with npm: `npm install modus-bootstrap@6.0.0-alpha.2`
+- Install with pnpm: `pnpm add modus-bootstrap@6.0.0-alpha.2`
+- Install with Yarn: `yarn add modus-bootstrap@6.0.0-alpha.2`
+- Install with Bun: `bun add modus-bootstrap@6.0.0-alpha.2`
 - Clone the repo: `git clone https://github.com/modus-bootstrap/modus-bootstrap.git`
 
 Or load the compiled CSS from the CDN:
 
 ```html
-<link href="https://cdn.jsdelivr.net/npm/modus-bootstrap@6.0.0-alpha.1/dist/css/modus-bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/modus-bootstrap@6.0.0-alpha.2/dist/css/modus-bootstrap.min.css" rel="stylesheet">
 ```
 
 Read the [install guide](https://modus-bootstrap.com/getting-started/install/) for CDN, JavaScript, and Sass setup.

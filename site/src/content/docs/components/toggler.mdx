@@ -1,6 +1,6 @@
 ---
 title: Toggler
-description: Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`.
+description: Toggle attributes or classes on click using only data attributes and our JavaScript plugin. Works with any attribute except `id`, event handlers, `style` and attributes that take a URL.
 toc: true
 js: required
 ---
@@ -14,9 +14,9 @@ Toggler is a pure JavaScript component that can be used to avoid writing small o
 Toggle the class of an element by adding the `data-bs-toggle="toggler"` attribute to the element and the `data-bs-value` attribute to the value you want to toggle.
 
 <Example code={`<div class="w-100 p-3 rounded border"
-       data-bs-toggle="toggler"
-       data-bs-value="fg-danger"
-       data-bs-attribute="class">
+      data-bs-toggle="toggler"
+      data-bs-value="fg-danger"
+      data-bs-attribute="class">
     Click to toggle \`fg-danger\`
   </div>`} />
 
@@ -25,9 +25,9 @@ Toggle the class of an element by adding the `data-bs-toggle="toggler"` attribut
 If the element already has the class specified in `data-bs-value`, toggling will remove it. Clicking again adds it back.
 
 <Example code={`<div class="w-100 p-3 rounded border bg-subtle-info"
-       data-bs-toggle="toggler"
-       data-bs-value="bg-subtle-info"
-       data-bs-attribute="class">
+      data-bs-toggle="toggler"
+      data-bs-value="bg-subtle-info"
+      data-bs-attribute="class">
     Starts with \`bg-subtle-info\`. Click to remove it.
   </div>`} />
 
@@ -49,14 +49,14 @@ Use `data-bs-toggle` with a class name selector in `data-bs-target` to toggle th
           data-bs-toggle="toggler" data-bs-target=".togglerExampleClass1">Toggle</button>
 
   <div class="w-100 p-3 rounded border togglerExampleClass1"
-       data-bs-value="bg-subtle-info"
-       data-bs-attribute="class">
+      data-bs-value="bg-subtle-info"
+      data-bs-attribute="class">
     Use button to toggle \`bg-subtle-info\`
   </div>
 
   <div class="w-100 p-3 rounded border togglerExampleClass1"
-       data-bs-value="bg-subtle-warning"
-       data-bs-attribute="class">
+      data-bs-value="bg-subtle-warning"
+      data-bs-attribute="class">
     Use button to toggle \`bg-subtle-warning\`
   </div>`} />
 
@@ -65,13 +65,17 @@ Use `data-bs-toggle` with a class name selector in `data-bs-target` to toggle th
 Toggle attributes by using the `data-bs-toggle` attribute with the `data-bs-attribute` and `data-bs-value` attributes. For example, toggling the `hidden` attribute:
 
 <Example code={`<div class="w-100 p-3 rounded border"
-       data-bs-toggle="toggler"
-       data-bs-value="true"
-       data-bs-attribute="hidden">
+      data-bs-toggle="toggler"
+      data-bs-value="true"
+      data-bs-attribute="hidden">
     Click to toggle \`hidden\` attribute
   </div>`} />
 
 You could also use this to toggle the `disabled` attribute on a `fieldset` element to disable all the controls within. Or any other ideas you can think of with attributes.
+
+### Refused attributes
+
+Toggler never sets an attribute that can run script or load a URL, since its options come from `data-bs-*` attributes that HTML sanitizers usually keep. It does nothing for `id`, `style`, any event handler (`onclick`, `onmouseover` and every other `on*` attribute), and the URL attributes `action`, `background`, `data`, `formaction`, `href`, `poster`, `src`, `srcdoc`, `srcset` and `xlink:href`. Toggle a class instead of `style`.
 
 ## Usage
 

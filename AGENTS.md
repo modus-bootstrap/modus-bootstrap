@@ -2,7 +2,7 @@
 
 Guidance for AI coding agents working in this repository. Tool-agnostic.
 
-Bootstrap v6.0.0-alpha.1 — CSS/JS framework.
+Bootstrap v6.0.0-alpha.2 — CSS/JS framework.
 Sass source in `scss/`, TypeScript source in `js/src/`, docs site in `site/` (Astro 5 + MDX).
 Read `DESIGN.md` for the Modus visual rules: colors, type, spacing, shapes, and components.
 

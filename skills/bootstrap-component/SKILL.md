@@ -28,9 +28,9 @@ For interactive behavior, see the `bootstrap-component-js` skill. For palettes, 
 
 1. Pick a singular, kebab-case name. It drives everything: the partial `scss/_<name>.scss`, the base class `.<name>`, the token prefix `--<name>-*`, and the map `$<name>-tokens`.
 2. Decide what the component needs before writing CSS:
-   - **Tokens only** — one look, customized through CSS variables. Model on `scss/_alert.scss`.
-   - **Variants** — contextual color treatments like `.badge-subtle`. Model on `scss/_badge.scss`.
-   - **Variants and sizes** — model on `scss/buttons/_button.scss`.
+    - **Tokens only** — one look, customized through CSS variables. Model on `scss/_alert.scss`.
+    - **Variants** — contextual color treatments like `.badge-subtle`. Model on `scss/_badge.scss`.
+    - **Variants and sizes** — model on `scss/buttons/_button.scss`.
 3. Check whether an existing component already covers the need. Extending one with a modifier is preferable to adding a near-duplicate.
 
 Never edit generated output in `dist/`, `js/dist/`, or `_site/`. Source lives in `scss/` and `js/src/`.
@@ -100,6 +100,7 @@ Declarations go inside a cascade layer, with the token map emitted on the root s
 - Pick the right layer. Components use `@layer components`, form controls `@layer forms`, helpers `@layer helpers`. The order is declared once in `scss/_root.scss`: `colors, config, root, reboot, layout, content, forms, components, custom, helpers, utilities`.
 - `@include tokens($widget-tokens)` comes first, then declarations, then nested rules. Declarations read `var(--widget-*)`, never the Sass map directly.
 - Use `@include border-radius()` and `@include transition()` instead of the raw properties — stylelint blocks the raw ones because the mixins honor `$enable-rounded`, `$enable-transitions`, and `prefers-reduced-motion`.
+- Check the component in forced colors mode (for example, Windows high contrast themes). The browser replaces author colors with system colors, so a part drawn only with a background color disappears. Put every fix in `@include forced-colors() { … }` next to the rule it fixes, never in a bare `@media (forced-colors: active)`, so the styles honor `$enable-forced-colors` and change nothing outside that mode. This includes a transparent outline (`outline: 1px solid transparent`), which the browser paints in forced colors mode: outside the mixin it replaces the browser focus ring on a focusable element. Use system colors (`CanvasText`, `Canvas`, `Highlight`) when the component needs them.
 - Use logical properties (`padding-inline-start`, `margin-block-end`, `inset-inline-start`) so the component works in RTL without an override.
 - No `lighten()` / `darken()` — use `color-mix()`, relative `oklch()`, or `light-dark()`. No `border: none` / `outline: none` — use `0`.
 
@@ -216,32 +217,32 @@ Components that live in a subdirectory (`scss/buttons/`, `scss/forms/`, `scss/he
 
 1. Add `site/src/content/docs/components/<name>.mdx`:
 
-   ```markdown
-   ---
-   title: Widget
-   description: Documentation and examples for Bootstrap’s widget component.
-   toc: true
-   css_layer: components
-   ---
-   ```
+    ```markdown
+    ---
+    title: Widget
+    description: Documentation and examples for Bootstrap’s widget component.
+    toc: true
+    css_layer: components
+    ---
+    ```
 
-   Add `js: optional` (or `js: required`) when the component ships a JavaScript plugin.
+    Add `js: optional` (or `js: required`) when the component ships a JavaScript plugin.
 
 2. Add an entry to `site/data/sidebar.yml` under the Components section. The sidebar drives the nav, the page ordering, and inclusion in `llms.txt`, so a page without an entry is effectively invisible:
 
-   ```yaml
-   - title: Widget
-     meta:
-       - added: 6.0.0
-   ```
+    ```yaml
+    - title: Widget
+      meta:
+        - added: 6.0.0
+    ```
 
 3. Show usage with `<Example>` for live demos, and render the token map under a `### Variables` section:
 
-   ```markdown
-   <CSSVariables component="Widgets" className="widget" />
+    ```markdown
+    <CSSVariables component="Widgets" className="widget" />
 
-   <ScssDocs name="widget-tokens" file="scss/_widget.scss" />
-   ```
+    <ScssDocs name="widget-tokens" file="scss/_widget.scss" />
+    ```
 
 4. Link internally with `[[docsref:/components/widget/]]` rather than a hardcoded versioned path.
 
