@@ -26,11 +26,11 @@
     },
     {
       "path": "./dist/css/modus-bootstrap.css",
-      "maxSize": "58.75 kB"
+      "maxSize": "59.25 kB"
     },
     {
       "path": "./dist/css/modus-bootstrap.min.css",
-      "maxSize": "55.0 kB"
+      "maxSize": "55.5 kB"
     }
   ],
   "ci": {

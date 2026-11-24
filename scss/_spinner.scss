@@ -1,5 +1,6 @@
 @use "config" as *;
 @use "functions" as *;
+@use "mixins/forced-colors" as *;
 @use "mixins/tokens" as *;
 
 // stylelint-disable custom-property-no-missing-var-function
@@ -102,6 +103,11 @@ $spinner-grow-tokens: defaults(
 
     background-color: currentcolor;
     opacity: 0;
+
+    // Forced colors mode removes the background color. Show the circle with an outline.
+    @include forced-colors() {
+      outline: 1px solid transparent;
+    }
   }
 
   .spinner-grow-sm {
