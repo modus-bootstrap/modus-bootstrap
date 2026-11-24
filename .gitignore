@@ -46,3 +46,4 @@ Thumbs.db
 /site/.astro
 /site/public
 
+/js/dist
